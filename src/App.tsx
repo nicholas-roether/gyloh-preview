@@ -1,5 +1,5 @@
 import React from "react";
-import PageNavBar from "./structure/PageNavBar";
+import PageNavBar from "./static/PageNavBar";
 
 class App extends React.Component<{}> {
 
