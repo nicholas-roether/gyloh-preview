@@ -2,7 +2,8 @@
 	height: 100%;
 	--color-bg: #fff;
 	--color-theme-dark: #002860;
-	--color-theme-light: 
+	--color-theme-light: #6184D8; 
+	--color-shadow: #00000064;
 }
 
 body {
