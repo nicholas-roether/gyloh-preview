@@ -1,20 +1,25 @@
 import React from "react";
+import "./Navbar.css"
 
 class NavBar extends React.Component<{
 	id?: string, 
 	leading?: JSX.Element, 
-	main: JSX.Element, 
-	trailing?: JSX.Element
+	actions?: JSX.Element
 }> {
 	render() {
 		return (
-			<header id={this.props.id}>
+			<header className="nav-bar" id={this.props.id}>
 				{this.props.leading}
-				{this.props.main}
-				{this.props.trailing}
+				<span id="main">
+					{this.props.children}
+				</span>
+				<span id="actions">
+					{this.props.actions}
+					<i className="fas fa-bars"></i>
+				</span>
 			</header>
 		);
 	} 
 }
 
-export default NavBar
+export default NavBar;
