@@ -1,0 +1,8 @@
+.page-nav-item {
+	font-family: "Rubik", sans-serif;
+}
+
+.page-nav-item > a {
+	color: #000;
+	text-decoration: none;
+}

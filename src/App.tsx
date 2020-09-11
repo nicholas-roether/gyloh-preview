@@ -1,12 +1,12 @@
 import React from "react";
-import PageNavBar from "./static/PageNavBar";
+import PageNavbar from "./common/PageNavbar";
 
 class App extends React.Component<{}> {
 
 	render() {
 		return (
 			<div id="app">
-				<PageNavBar />
+				<PageNavbar />
 			</div>
 		);
 	}
