@@ -1,21 +1,26 @@
-import {  Divider, Drawer, IconButton, List } from "@material-ui/core";
+import {  createStyles, Divider, Drawer, IconButton, List, withStyles } from "@material-ui/core";
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 import theme from "../theme";
 
-export default class SideNav extends React.Component<{open: boolean, header?: JSX.Element, onClose: (e: React.MouseEvent) => void}> {
-	public static readonly DRAWER_WIDTH = 240;
+export const DRAWER_WIDTH = 240;
 
+class SideNav extends React.Component<{
+	open: boolean, header?: JSX.Element, 
+	onClose: (e: React.MouseEvent) => void,
+	classes: Record<"drawerPaper" | "toolbarMixin", string>,
+}> {
 	render() {
 		const DrawerNav = styled.div`
 			display: flex;
 			align-items: center;
-			justify-content: flex-end;
+			justify-content: ${theme.direction === "ltr" ? "flex-end" : "flex-start"};
 		`;
 
 		const DrawerHeader = styled.div`
 			display: flex;
+			margin: ${theme.spacing(2, 0)};
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
@@ -26,8 +31,9 @@ export default class SideNav extends React.Component<{open: boolean, header?: JS
 				variant="persistent"
 				anchor="left"
 				open={this.props.open}
+				classes={{paper: this.props.classes.drawerPaper}}
 			>
-				<DrawerNav>
+				<DrawerNav className={this.props.classes.toolbarMixin}>
 					<IconButton onClick={this.props.onClose}>
 						{theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 					</IconButton>
@@ -36,7 +42,6 @@ export default class SideNav extends React.Component<{open: boolean, header?: JS
 				<DrawerHeader>
 					{this.props.header}
 				</DrawerHeader>
-				<Divider />
 				<List>
 					{this.props.children}
 				</List>
@@ -44,3 +49,15 @@ export default class SideNav extends React.Component<{open: boolean, header?: JS
 		);
 	}
 }
+
+const styles = createStyles({
+	drawerPaper: {
+		maxWidth: DRAWER_WIDTH,
+		width: "100vw"
+	},
+	toolbarMixin: {
+		...theme.mixins.toolbar
+	}
+});
+
+export default withStyles(styles)(SideNav);
