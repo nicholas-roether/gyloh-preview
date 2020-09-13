@@ -8,7 +8,7 @@ export default class PageNav extends React.Component<{open: boolean, onClose: (e
 			<SideNav
 				open={this.props.open}
 				onClose={this.props.onClose}
-				header={<img src="logo.png" width={SideNav.DRAWER_WIDTH * 0.9} alt="Gyloh"></img>}
+				header={<img src="logo.png" width="70%" alt="Gyloh"></img>}
 			>
 				<ListItem>
 					<ListItemText>Test</ListItemText>
