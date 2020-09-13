@@ -1,15 +1,13 @@
 import React from "react";
-import PageNavbar from "./common/PageNavbar";
+import Page from "./common/Page";
 
-class App extends React.Component<{}> {
+export default class App extends React.Component<{}> {
 
 	render() {
 		return (
 			<div id="app">
-				<PageNavbar />
+				<Page />
 			</div>
 		);
 	}
 }
-
-export default App;
