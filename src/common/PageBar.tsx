@@ -6,7 +6,7 @@ import React from "react";
 import theme from "../theme";
 import styled from "styled-components";
 
-export default class PageBar extends React.Component<{onOpenMenu?: ((e?: React.MouseEvent) => void)}> {
+export default class PageBar extends React.Component<{onOpenMenu?: ((e?: React.MouseEvent) => void), className?: string}> {
 	render() {
 		const Heading = styled.span`
 			margin: ${theme.spacing(0, 2)};
@@ -34,7 +34,7 @@ export default class PageBar extends React.Component<{onOpenMenu?: ((e?: React.M
 		const Grow = styled.span`flex-grow: 1;`;
 
 		return (
-			<AppBar position="static">
+			<AppBar position="static" className={this.props.className}>
 				<Toolbar>
 					<IconButton color="inherit" onClick={this.props.onOpenMenu}><MenuIcon /></IconButton>
 					<Heading>
