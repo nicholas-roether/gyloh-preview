@@ -12,10 +12,6 @@ export default class HomePage extends React.Component {
             justify-content: space-between;
             align-items: center;
             margin-bottom: 8em;
-            ${theme.breakpoints.down("sm")} {
-                justify-content: center;
-                text-align: center;
-            }
         `;
         
         const OpeningImage = styled.img`
@@ -27,15 +23,14 @@ export default class HomePage extends React.Component {
         `;
 
         const OpeningText = styled.span`
-            padding: ${theme.spacing(4, 3)};
+            padding: ${theme.spacing(4, 3, 4, 0)};
         `;
 
         return (
             <Page>
                 <OpeningWrapper>
                     <OpeningText>
-                        <Typography variant="h3">Gymnasium Lohbrügge</Typography>
-                        <Typography variant="h6">Herzlich Willkommen</Typography>
+                        <Typography variant="h3">Herzlich Willkommen</Typography>
                     </OpeningText>
                     <OpeningImage src="banner.jpg" alt="Opening Banner" />
                 </OpeningWrapper>
