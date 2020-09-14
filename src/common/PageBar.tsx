@@ -7,16 +7,6 @@ import styled from "styled-components";
 import Search from "./Search";
 
 export default class PageBar extends React.Component<{onOpenMenu?: ((e?: React.MouseEvent) => void), className?: string}> {
-	state = {searchOpen: false}
-
-	private openSearch() {
-		this.setState({searchOpen: true});
-	}
-
-	private closeSearch() {
-		this.setState({searchOpen: false});
-	}
-
 	render() {
 		const Heading = styled.span`
 			margin: ${theme.spacing(0, 2)};
@@ -62,7 +52,7 @@ export default class PageBar extends React.Component<{onOpenMenu?: ((e?: React.M
 					</Heading>
 					<Grow />
 					<Icons>
-						<Search open={this.state.searchOpen} onOpen={() => this.openSearch()} onClose={() => this.closeSearch()} />
+						<Search />
 						<IconButton color="inherit" aria-label="Kalender ansehen"><CalendarIcon /></IconButton>
 					</Icons>
 				</Toolbar>
