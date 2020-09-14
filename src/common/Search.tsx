@@ -48,7 +48,7 @@ interface SearchProps extends WithStyles<typeof styles> {
 	onClose: MouseEventHandler
 }
 
-
+// TODO fix transitions
 class Search extends React.Component<SearchProps> {
 	ref: React.RefObject<HTMLElement>;
 
