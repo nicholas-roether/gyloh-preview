@@ -1,4 +1,4 @@
-import { Box, Button, Divider, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import { Box, Divider, ListItemIcon, ListItemText, Button } from "@material-ui/core";
 import { 
 	Home as HomeIcon, 
 	NewReleases as NewsIcon, 
@@ -14,6 +14,8 @@ import {
 import React from "react";
 import { MouseEventListener } from "../util";
 import EduportLaunchpad from "./EduportLaunpad";
+import ListItemCollapse from "./ListItemCollapse";
+import ListItemLink from "./ListItemLink";
 import SideNav, { SideNavHeader, SideNavList } from "./SideNav";
 
 export default class PageNav extends React.Component<{open: boolean, onOpen: MouseEventListener, onClose: MouseEventListener, swipeable?: boolean} > {
@@ -32,46 +34,52 @@ export default class PageNav extends React.Component<{open: boolean, onOpen: Mou
 					</Button>
 				</SideNavHeader>
 				<SideNavList>
-					<ListItem button>
+					<ListItemLink to="/">
 						<ListItemIcon><HomeIcon /></ListItemIcon>
 						<ListItemText primary="Home" />
-					</ListItem>
-					<ListItem button>
+					</ListItemLink>
+					{/* <ListItemLink to="/about">
 						<ListItemIcon><AboutIcon /></ListItemIcon>
 						<ListItemText primary="Über Uns" />
-					</ListItem>
-					<ListItem button>
+					</ListItemLink> */}
+					<ListItemCollapse to="/about" text="Über Uns" icon={<AboutIcon />}>
+						<ListItemLink to="/about/greeting">
+							<ListItemText primary="Begrüßung" />
+						</ListItemLink>
+					</ListItemCollapse>
+					<ListItemLink to="/grades">
 						<ListItemIcon><GradesIcon /></ListItemIcon>
 						<ListItemText primary="Klassenstufen" />
-					</ListItem>
-					<ListItem button>
+					</ListItemLink>
+					<ListItemLink to="/news">
 						<ListItemIcon><NewsIcon /></ListItemIcon>
 						<ListItemText primary="News" />
-					</ListItem>
-					<ListItem button>
+					</ListItemLink>
+					<ListItemLink to="/info">
 						<ListItemIcon><InfoIcon /></ListItemIcon>
 						<ListItemText primary="Info &amp; Service" />
-					</ListItem>
-					<ListItem button>
+					</ListItemLink>
+					<ListItemLink to="/contact">
 						<ListItemIcon><ContactIcon /></ListItemIcon>
 						<ListItemText primary="Kontakt" />
-					</ListItem>
-					<ListItem button>
+					</ListItemLink>
+					{/* Is this ok?*/}
+					<ListItemLink to="/mensa">
 						<ListItemIcon><CafeteriaIcon /></ListItemIcon>
 						<ListItemText primary="Mensa" />
-					</ListItem>
-					<ListItem button>
+					</ListItemLink>
+					<ListItemLink to="/alumni">
 						<ListItemIcon><AlumniIcon /></ListItemIcon>
 						<ListItemText primary="Alumni" />
-					</ListItem>
-					<ListItem button>
+					</ListItemLink>
+					<ListItemLink to="/planner">
 						<ListItemIcon><PlannerIcon /></ListItemIcon>
 						<ListItemText primary="Vertretungsplan" />
-					</ListItem>
-					<ListItem button>
+					</ListItemLink>
+					<ListItemLink to="/newsletter">
 						<ListItemIcon><NewsletterIcon /></ListItemIcon>
 						<ListItemText primary="Newsletter" />
-					</ListItem>
+					</ListItemLink>
 					<Box mb={3} />
 					<Divider />
 					<Box pt={3} pb={3}>
