@@ -1,7 +1,7 @@
 import { createStyles, IconButton, InputBase, withStyles } from "@material-ui/core";
 import { WithStyles } from "@material-ui/core/styles/withStyles";
 import SearchIcon from "@material-ui/icons/Search";
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import theme from "../theme";
 import { classesIf } from "../util";
 
@@ -12,6 +12,8 @@ const styles = createStyles({
 		background: "transparent",
 		verticalAlign: "baseline",
 		borderRadius: theme.shape.borderRadius,
+		flexGrow: 1,
+		maxWidth: "400px",
 		transition: theme.transitions.create(["background"], {
 			easing: theme.transitions.easing.easeIn,
 			duration: theme.transitions.duration.shortest
@@ -19,9 +21,6 @@ const styles = createStyles({
 	},
 	searchBgActive: {
 		background: theme.palette.secondary.main,
-		[theme.breakpoints.down("sm")]: {
-			flexGrow: 1
-		}
 	},
 	searchField: {
 		width: 0,
@@ -35,9 +34,6 @@ const styles = createStyles({
 	searchFieldActive: {
 		width: "100%",
 		paddingLeft: theme.spacing(2),
-		[theme.breakpoints.up("sm")]: {
-			flexShrink: 1
-		}
 	}
 });
 
