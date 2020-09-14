@@ -24,7 +24,15 @@ const styles = createStyles({
 			marginRight: theme.direction === "ltr" ? 0 : DRAWER_WIDTH,
 		}
 	},
+	contentWrapper: {
+		width: "100%",
+		display: "flex",
+		justifyContent: "center"
+	},
 	content: {
+		// width: "100vw",
+		flexGrow: 1,
+		maxWidth: "1000px",
 		transition: theme.transitions.create(['margin'], {
 			easing: theme.transitions.easing.easeIn,
 			duration: theme.transitions.duration.leavingScreen,
@@ -80,12 +88,14 @@ class Page extends React.Component<PageProps, PageState> {
 					[classes.barOpen, this.state.navOpen]
 				)} />
 				<PageNav open={this.state.navOpen} onOpen={() => this.openNav()} onClose={() => this.closeNav()} swipeable={this.state.swipeable} />
-				<Box className={classesIf(
-					classes.content,
-					[classes.contentOpen, this.state.navOpen]
-				)} pl={3} pr={3}>
-					{this.props.children}
-				</Box>
+				<div className={classes.contentWrapper}>
+					<Box className={classesIf(
+						classes.content,
+						[classes.contentOpen, this.state.navOpen]
+					)} pl={3} pr={3}>
+						{this.props.children}
+					</Box>
+				</div>
 			</div>
 		);
 	}
