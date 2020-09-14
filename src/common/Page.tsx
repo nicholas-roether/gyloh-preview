@@ -1,4 +1,4 @@
-import { Box, createStyles, WithStyles, withStyles } from "@material-ui/core";
+import { Box, Breadcrumbs, createStyles, Divider, Typography, WithStyles, withStyles } from "@material-ui/core";
 import React from "react";
 import theme from "../theme";
 import { classesIf } from "../util";
@@ -25,20 +25,16 @@ const styles = createStyles({
 		}
 	},
 	contentWrapper: {
-		width: "100%",
-		display: "flex",
-		justifyContent: "center"
-	},
-	content: {
-		// width: "100vw",
-		flexGrow: 1,
-		maxWidth: "1000px",
 		transition: theme.transitions.create(['margin'], {
 			easing: theme.transitions.easing.easeIn,
 			duration: theme.transitions.duration.leavingScreen,
 		})
 	},
-	contentOpen: {
+	content: {
+		maxWidth: "1300px",
+		margin: theme.spacing(3, "auto"),
+	},
+	contentWrapperOpen: {
 		transition: theme.transitions.create(['margin'], {
 			easing: theme.transitions.easing.easeOut,
 			duration: theme.transitions.duration.enteringScreen,
@@ -88,11 +84,18 @@ class Page extends React.Component<PageProps, PageState> {
 					[classes.barOpen, this.state.navOpen]
 				)} />
 				<PageNav open={this.state.navOpen} onOpen={() => this.openNav()} onClose={() => this.closeNav()} swipeable={this.state.swipeable} />
-				<div className={classes.contentWrapper}>
-					<Box className={classesIf(
-						classes.content,
-						[classes.contentOpen, this.state.navOpen]
-					)} pl={3} pr={3}>
+				<Divider />
+				<div className={classesIf(
+						classes.contentWrapper,
+						[classes.contentWrapperOpen, this.state.navOpen]
+				)}>
+					<Box marginX={4} marginY={1}>
+						<Breadcrumbs aria-label="breadcrumbs">
+							<Typography color="textPrimary">Home</Typography>
+						</Breadcrumbs>
+					</Box>
+					<Divider />
+					<Box className={classes.content} pl={3} pr={3}>
 						{this.props.children}
 					</Box>
 				</div>
