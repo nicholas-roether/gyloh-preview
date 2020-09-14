@@ -1,4 +1,4 @@
-import { Box, Divider, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import { Box, Button, Divider, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import { 
 	Home as HomeIcon, 
 	NewReleases as NewsIcon, 
@@ -27,7 +27,9 @@ export default class PageNav extends React.Component<{open: boolean, onOpen: Mou
 				swipeable={this.props.swipeable}
 			>
 				<SideNavHeader>
-					<img src="logo.png" width="70%" alt="Gyloh" />
+					<Button>
+						<img src="logo.png" width="70%" alt="Gyloh" />
+					</Button>
 				</SideNavHeader>
 				<SideNavList>
 					<ListItem button>
