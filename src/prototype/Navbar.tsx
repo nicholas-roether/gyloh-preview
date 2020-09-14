@@ -94,7 +94,7 @@ export default class Navbar extends React.Component<NavbarProps> {
 					<Options>
 						{
 							overflow.length > 0 &&
-							<Dropdown name="{Overflow}">
+							<Dropdown element={<span>Overflow</span>}>
 								{overflow.map(e => <MenuItem>{e}</MenuItem>)}
 							</Dropdown>
 						}
