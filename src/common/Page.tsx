@@ -1,32 +1,66 @@
 import { Box, createStyles, WithStyles, withStyles } from "@material-ui/core";
 import React from "react";
 import theme from "../theme";
+import { classesIf } from "../util";
 import PageBar from "./PageBar";
 import PageNav from "./PageNav";
 import { DRAWER_WIDTH } from "./SideNav";
 
 const styles = createStyles({
-	slideOpen: {
-		width: `calc(100% - ${DRAWER_WIDTH}px)`,
-		marginLeft: theme.direction === "ltr" ? DRAWER_WIDTH : 0,
-		marginRight: theme.direction === "ltr" ? 0 : DRAWER_WIDTH,
+	bar: {
 		transition: theme.transitions.create(['margin', 'width'], {
-			easing: theme.transitions.easing.easeOut,
-			duration: theme.transitions.duration.enteringScreen,
-    	}),
+			easing: theme.transitions.easing.easeIn,
+			duration: theme.transitions.duration.leavingScreen,
+		})
 	},
-	slideClose: {
-		width: "100%",
-		margin: 0,
+	barOpen: {
 		transition: theme.transitions.create(['margin', 'width'], {
 			easing: theme.transitions.easing.easeOut,
 			duration: theme.transitions.duration.enteringScreen,
-    	}),
+		}),
+		[theme.breakpoints.up("md")]: {
+			width: `calc(100% - ${DRAWER_WIDTH}px)`,
+			marginLeft: theme.direction === "ltr" ? DRAWER_WIDTH : 0,
+			marginRight: theme.direction === "ltr" ? 0 : DRAWER_WIDTH,
+		}
+	},
+	content: {
+		transition: theme.transitions.create(['margin'], {
+			easing: theme.transitions.easing.easeIn,
+			duration: theme.transitions.duration.leavingScreen,
+		})
+	},
+	contentOpen: {
+		transition: theme.transitions.create(['margin'], {
+			easing: theme.transitions.easing.easeOut,
+			duration: theme.transitions.duration.enteringScreen,
+		}),
+		[theme.breakpoints.up("md")]: {
+			marginLeft: theme.direction === "ltr" ? DRAWER_WIDTH : 0,
+			marginRight: theme.direction === "ltr" ? 0 : DRAWER_WIDTH,
+		}
 	}
 });
 
-class Page extends React.Component<WithStyles<typeof styles>> {
-	state = {navOpen: false};
+type PageProps = WithStyles<typeof styles>;
+interface PageState {
+	navOpen: boolean,
+	swipeable: boolean
+}
+
+class Page extends React.Component<PageProps, PageState> {
+	state = {navOpen: false, swipeable: false};
+
+	constructor(props: PageProps) {
+		super(props);
+		window.addEventListener("resize", () => this.refreshNavState());
+		window.addEventListener("load", () => this.refreshNavState());
+	}
+
+	private refreshNavState() {
+		if((window.innerWidth > theme.breakpoints.values.md) === this.state.swipeable)
+				this.setState(lastState => ({swipeable: !lastState.swipeable}));
+	}
 
 	private openNav() {
 		this.setState({navOpen: true});
@@ -38,13 +72,18 @@ class Page extends React.Component<WithStyles<typeof styles>> {
 
 	render() {
 		let { classes } = this.props; 
-		let slideClass = this.state.navOpen ? classes.slideOpen : classes.slideClose;
 
 		return (
 			<div className="page">
-				<PageBar onOpenMenu={() => this.openNav()} className={slideClass} />
-				<PageNav open={this.state.navOpen} onClose={() => this.closeNav()} />
-				<Box className={slideClass} pl={3} pr={3}>
+				<PageBar onOpenMenu={() => this.openNav()} className={classesIf(
+					classes.bar,
+					[classes.barOpen, this.state.navOpen]
+				)} />
+				<PageNav open={this.state.navOpen} onOpen={() => this.openNav()} onClose={() => this.closeNav()} swipeable={this.state.swipeable} />
+				<Box className={classesIf(
+					classes.content,
+					[classes.contentOpen, this.state.navOpen]
+				)} pl={3} pr={3}>
 					{this.props.children}
 				</Box>
 			</div>
