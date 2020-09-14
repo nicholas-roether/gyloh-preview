@@ -1,11 +1,12 @@
-import { Box, Button, Icon, Menu } from "@material-ui/core";
+import {Button, Menu, PopoverOrigin } from "@material-ui/core";
 import React from "react";
 
 export default class Dropdown extends React.Component<{
 	open?: boolean,
-	name: string,
+	element: React.ReactElement,
 	id?: string,
-	menuId?: string
+	menuId?: string,
+	origin?: PopoverOrigin
 }, {anchorEl: Element | null}> {
 	state = {anchorEl: null}
 
@@ -27,16 +28,13 @@ export default class Dropdown extends React.Component<{
 					aria-haspopup="true"
 					onClick={(e) => this.open(e)}
 				>
-					{this.props.name}
-					<Box marginLeft="5px" >
-						<Icon className="fas fa-caret-down" color="secondary" fontSize="small" style={{verticalAlign: "text-bottom"}}/>
-					</Box>
+					{this.props.element}
 				</Button>
 				<Menu 
 					open={Boolean(this.state.anchorEl)} 
 					id={this.props.menuId} 
-					anchorEl={this.state.anchorEl} 
-					
+					anchorEl={this.state.anchorEl}
+					anchorOrigin={this.props.origin}
 					onClick={(e) => {
 						if(e.target instanceof HTMLElement && e.target.parentNode === e.currentTarget)
 							this.close();
