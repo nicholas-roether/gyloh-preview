@@ -37,8 +37,6 @@ const styles = createStyles({
 	}
 });
 
-
-
 interface SearchState {
 	open: boolean
 }

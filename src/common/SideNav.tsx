@@ -7,22 +7,24 @@ import { MouseEventListener } from "../util";
 
 export const DRAWER_WIDTH = 240;
 
-export interface SideNavProps extends WithStyles<typeof styles> {
+export interface SideNavProps {
 	open: boolean,
 	onOpen: MouseEventListener,
 	onClose: MouseEventListener,
 }
+
+type SideNavPropsWithStyles = SideNavProps & WithStyles<typeof styles>;
 
 interface SideNavState {
 	swipeable: boolean
 }
 
 // TODO contain swipeable state
-class SideNav extends React.Component<SideNavProps, SideNavState> {
+class SideNav extends React.Component<SideNavPropsWithStyles, SideNavState> {
 	state = {swipeable: true}
 	private refreshListener: () => void;
 
-	constructor(props: SideNavProps) {
+	constructor(props: SideNavPropsWithStyles) {
 		super(props);
 		this.refreshListener = () => this.refreshState();
 		window.addEventListener("load", this.refreshListener);

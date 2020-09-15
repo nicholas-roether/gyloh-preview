@@ -1,12 +1,17 @@
 import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import CalendarIcon from "@material-ui/icons/CalendarToday"
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import theme from "../theme";
 import styled from "styled-components";
 import Search from "../common/Search";
 
-export default class PageBar extends React.Component<{onOpenMenu?: ((e?: React.MouseEvent) => void), className?: string}> {
+export interface PageBarProps {
+	onOpenMenu?: MouseEventHandler;
+	className: string;
+}
+
+export default class PageBar extends React.Component<PageBarProps> {
 	render() {
 		const Heading = styled.span`
 			margin: ${theme.spacing(0, 2)};

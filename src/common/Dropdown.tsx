@@ -1,13 +1,17 @@
 import {Button, Menu, PopoverOrigin } from "@material-ui/core";
 import React from "react";
 
-export default class Dropdown extends React.Component<{
+export interface DropdownProps {
 	open?: boolean,
 	element: React.ReactElement,
 	id?: string,
 	menuId?: string,
 	origin?: PopoverOrigin
-}, {anchorEl: Element | null}> {
+}
+
+interface DropdownState { anchorEl: (EventTarget & Element) | null }
+
+export default class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	state = {anchorEl: null}
 
 	private open(e: React.MouseEvent) {

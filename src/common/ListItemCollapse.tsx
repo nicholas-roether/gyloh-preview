@@ -11,7 +11,7 @@ export interface ListItemCollapseProps {
 	icon?: React.ReactElement;
 }
 
-export interface ListItemCollapseState {
+interface ListItemCollapseState {
 	open: boolean;
 }
 
