@@ -14,6 +14,9 @@ interface SideNavProps extends WithStyles<typeof styles> {
 	swipeable?: boolean
 }
 
+
+// TODO contain swipeable state
+// TODO mobile performance optimization
 class SideNav extends React.Component<SideNavProps> {
 	render() {
 		const DrawerNav = styled.div`
