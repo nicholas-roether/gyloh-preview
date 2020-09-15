@@ -18,7 +18,7 @@ import ListItemCollapse from "../common/ListItemCollapse";
 import ListItemLink from "../common/ListItemLink";
 import SideNav, { SideNavHeader, SideNavList } from "../common/SideNav";
 
-export default class PageNav extends React.Component<{open: boolean, onOpen: MouseEventListener, onClose: MouseEventListener, swipeable?: boolean} > {
+export default class PageNav extends React.Component<{open: boolean, onOpen: MouseEventListener, onClose: MouseEventListener} > {
 	render() {
 		
 		return (
@@ -26,7 +26,6 @@ export default class PageNav extends React.Component<{open: boolean, onOpen: Mou
 				open={this.props.open}
 				onOpen={this.props.onOpen}
 				onClose={this.props.onClose}
-				swipeable={this.props.swipeable}
 			>
 				<SideNavHeader>
 					<Button>

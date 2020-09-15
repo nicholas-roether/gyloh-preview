@@ -47,24 +47,9 @@ const styles = createStyles({
 });
 
 type PageProps = WithStyles<typeof styles>;
-interface PageState {
-	navOpen: boolean,
-	swipeable: boolean
-}
 
-class Page extends React.Component<PageProps, PageState> {
-	state = {navOpen: false, swipeable: false};
-
-	constructor(props: PageProps) {
-		super(props);
-		window.addEventListener("resize", () => this.refreshNavState());
-		window.addEventListener("load", () => this.refreshNavState());
-	}
-
-	private refreshNavState() {
-		if((window.innerWidth > theme.breakpoints.values.md) === this.state.swipeable)
-				this.setState(lastState => ({swipeable: !lastState.swipeable}));
-	}
+class Page extends React.Component<PageProps> {
+	state = {navOpen: false};
 
 	private openNav() {
 		this.setState({navOpen: true});
@@ -83,7 +68,7 @@ class Page extends React.Component<PageProps, PageState> {
 					classes.bar,
 					[classes.barOpen, this.state.navOpen]
 				)} />
-				<PageNav open={this.state.navOpen} onOpen={() => this.openNav()} onClose={() => this.closeNav()} swipeable={this.state.swipeable} />
+				<PageNav open={this.state.navOpen} onOpen={() => this.openNav()} onClose={() => this.closeNav()} />
 				<Divider />
 				<div className={classesIf(
 						classes.contentWrapper,
@@ -94,8 +79,7 @@ class Page extends React.Component<PageProps, PageState> {
 							<Typography color="textPrimary">Home</Typography>
 						</Breadcrumbs>
 					</Box>
-					<Divider />
-					<Box className={classes.content} pl={3} pr={3}>
+					<Box /*className={classes.content}*/ pl={3} pr={3}>
 						{this.props.children}
 					</Box>
 				</div>

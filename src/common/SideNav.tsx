@@ -7,17 +7,38 @@ import { MouseEventListener } from "../util";
 
 export const DRAWER_WIDTH = 240;
 
-interface SideNavProps extends WithStyles<typeof styles> {
+export interface SideNavProps extends WithStyles<typeof styles> {
 	open: boolean,
 	onOpen: MouseEventListener,
 	onClose: MouseEventListener,
-	swipeable?: boolean
 }
 
+interface SideNavState {
+	swipeable: boolean
+}
 
 // TODO contain swipeable state
-// TODO mobile performance optimization
-class SideNav extends React.Component<SideNavProps> {
+class SideNav extends React.Component<SideNavProps, SideNavState> {
+	state = {swipeable: true}
+	private refreshListener: () => void;
+
+	constructor(props: SideNavProps) {
+		super(props);
+		this.refreshListener = () => this.refreshState();
+		window.addEventListener("load", this.refreshListener);
+		window.addEventListener("resize", this.refreshListener);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener("load", this.refreshListener);
+		window.removeEventListener("resize", this.refreshListener);
+	}
+
+	private refreshState() {
+		if((window.innerWidth > theme.breakpoints.values.md) === this.state.swipeable)
+			this.setState(lastState => ({swipeable: !lastState.swipeable}));
+	}
+
 	render() {
 		const DrawerNav = styled.div`
 			position: sticky;
@@ -38,19 +59,19 @@ class SideNav extends React.Component<SideNavProps> {
 			</DrawerNav>
 		)
 
-		if(this.props.swipeable) {
+		if(this.state.swipeable) {
 			return (
 				<SwipeableDrawer
-				anchor="left"
-				open={this.props.open}
-				classes={{paper: this.props.classes.drawerPaper}}
-				onOpen={this.props.onOpen}
-				onClose={this.props.onClose}
-				keepMounted={true}
-			>
-				{nav}
-				{this.props.children}
-			</SwipeableDrawer>
+					anchor="left"
+					open={this.props.open}
+					classes={{paper: this.props.classes.drawerPaper}}
+					onOpen={this.props.onOpen}
+					onClose={this.props.onClose}
+					keepMounted={true}
+				>
+					{nav}
+					{this.props.children}
+				</SwipeableDrawer>
 			)
 		}
 
