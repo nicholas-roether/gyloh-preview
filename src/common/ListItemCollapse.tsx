@@ -1,9 +1,19 @@
 import React from "react";
-import { Collapse, List, ListItem } from "@material-ui/core";
+import { Collapse, createStyles, List, ListItem, withStyles, WithStyles } from "@material-ui/core";
 import styled from "styled-components";
 import theme from "../theme";
 import { Link as RouterLink } from "react-router-dom";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
+
+const styles = createStyles({
+	nested: {
+		paddingLeft: theme.spacing(8)
+	}
+});
+
+export const CollapseItem = styled(ListItem)`
+	padding-left: ${theme.spacing(8)}px;
+`;
 
 export interface ListItemCollapseProps {
 	to?: string;
@@ -15,7 +25,7 @@ interface ListItemCollapseState {
 	open: boolean;
 }
 
-export default class ListItemCollapse extends React.Component<ListItemCollapseProps, ListItemCollapseState> {
+class ListItemCollapse extends React.Component<ListItemCollapseProps & WithStyles<typeof styles>, ListItemCollapseState> {
 	state = {open: false};
 
 	private onClick() {
@@ -23,10 +33,6 @@ export default class ListItemCollapse extends React.Component<ListItemCollapsePr
 	}
 
 	render() {
-		const CollapseListItem = styled.li`
-			padding-left: ${theme.spacing(8)}px;
-		`;
-
 		return (
 			<span>
 				<ListItem button component={this.props.to ? RouterLink : "span"} to={this.props.to} onClick={() => this.onClick()}>
@@ -36,10 +42,13 @@ export default class ListItemCollapse extends React.Component<ListItemCollapsePr
 				</ListItem>
 				<Collapse in={this.state.open}>
 					<List disablePadding>
-						{React.Children.map(this.props.children, e => <CollapseListItem>{e}</CollapseListItem>)}
+						{/* TODO fix padding */}
+						{this.props.children}
 					</List>
 				</Collapse>
 			</span>
 		);
 	}
 }
+
+export default withStyles(styles)(ListItemCollapse);
