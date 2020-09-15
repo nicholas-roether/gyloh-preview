@@ -68,20 +68,11 @@ export default class PageNav extends React.Component<PageNavProps> {
 							<ListItemText primary="Partner" />
 						</ListItemLink>
 					</ListItemCollapse>
-					<ListItemCollapse
-						text={<ListItemText primary="Klassenstufen" />}
-						icon={<ListItemIcon><GradesIcon /></ListItemIcon>}
-					>
-						<ListItemLink to="/klassenstufen/unterstufe">
-							<ListItemText>Unterstufe</ListItemText>
-						</ListItemLink>
-						<ListItemLink to="/klassenstufen/mittelstufe">
-							<ListItemText>Mittelstufe</ListItemText>
-						</ListItemLink>
-						<ListItemLink to="/klassenstufen/oberstufe">
-							<ListItemText>Oberstufe</ListItemText>
-						</ListItemLink>
-					</ListItemCollapse>
+					{/* use tabs */}
+					<ListItemLink to="/klassenstufen">
+						<ListItemIcon><GradesIcon /></ListItemIcon>
+						<ListItemText primary="Klassenstufen" />
+					</ListItemLink>
 					<ListItemLink to="/news">
 						<ListItemIcon><NewsIcon /></ListItemIcon>
 						<ListItemText primary="News" />
