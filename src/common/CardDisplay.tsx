@@ -5,7 +5,7 @@ interface CardDisplayProps {
     maxPerPage: number
 }
 
-class CardDisplay extends React.Component<CardDisplayProps> {
+export default class CardDisplay extends React.Component<CardDisplayProps> {
     render() {
         const CardWrapper = styled.div`
             width: 100%;
