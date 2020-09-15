@@ -2,8 +2,8 @@ import { Box, Breadcrumbs, createStyles, Divider, Typography, WithStyles, withSt
 import React from "react";
 import theme from "../theme";
 import { classesIf } from "../util";
-import PageBar from "./PageBar";
-import PageNav from "./PageNav";
+import PageBar from "../static/PageBar";
+import PageNav from "../static/PageNav";
 import { DRAWER_WIDTH } from "./SideNav";
 
 const styles = createStyles({

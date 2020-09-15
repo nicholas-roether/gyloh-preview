@@ -4,7 +4,7 @@ import CalendarIcon from "@material-ui/icons/CalendarToday"
 import React from "react";
 import theme from "../theme";
 import styled from "styled-components";
-import Search from "./Search";
+import Search from "../common/Search";
 
 export default class PageBar extends React.Component<{onOpenMenu?: ((e?: React.MouseEvent) => void), className?: string}> {
 	render() {

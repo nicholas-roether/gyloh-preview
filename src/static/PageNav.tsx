@@ -14,9 +14,9 @@ import {
 import React from "react";
 import { MouseEventListener } from "../util";
 import EduportLaunchpad from "./EduportLaunchpad";
-import ListItemCollapse from "./ListItemCollapse";
-import ListItemLink from "./ListItemLink";
-import SideNav, { SideNavHeader, SideNavList } from "./SideNav";
+import ListItemCollapse from "../common/ListItemCollapse";
+import ListItemLink from "../common/ListItemLink";
+import SideNav, { SideNavHeader, SideNavList } from "../common/SideNav";
 
 export default class PageNav extends React.Component<{open: boolean, onOpen: MouseEventListener, onClose: MouseEventListener, swipeable?: boolean} > {
 	render() {

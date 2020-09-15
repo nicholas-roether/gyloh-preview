@@ -11,7 +11,7 @@ import {
 	Movie as MediaLibIcon,
 	MenuBook as HistoryBooxIcon
 } from "@material-ui/icons";
-import Dropdown from "./Dropdown";
+import Dropdown from "../common/Dropdown";
 import styled from "styled-components";
 import theme from "../theme";
 
