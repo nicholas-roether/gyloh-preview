@@ -13,7 +13,7 @@ import {
 } from "@material-ui/icons";
 import React from "react";
 import { MouseEventListener } from "../util";
-import EduportLaunchpad from "./EduportLaunpad";
+import EduportLaunchpad from "./EduportLaunchpad";
 import ListItemCollapse from "./ListItemCollapse";
 import ListItemLink from "./ListItemLink";
 import SideNav, { SideNavHeader, SideNavList } from "./SideNav";
@@ -34,23 +34,50 @@ export default class PageNav extends React.Component<{open: boolean, onOpen: Mou
 					</Button>
 				</SideNavHeader>
 				<SideNavList>
+					{/* Include greeting here */}
 					<ListItemLink to="/">
 						<ListItemIcon><HomeIcon /></ListItemIcon>
 						<ListItemText primary="Home" />
 					</ListItemLink>
-					{/* <ListItemLink to="/about">
-						<ListItemIcon><AboutIcon /></ListItemIcon>
-						<ListItemText primary="Über Uns" />
-					</ListItemLink> */}
-					<ListItemCollapse to="/about" text="Über Uns" icon={<AboutIcon />}>
-						<ListItemLink to="/about/greeting">
-							<ListItemText primary="Begrüßung" />
+					{/* -> Schulprofil */}
+					<ListItemCollapse to="/about" text={
+						<ListItemText>Über Uns</ListItemText>
+					} icon={
+						<ListItemIcon><AboutIcon/></ListItemIcon>
+					}>
+						<ListItemLink to="/about/menschen">
+							<ListItemText primary="Menschen" />
+						</ListItemLink>
+						<ListItemLink to="/about/fördern">
+							<ListItemText primary="Fördern &amp; Fordern" />
+						</ListItemLink>
+						<ListItemLink to="/about/beratung">
+							<ListItemText primary="Beratung" />
+						</ListItemLink>
+						<ListItemLink to="/about/ausland">
+							<ListItemText primary="Ausland" />
+						</ListItemLink>
+						<ListItemLink to="/about/projekte">
+							<ListItemText primary="Projekte &amp; Events" />
+						</ListItemLink>
+						<ListItemLink to="/about/partner">
+							<ListItemText primary="Partner" />
 						</ListItemLink>
 					</ListItemCollapse>
-					<ListItemLink to="/grades">
-						<ListItemIcon><GradesIcon /></ListItemIcon>
-						<ListItemText primary="Klassenstufen" />
-					</ListItemLink>
+					<ListItemCollapse
+						text={<ListItemText primary="Klassenstufen" />}
+						icon={<ListItemIcon><GradesIcon /></ListItemIcon>}
+					>
+						<ListItemLink to="/klassenstufen/unterstufe">
+							<ListItemText>Unterstufe</ListItemText>
+						</ListItemLink>
+						<ListItemLink to="/klassenstufen/mittelstufe">
+							<ListItemText>Mittelstufe</ListItemText>
+						</ListItemLink>
+						<ListItemLink to="/klassenstufen/oberstufe">
+							<ListItemText>Oberstufe</ListItemText>
+						</ListItemLink>
+					</ListItemCollapse>
 					<ListItemLink to="/news">
 						<ListItemIcon><NewsIcon /></ListItemIcon>
 						<ListItemText primary="News" />
@@ -63,7 +90,6 @@ export default class PageNav extends React.Component<{open: boolean, onOpen: Mou
 						<ListItemIcon><ContactIcon /></ListItemIcon>
 						<ListItemText primary="Kontakt" />
 					</ListItemLink>
-					{/* Is this ok?*/}
 					<ListItemLink to="/mensa">
 						<ListItemIcon><CafeteriaIcon /></ListItemIcon>
 						<ListItemText primary="Mensa" />
