@@ -31,8 +31,8 @@ const styles = createStyles({
 		})
 	},
 	content: {
-		maxWidth: "1300px",
-		margin: theme.spacing(3, "auto"),
+		maxWidth: "1200px",
+		margin: "0 auto",
 	},
 	contentWrapperOpen: {
 		transition: theme.transitions.create(['margin'], {
@@ -81,9 +81,9 @@ class Page extends React.Component<PageProps> {
 							<Typography color="textPrimary">Home</Typography>
 						</Breadcrumbs> */}
 					</Box>
-					<Box /*className={classes.content}*/ pl={3} pr={3}>
+					<Box pl={3} pr={3} className={classes.content}>
 						{this.props.children}
-					</Box>
+					</Box>			
 				</div>
 			</div>
 		);
