@@ -11,7 +11,7 @@ import {
 	Forum as AlumniIcon,
 	CalendarToday as PlannerIcon,
 } from "@material-ui/icons";
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import EduportLaunchpad from "./EduportLaunchpad";
 import ListItemCollapse from "../common/ListItemCollapse";
 import ListItemLink from "../common/ListItemLink";
@@ -20,8 +20,8 @@ import CollapseItem from "../common/CollapseItem";
 
 export interface PageNavProps {
 	open: boolean;
-	onOpen: MouseEventHandler;
-	onClose: MouseEventHandler
+	onOpen: React.MouseEventHandler;
+	onClose: React.MouseEventHandler
 }
 
 export default class PageNav extends React.Component<PageNavProps> {

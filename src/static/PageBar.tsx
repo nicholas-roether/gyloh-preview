@@ -1,13 +1,13 @@
 import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import CalendarIcon from "@material-ui/icons/CalendarToday"
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import theme from "../theme";
 import styled from "styled-components";
 import Search from "../common/Search";
 
 export interface PageBarProps {
-	onOpenMenu?: MouseEventHandler;
+	onOpenMenu?: React.MouseEventHandler;
 	className: string;
 }
 

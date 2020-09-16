@@ -1,6 +1,6 @@
 import {  createStyles, Drawer, IconButton, List, SwipeableDrawer, WithStyles, withStyles } from "@material-ui/core";
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from "@material-ui/icons";
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import styled from "styled-components";
 import theme from "../theme";
 
@@ -8,8 +8,8 @@ export const DRAWER_WIDTH = 240;
 
 export interface SideNavProps {
 	open: boolean,
-	onOpen: MouseEventHandler,
-	onClose: MouseEventHandler,
+	onOpen: React.MouseEventHandler,
+	onClose: React.MouseEventHandler,
 }
 
 type SideNavPropsWithStyles = SideNavProps & WithStyles<typeof styles>;
