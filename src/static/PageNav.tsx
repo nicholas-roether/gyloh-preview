@@ -16,6 +16,7 @@ import EduportLaunchpad from "./EduportLaunchpad";
 import ListItemCollapse from "../common/ListItemCollapse";
 import ListItemLink from "../common/ListItemLink";
 import SideNav, { SideNavHeader, SideNavList } from "../common/SideNav";
+import CollapseItem from "../common/CollapseItem";
 
 export interface PageNavProps {
 	open: boolean;
@@ -49,24 +50,24 @@ export default class PageNav extends React.Component<PageNavProps> {
 					} icon={
 						<ListItemIcon><AboutIcon/></ListItemIcon>
 					}>
-						<ListItemLink to="/about/menschen">
+						<CollapseItem to="/about/menschen">
 							<ListItemText primary="Menschen" />
-						</ListItemLink>
-						<ListItemLink to="/about/fördern">
+						</CollapseItem>
+						<CollapseItem to="/about/fördern">
 							<ListItemText primary="Fördern &amp; Fordern" />
-						</ListItemLink>
-						<ListItemLink to="/about/beratung">
+						</CollapseItem>
+						<CollapseItem to="/about/beratung">
 							<ListItemText primary="Beratung" />
-						</ListItemLink>
-						<ListItemLink to="/about/ausland">
+						</CollapseItem>
+						<CollapseItem to="/about/ausland">
 							<ListItemText primary="Ausland" />
-						</ListItemLink>
-						<ListItemLink to="/about/projekte">
+						</CollapseItem>
+						<CollapseItem to="/about/projekte">
 							<ListItemText primary="Projekte &amp; Events" />
-						</ListItemLink>
-						<ListItemLink to="/about/partner">
+						</CollapseItem>
+						<CollapseItem to="/about/partner">
 							<ListItemText primary="Partner" />
-						</ListItemLink>
+						</CollapseItem>
 					</ListItemCollapse>
 					{/* use tabs */}
 					<ListItemLink to="/klassenstufen">
