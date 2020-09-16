@@ -1,4 +1,4 @@
-import { Box, Breadcrumbs, createStyles, Divider, Typography, WithStyles, withStyles } from "@material-ui/core";
+import { Box, createStyles, Divider, WithStyles, withStyles } from "@material-ui/core";
 import React from "react";
 import theme from "../theme";
 import { classesIf } from "../util";
@@ -75,9 +75,11 @@ class Page extends React.Component<PageProps> {
 						[classes.contentWrapperOpen, this.state.navOpen]
 				)}>
 					<Box marginX={4} marginY={1}>
+
+						{/* TODO implement Breadcrumbs
 						<Breadcrumbs aria-label="breadcrumbs">
 							<Typography color="textPrimary">Home</Typography>
-						</Breadcrumbs>
+						</Breadcrumbs> */}
 					</Box>
 					<Box /*className={classes.content}*/ pl={3} pr={3}>
 						{this.props.children}
