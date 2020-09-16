@@ -82,7 +82,7 @@
 		},
 		{
 			"text": "Alumni",
-			"to": "https://alumni.gyloh.de/index.php",
+			"external": "https://alumni.gyloh.de",
 			"icon": "Forum"
 		},
 		{
