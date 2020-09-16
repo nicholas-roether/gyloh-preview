@@ -13,7 +13,7 @@ const styles = createStyles({
 export interface ListItemCollapseProps {
 	to?: string;
 	text: React.ReactElement;
-	icon?: React.ReactElement;
+	icon?: React.ReactElement | null;
 }
 
 interface ListItemCollapseState {
