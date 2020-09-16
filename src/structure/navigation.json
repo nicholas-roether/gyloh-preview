@@ -86,7 +86,7 @@
 			"icon": "Forum"
 		},
 		{
-			"text": "Für Bewerber",
+			"text": "Bewerber",
 			"to": "/bewerber",
 			"icon": "PersonAdd"
 		},
