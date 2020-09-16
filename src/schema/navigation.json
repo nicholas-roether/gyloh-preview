@@ -18,25 +18,65 @@
 					"description": "The path this item should link to"
 				}
 			},
-			"required": ["text"]
+			"required": ["text"],
+			"additionalProperties": false
 		},
 		"ListItemLink": {
 			"type": "object",
 			"description": "A top level item",
-			"allOf": [{"$ref": "#/definitions/CollapseItem"}],
 			"properties": {
+				"text": {
+					"type": "string",
+					"description": "The text this item should show"
+				},
+				"to": {
+					"type": "string",
+					"description": "The path this item should link to"
+				},
 				"icon": {
 					"$ref": "icon.json",
 					"description": "The Icon this item should display"
 				}
 			},
-			"required": ["text", "to"]
+			"required": ["text", "to"],
+			"additionalProperties": false
+		},
+		"ListItemExternal": {
+			"type": "object",
+			"description": "A top level item that redirects to an external website",
+			"properties": {
+				"text": {
+					"type": "string",
+					"description": "The text this item should show"
+				},
+				"icon": {
+					"$ref": "icon.json",
+					"description": "The Icon this item should display"
+				},
+				"external": {
+					"type": "string",
+					"description": "The external link this item should redirect to"
+				}
+			},
+			"required": ["text", "external"],
+			"additionalProperties": false
 		},
 		"ListItemCollapse": {
 			"type": "object",
 			"description": "A top level item that has sub-options that it collapses",
-			"allOf": [{"$ref": "#/definitions/ListItemLink"}],
 			"properties": {
+				"text": {
+					"type": "string",
+					"description": "The text this item should show"
+				},
+				"to": {
+					"type": "string",
+					"description": "The path this item should link to"
+				},
+				"icon": {
+					"$ref": "icon.json",
+					"description": "The Icon this item should display"
+				},
 				"collapse" : {
 					"type": "array",
 					"items": {
@@ -44,7 +84,9 @@
 					},
 					"additionalItems": false
 				}
-			}
+			},
+			"required": ["text", "icon", "collapse"],
+			"additionalProperties": false
 		}
 	},
 	"properties": {
@@ -54,7 +96,8 @@
 			"items": {
 				"anyOf": [
 					{"$ref": "#/definitions/ListItemLink"},
-					{"$ref": "#/definitions/ListItemCollapse"}
+					{"$ref": "#/definitions/ListItemCollapse"},
+					{"$ref": "#/definitions/ListItemExternal"}
 				]
 			},
 			"additionalItems": false
