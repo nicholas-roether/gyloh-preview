@@ -1,0 +1,63 @@
+{
+	"$id": "src/schema/navigation.json",
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"title": "Navigation",
+	"description": "The options shown in the page navigation",
+	"type": "object",
+	"definitions": {
+		"CollapseItem": {
+			"type": "object",
+			"description": "An item collapsed under another option",
+			"properties": {
+				"text": {
+					"type": "string",
+					"description": "The text this item should show"
+				},
+				"to": {
+					"type": "string",
+					"description": "The path this item should link to"
+				}
+			},
+			"required": ["text"]
+		},
+		"ListItemLink": {
+			"type": "object",
+			"description": "A top level item",
+			"allOf": [{"$ref": "#/definitions/CollapseItem"}],
+			"properties": {
+				"icon": {
+					"$ref": "icon.json",
+					"description": "The Icon this item should display"
+				}
+			},
+			"required": ["text", "to"]
+		},
+		"ListItemCollapse": {
+			"type": "object",
+			"description": "A top level item that has sub-options that it collapses",
+			"allOf": [{"$ref": "#/definitions/ListItemLink"}],
+			"properties": {
+				"collapse" : {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/CollapseItem"
+					},
+					"additionalItems": false
+				}
+			}
+		}
+	},
+	"properties": {
+		"nav": {
+			"type": "array",
+			"description": "The nav items that should be displayed",
+			"items": {
+				"anyOf": [
+					{"$ref": "#/definitions/ListItemLink"},
+					{"$ref": "#/definitions/ListItemCollapse"}
+				]
+			},
+			"additionalItems": false
+		}
+	}
+}
