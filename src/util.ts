@@ -10,3 +10,7 @@ export function classesIf(...classes: ([string, boolean] | string)[]): string {
 		.map<string>(t => typeof t === "string" ? t : t[0])
 		.join(" ");
 }
+
+export function mapFrom(object: any): Map<string, any> {
+	return new Map(Object.keys(object).map(k => [k, object[k]]));
+}
