@@ -8,6 +8,7 @@ import SideNav, { SideNavHeader, SideNavList } from "../common/SideNav";
 import CollapseItem from "../common/CollapseItem";
 import { nav as navStructure } from "../structure/navigation.json";
 import { mapFrom } from "../util";
+import ListItemExternal from "../common/ListItemExternal";
 
 
 export interface PageNavProps {
@@ -49,7 +50,19 @@ function isListItemCollapseData(object: any): object is ListItemCollapseData {
 	)
 }
 
-type NavItem = ListItemLinkData | ListItemCollapseData;
+interface ListItemExternalData {
+	text: string,
+	icon?: string,
+	external: string
+}
+function isListItemExternalData(object: any): object is ListItemExternalData {
+	return (
+		"text" in object &&
+		"external" in object
+	)
+}
+
+type NavItem = ListItemLinkData | ListItemCollapseData | ListItemExternalData;
 
 export default class PageNav extends React.Component<PageNavProps> {
 	private createIcon(name: string): React.ReactElement | null {
@@ -86,11 +99,23 @@ export default class PageNav extends React.Component<PageNavProps> {
 		);
 	}
 
+	private createListItemExternal(data: ListItemExternalData): React.ReactElement {
+		return (
+			<ListItemExternal to={data.external}>
+				{data.icon && <ListItemIcon>{this.createIcon(data.icon)}</ListItemIcon>}
+				<ListItemText>{data.text}</ListItemText>
+			</ListItemExternal>
+		);
+	}
+
 	private renderStructure(data: NavItem[]): React.ReactElement[] {
 		let elements: React.ReactElement[] = [];
 		for(let navItem of data) {
 			if(isListItemCollapseData(navItem)) {
 				elements.push(this.createListItemCollapse(navItem));
+			}
+			if(isListItemExternalData(navItem)) {
+				elements.push(this.createListItemExternal(navItem));
 			}
 			else if(isListItemLinkData(navItem)) {
 				elements.push(this.createListItemLink(navItem));
