@@ -41,7 +41,6 @@ interface SearchState {
 	open: boolean
 }
 
-// TODO fix transitions
 class Search extends React.Component<WithStyles<typeof styles>, SearchState> {
 	ref: React.RefObject<HTMLElement>;
 	state = {open: false};
