@@ -1,7 +1,7 @@
 import { Typography } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
-import Page from "../common/Page";
+import Page from "../static/Page";
 import theme from "../theme";
 
 export default class HomePage extends React.Component {
