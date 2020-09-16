@@ -2,11 +2,11 @@ import { Link as RouterLink } from "react-router-dom";
 import React from "react";
 import { LinkProps, ListItem, } from "@material-ui/core";
 
-export interface ListItemLinkProps extends Omit<LinkProps, "ref"> {
+export interface LinkNavOptionProps extends Omit<LinkProps, "ref"> {
 	to: string,
 }
 
-export default class ListItemLink extends React.Component<ListItemLinkProps> {
+export default class LinkNavOption extends React.Component<LinkNavOptionProps> {
 	render() {
 		const { to, ...other } = this.props;
 		return (

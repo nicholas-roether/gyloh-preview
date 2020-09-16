@@ -10,7 +10,7 @@ const styles = createStyles({
 	}
 });
 
-export interface ListItemCollapseProps {
+export interface CollapseNavOptionProps {
 	to?: string;
 	text: React.ReactElement;
 	icon?: React.ReactElement | null;
@@ -20,7 +20,7 @@ interface ListItemCollapseState {
 	open: boolean;
 }
 
-class ListItemCollapse extends React.Component<ListItemCollapseProps & WithStyles<typeof styles>, ListItemCollapseState> {
+class CollapseNavOption extends React.Component<CollapseNavOptionProps & WithStyles<typeof styles>, ListItemCollapseState> {
 	state = {open: false};
 
 	private onClick() {
@@ -46,4 +46,4 @@ class ListItemCollapse extends React.Component<ListItemCollapseProps & WithStyle
 	}
 }
 
-export default withStyles(styles)(ListItemCollapse);
+export default withStyles(styles)(CollapseNavOption);

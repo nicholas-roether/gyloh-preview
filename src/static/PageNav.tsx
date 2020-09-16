@@ -2,13 +2,13 @@ import { Box, Divider, ListItemIcon, ListItemText, Button } from "@material-ui/c
 import * as icons from "@material-ui/icons";
 import React from "react";
 import EduportLaunchpad from "./EduportLaunchpad";
-import ListItemCollapse from "../common/ListItemCollapse";
-import ListItemLink from "../common/ListItemLink";
+import CollapseNavOption from "../common/CollapseNavOption";
+import LinkNavOption from "../common/LinkNavOption";
 import SideNav, { SideNavHeader, SideNavList } from "../common/SideNav";
 import CollapseItem from "../common/CollapseItem";
 import { nav as navStructure } from "../structure/navigation.json";
 import { mapFrom } from "../util";
-import ListItemExternal from "../common/ListItemExternal";
+import ExternalNavOption from "../common/ExternalNavOption";
 
 
 export interface PageNavProps {
@@ -17,52 +17,52 @@ export interface PageNavProps {
 	onClose: React.MouseEventHandler
 }
 
-interface CollapseItemData {
+interface CollapseItemOption {
 	to: string,
 	text: string,
 }
-function isCollapseItemData(object: any): object is CollapseItemData {
+function isCollapseItemOption(object: any): object is CollapseItemOption {
 	return (
 		"to" in object &&
 		"text" in object
 	);
 }
 
-interface ListItemLinkData {
+interface LinkOption {
 	to: string,
 	text: string,
 	icon?: string
 }
-function isListItemLinkData(object: any): object is ListItemLinkData {
-	return isCollapseItemData(object);
+function isLinkOption(object: any): object is LinkOption {
+	return isCollapseItemOption(object);
 }
 
-interface ListItemCollapseData {
+interface CollapseOption {
 	to?: string,
 	text: string,
 	icon?: string,
-	collapse: CollapseItemData[]
+	collapse: CollapseItemOption[]
 }
-function isListItemCollapseData(object: any): object is ListItemCollapseData {
+function isCollapseOption(object: any): object is CollapseOption {
 	return (
 		"text" in object &&
 		"collapse" in object
 	)
 }
 
-interface ListItemExternalData {
+interface ExternalOption {
 	text: string,
 	icon?: string,
 	external: string
 }
-function isListItemExternalData(object: any): object is ListItemExternalData {
+function isExternalOption(object: any): object is ExternalOption {
 	return (
 		"text" in object &&
 		"external" in object
 	)
 }
 
-type NavItem = ListItemLinkData | ListItemCollapseData | ListItemExternalData;
+type NavItem = LinkOption | CollapseOption | ExternalOption;
 
 export default class PageNav extends React.Component<PageNavProps> {
 	private createIcon(name: string): React.ReactElement | null {
@@ -70,16 +70,16 @@ export default class PageNav extends React.Component<PageNavProps> {
 		return React.createElement(iconMap.get(name));
 	}
 
-	private createListItemLink(data: ListItemLinkData): React.ReactElement {
+	private createListItemLink(data: LinkOption): React.ReactElement {
 		return (
-			<ListItemLink to={data.to}>
+			<LinkNavOption to={data.to}>
 				{data.icon && <ListItemIcon>{this.createIcon(data.icon)}</ListItemIcon>}
 				<ListItemText primary={data.text} />
-			</ListItemLink>
+			</LinkNavOption>
 		);
 	}
 	
-	private createCollapseItem(data: CollapseItemData): React.ReactElement {
+	private createCollapseItem(data: CollapseItemOption): React.ReactElement {
 		return (
 			<CollapseItem to={data.to}>
 				<ListItemText primary={data.text} />
@@ -87,37 +87,37 @@ export default class PageNav extends React.Component<PageNavProps> {
 		);
 	}
 
-	private createListItemCollapse(data: ListItemCollapseData): React.ReactElement {
+	private createListItemCollapse(data: CollapseOption): React.ReactElement {
 		return (
-			<ListItemCollapse 
+			<CollapseNavOption 
 				to={data.to} 
 				text={<ListItemText>{data.text}</ListItemText>}
 				icon={data.icon ? <ListItemIcon>{this.createIcon(data.icon)}</ListItemIcon> : null}
 			>
 				{data.collapse.map(e => this.createCollapseItem(e))}
-			</ListItemCollapse>
+			</CollapseNavOption>
 		);
 	}
 
-	private createListItemExternal(data: ListItemExternalData): React.ReactElement {
+	private createListItemExternal(data: ExternalOption): React.ReactElement {
 		return (
-			<ListItemExternal to={data.external}>
+			<ExternalNavOption to={data.external}>
 				{data.icon && <ListItemIcon>{this.createIcon(data.icon)}</ListItemIcon>}
 				<ListItemText>{data.text}</ListItemText>
-			</ListItemExternal>
+			</ExternalNavOption>
 		);
 	}
 
 	private renderStructure(data: NavItem[]): React.ReactElement[] {
 		let elements: React.ReactElement[] = [];
 		for(let navItem of data) {
-			if(isListItemCollapseData(navItem)) {
+			if(isCollapseOption(navItem)) {
 				elements.push(this.createListItemCollapse(navItem));
 			}
-			if(isListItemExternalData(navItem)) {
+			if(isExternalOption(navItem)) {
 				elements.push(this.createListItemExternal(navItem));
 			}
-			else if(isListItemLinkData(navItem)) {
+			else if(isLinkOption(navItem)) {
 				elements.push(this.createListItemLink(navItem));
 			}
 		}

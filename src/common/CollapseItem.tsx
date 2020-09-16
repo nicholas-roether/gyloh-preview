@@ -1,7 +1,7 @@
 import { createStyles, withStyles, WithStyles } from "@material-ui/core";
 import React from "react";
 import theme from "../theme";
-import ListItemLink, { ListItemLinkProps } from "./ListItemLink";
+import LinkNavOption, { LinkNavOptionProps } from "./LinkNavOption";
 
 const styles = createStyles({
 	nested: {
@@ -9,12 +9,12 @@ const styles = createStyles({
 	}
 });
 
-export type CollapseItemProps = Omit<ListItemLinkProps, "classes">;
+export type CollapseItemProps = Omit<LinkNavOptionProps, "classes">;
 
 class CollapseItem extends React.Component<CollapseItemProps & WithStyles<typeof styles>> {
 	render() {
 		const { classes, ...other } = this.props;
-		return <ListItemLink classes={{button: classes.nested}} {...other}></ListItemLink>
+		return <LinkNavOption classes={{button: classes.nested}} {...other}></LinkNavOption>
 	}
 }
 
