@@ -3,8 +3,8 @@ import React from "react";
 import theme from "../theme";
 import { classesIf } from "../util";
 import PageBar from "../static/PageBar";
-import PageNav from "../static/PageNav";
-import { DRAWER_WIDTH } from "./SideNav";
+import { DRAWER_WIDTH } from "../common/SideNav";
+import PageNav from "./PageNav";
 
 const styles = createStyles({
 	bar: {
