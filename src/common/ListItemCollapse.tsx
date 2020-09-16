@@ -1,6 +1,5 @@
 import React from "react";
 import { Collapse, createStyles, List, ListItem, withStyles, WithStyles } from "@material-ui/core";
-import styled from "styled-components";
 import theme from "../theme";
 import { Link as RouterLink } from "react-router-dom";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
@@ -10,10 +9,6 @@ const styles = createStyles({
 		paddingLeft: theme.spacing(8)
 	}
 });
-
-export const CollapseItem = styled(ListItem)`
-	padding-left: ${theme.spacing(8)}px;
-`;
 
 export interface ListItemCollapseProps {
 	to?: string;
