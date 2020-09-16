@@ -1,7 +1,6 @@
 import { Typography } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
-import Page from "../static/Page";
 import theme from "../theme";
 
 export default class HomePage extends React.Component {
@@ -27,7 +26,7 @@ export default class HomePage extends React.Component {
         `;
 
         return (
-            <Page>
+            <div>
                 <OpeningWrapper>
                     <OpeningText>
                         <Typography variant="h3">Herzlich Willkommen</Typography>
@@ -36,7 +35,7 @@ export default class HomePage extends React.Component {
                 </OpeningWrapper>
                 {/* <Divider /> */}
                 <Typography variant="h4">News</Typography>
-            </Page>
+            </div>
         );
     }
 }
