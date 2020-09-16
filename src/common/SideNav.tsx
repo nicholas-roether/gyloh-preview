@@ -19,7 +19,6 @@ interface SideNavState {
 	swipeable: boolean
 }
 
-// TODO contain swipeable state
 class SideNav extends React.Component<SideNavPropsWithStyles, SideNavState> {
 	state = {swipeable: true}
 	private refreshListener: () => void;
