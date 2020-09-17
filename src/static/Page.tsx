@@ -81,7 +81,7 @@ class Page extends React.Component<PageProps> {
 							<Typography color="textPrimary">Home</Typography>
 						</Breadcrumbs> */}
 					</Box>
-					<Box /*className={classes.content}*/ pl={3} pr={3}>
+					<Box className={classes.content} pl={3} pr={3}>
 						{this.props.children}
 					</Box>
 				</div>
