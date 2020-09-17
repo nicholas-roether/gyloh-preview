@@ -6,34 +6,48 @@ import theme from "../theme";
 export default class HomePage extends React.Component {
     render() {
         const OpeningWrapper = styled.div`
-            display: inline-flex;
+            display: flex;
+			max-width: 1000px;
             justify-content: space-between;
-            align-items: center;
-			margin: auto;
-            margin-bottom: 8em;
+			margin: 0 auto 8em;
         `;
         
-        const OpeningImage = styled.img`
-            width: 50%;
+        const ImageWrapper = styled.div`
+            width: 400px;
+			height: 400px;
             margin: ${theme.spacing(4)}px;
 			/* TODO make this look better */
-			clip-path: polygon(45% 0, 67% 18%, 98% 24%, 84% 54%, 91% 86%, 57% 82%, 24% 96%, 22% 65%, 0 37%, 28% 23%);
+			clip-path: polygon(
+				30.5699% 3.9297%, 
+				57.952% 15.9153%, 
+				87.8111% 17.2843%, 
+				84.8738% 47.0301%, 
+				92.7987% 75.8509%, 
+				63.6011% 82.2491%, 
+				38.6399% 98.6924%, 
+				23.5321% 72.9009%, 
+				0.1803% 54.2427%, 
+				20.0409% 31.9043%
+			);
             ${theme.breakpoints.down("sm")} {
                 display: none;
             }
         `;
 
-        const OpeningText = styled.span`
-            padding: ${theme.spacing(4, 3, 4, 0)};
+        const TextWrapper = styled.span`
+            margin-top: 110px;
         `;
 
         return (
             <div>
                 <OpeningWrapper>
-                    <OpeningText>
+                    <TextWrapper>
                         <Typography variant="h3">Herzlich Willkommen</Typography>
-                    </OpeningText>
-                    <OpeningImage src="banner.jpg" alt="Opening Banner" />
+						
+                    </TextWrapper>"
+                    <ImageWrapper>
+						<img src="banner.jpg" alt="Opening Banner" />
+					</ImageWrapper>
                 </OpeningWrapper>
                 {/* <Divider /> */}
                 <Typography variant="h4">News</Typography>
