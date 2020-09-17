@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Divider, Typography } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
 import theme from "../theme";
@@ -36,20 +36,26 @@ export default class HomePage extends React.Component {
 
         const TextWrapper = styled.span`
             margin-top: 110px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
         `;
 
         return (
             <div>
                 <OpeningWrapper>
                     <TextWrapper>
-                        <Typography variant="h3">Herzlich Willkommen</Typography>
-						
-                    </TextWrapper>"
+                        <Typography variant="h3" gutterBottom>Herzlich Willkommen</Typography>
+						<Typography variant="subtitle1" style={{
+							fontStyle: "italic",
+							fontWeight: "lighter"
+						}}>"Mit dem Wir zum Ich - fördere dein Wissen und erweitere deinen Horizont!"</Typography>
+                    </TextWrapper>
                     <ImageWrapper>
 						<img src="banner.jpg" alt="Opening Banner" />
 					</ImageWrapper>
                 </OpeningWrapper>
-                {/* <Divider /> */}
+                <Divider />
                 <Typography variant="h4">News</Typography>
             </div>
         );
