@@ -48,7 +48,7 @@ export default class PageBar extends React.Component<PageBarProps> {
 		const Grow = styled.span`flex-grow: 1;`;
 
 		return (
-			<AppBar position="static" className={this.props.className}>
+			<AppBar position="sticky" className={this.props.className}>
 				<Toolbar>
 					<IconButton color="inherit" onClick={this.props.onOpenMenu}><MenuIcon /></IconButton>
 					<Heading>
