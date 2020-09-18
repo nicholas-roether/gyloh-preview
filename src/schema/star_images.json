@@ -1,0 +1,18 @@
+{
+	"$id": "src/schema/star_images.json",
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"title": "Star Images",
+	"description": "The Images that are dispayed inside the star on the homepage",
+	"type": "object",
+	"properties": {
+		"images": {
+			"description": "The array containing the image URLs",
+			"type": "array",
+			"items": {
+				"description": "An image URL",
+				"type": "string"
+			}
+		}
+	},
+	"required": ["images"]
+}
