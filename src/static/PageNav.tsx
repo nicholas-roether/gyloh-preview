@@ -67,12 +67,12 @@ type NavItem = LinkOption | CollapseOption | ExternalOption;
 export default class PageNav extends React.Component<PageNavProps> {
 	private createIcon(name: string): React.ReactElement | null {
 		let iconMap = mapFrom(icons);
-		return React.createElement(iconMap.get(name));
+		return React.createElement(iconMap.get(name), {key: `Icon-${name}`});
 	}
 
 	private createListItemLink(data: LinkOption): React.ReactElement {
 		return (
-			<LinkNavOption to={data.to}>
+			<LinkNavOption to={data.to} key={data.text}>
 				{data.icon && <ListItemIcon>{this.createIcon(data.icon)}</ListItemIcon>}
 				<ListItemText primary={data.text} />
 			</LinkNavOption>
@@ -81,7 +81,7 @@ export default class PageNav extends React.Component<PageNavProps> {
 	
 	private createCollapseItem(data: CollapseItemOption): React.ReactElement {
 		return (
-			<CollapseItem to={data.to}>
+			<CollapseItem to={data.to} key={data.text}>
 				<ListItemText primary={data.text} />
 			</CollapseItem>
 		);
