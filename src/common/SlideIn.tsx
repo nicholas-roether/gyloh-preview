@@ -11,7 +11,7 @@ export interface SlideInProps {
 }
 
 export default class SlideIn extends React.Component<SlideInProps> {
-	private readonly OFFSET = 200;
+	private readonly OFFSET = 20;
 
 	private getOffsets(from?: SlideInDirection): [number, number] {
 		switch(from) {
@@ -33,7 +33,7 @@ export default class SlideIn extends React.Component<SlideInProps> {
 			entering: {
 				opacity: 0,
 				left: offsets[0],
-				top: offsets[0]
+				top: offsets[1]
 			},
 			entered: {
 				opacity: 1,
@@ -42,13 +42,16 @@ export default class SlideIn extends React.Component<SlideInProps> {
 			},
 		}
 		const defaultStyles = {
-			position: "relative"
+			position: "relative",
+			// TODO make dependant on theme
+			transition: "opacity, ease-in 200ms, top ease-in 200ms, left ease-in 200ms"
 		}
 		return (
 			<Transition 
 				in={true} 
-				timeout={this.props.timeout || 200}
-				appear
+				timeout={this.props.timeout || 0}
+				appear={true}
+				mountOnEnter
 			>
 				{state => (
 					React.createElement(this.props.component || "div", {
