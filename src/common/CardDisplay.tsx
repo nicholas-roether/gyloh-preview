@@ -5,16 +5,19 @@ export interface CardDisplayProps {
     maxPerPage: number
 }
 
+interface CardDisplayState {
+
+}
+
 export default class CardDisplay extends React.Component<CardDisplayProps> {
     render() {
         const CardWrapper = styled.div`
-            width: 100%;
-            overflow: hidden;
+            display: flex;
         `;
 
         return (
             <CardWrapper>
-
+                {this.props.children}
             </CardWrapper>
         );
     }
