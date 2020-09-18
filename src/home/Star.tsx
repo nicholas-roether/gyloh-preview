@@ -31,11 +31,11 @@ export default class Star extends React.Component<{}, StarState> {
 			background-color: ${theme.palette.secondary.main};
 			top: 0;
 			left: 0;
-            width: 400px;
+			width: 400px;
 			height: 400px;
-			max-width: 80vw;
-			max-height: 80vw;
-            margin: ${theme.spacing(2)}px;
+			max-width: 80vh;
+			max-height: 80vh;
+            margin: ${theme.spacing(2, 2, 2, 0)};
 			clip-path: polygon(
 				30.5699% 3.9297%, 
 				57.952% 15.9153%, 
@@ -48,6 +48,9 @@ export default class Star extends React.Component<{}, StarState> {
 				0.1803% 54.2427%, 
 				20.0409% 31.9043%
 			);
+			${theme.breakpoints.up("md")} {
+				flex: 0 0 400px;
+			}
 		`;
 
 		const ImageWrapper = styled.span`
