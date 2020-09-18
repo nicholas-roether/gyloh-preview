@@ -1,22 +1,35 @@
-import { Divider, Typography } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
+import DefaultButton from "../common/DefaultButton";
+import Section from "../common/Section";
+import SlideIn from "../common/SlideIn";
 import theme from "../theme";
 
 export default class HomePage extends React.Component {
     render() {
         const OpeningWrapper = styled.div`
             display: flex;
-			max-width: 1000px;
+			max-width: 920px;
             justify-content: space-between;
+			align-items: flex-end;
 			margin: 0 auto 8em;
+			${theme.breakpoints.down("sm")} {
+                flex-direction: column-reverse;
+				align-items: center;
+				text-align: center;
+            }
         `;
         
-        const ImageWrapper = styled.div`
+		const ImageWrapper = styled.div`
+			display: flex;
+			justify-content: center;
             width: 400px;
+			max-width: 80vw;
+			max-height: 80vw;
 			height: 400px;
-            margin: ${theme.spacing(4)}px;
-			/* TODO make this look better */
+			box-shadow: ${theme.shadows[1]};
+            margin: ${theme.spacing(2)}px;
 			clip-path: polygon(
 				30.5699% 3.9297%, 
 				57.952% 15.9153%, 
@@ -29,34 +42,39 @@ export default class HomePage extends React.Component {
 				0.1803% 54.2427%, 
 				20.0409% 31.9043%
 			);
-            ${theme.breakpoints.down("sm")} {
-                display: none;
-            }
         `;
 
         const TextWrapper = styled.span`
-            margin-top: 110px;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-        `;
+		`;
 
         return (
             <div>
-                <OpeningWrapper>
-                    <TextWrapper>
-                        <Typography variant="h3" gutterBottom>Herzlich Willkommen</Typography>
-						<Typography variant="subtitle1" style={{
-							fontStyle: "italic",
-							fontWeight: "lighter"
-						}}>"Mit dem Wir zum Ich - fördere dein Wissen und erweitere deinen Horizont!"</Typography>
-                    </TextWrapper>
-                    <ImageWrapper>
-						<img src="banner.jpg" alt="Opening Banner" />
-					</ImageWrapper>
-                </OpeningWrapper>
-                <Divider />
-                <Typography variant="h4">News</Typography>
+				<Section number={1}>
+					<OpeningWrapper>
+						<TextWrapper>
+							<Typography variant="h3" gutterBottom>Herzlich Willkommen</Typography>
+							<Typography variant="subtitle1" style={{
+								fontStyle: "italic",
+								fontWeight: "lighter"
+							}}>"Mit dem Wir zum Ich - fördere dein Wissen und erweitere deinen Horizont!"</Typography>
+							<SlideIn>
+								<Box mt={3}>
+									<DefaultButton to="/about">Über Uns</DefaultButton>
+									<DefaultButton>Vertretungsplan</DefaultButton>
+								</Box>
+							</SlideIn>
+						</TextWrapper>
+						<ImageWrapper>
+							<img src="galleries/banner/0.jpg" alt="Opening Banner"/>
+						</ImageWrapper>
+					</OpeningWrapper>
+				</Section>
+				<Section number={2}>
+                	<Typography variant="h4">News</Typography>
+				</Section >
             </div>
         );
     }
