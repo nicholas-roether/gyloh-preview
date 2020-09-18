@@ -114,7 +114,7 @@ export default class PageNav extends React.Component<PageNavProps> {
 			if(isCollapseOption(navItem)) {
 				elements.push(this.createListItemCollapse(navItem));
 			}
-			if(isExternalOption(navItem)) {
+			else if(isExternalOption(navItem)) {
 				elements.push(this.createListItemExternal(navItem));
 			}
 			else if(isLinkOption(navItem)) {
