@@ -39,7 +39,7 @@ export default class HomePage extends React.Component {
 								fontWeight: "lighter"
 							}}>"Mit dem Wir zum Ich - fördere dein Wissen und erweitere deinen Horizont!"</Typography>
 							<SlideIn>
-								<Box mt={3}>
+								<Box mt={3} whiteSpace="nowrap">
 									<DefaultButton to="/about">Über Uns</DefaultButton>
 									<DefaultButton>Vertretungsplan</DefaultButton>
 								</Box>
