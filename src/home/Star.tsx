@@ -62,7 +62,7 @@ export default class Star extends React.Component<{}, StarState> {
 		`;
 
 		const defaultStyles = {
-			transition: `opacity ease-in ${this.SLIDE_DURATION}ms`,
+			transition: `opacity ease-out ${this.SLIDE_DURATION}ms`,
 			height: "100%"
 		}
 
