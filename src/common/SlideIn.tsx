@@ -3,6 +3,8 @@ import { Transition } from "react-transition-group";
 
 type SlideInDirection = "top" | "bottom" | "left" | "right";
 
+const DurationContext = React.createContext(0);
+
 export interface SlideInProps {
 	from?: SlideInDirection;
 	in?: boolean | null;
@@ -11,24 +13,27 @@ export interface SlideInProps {
 }
 
 export default class SlideIn extends React.Component<SlideInProps> {
-	private readonly OFFSET = 20;
+	private static readonly OFFSET = 20;
+	private static readonly DURATION = 200;
+	static contextType = DurationContext;
 
 	private getOffsets(from?: SlideInDirection): [number, number] {
 		switch(from) {
 			case "top":
-				return [0, -this.OFFSET];
+				return [0, -SlideIn.OFFSET];
 			case "left":
-				return [-this.OFFSET, 0];
+				return [-SlideIn.OFFSET, 0];
 			case "right":
-				return [this.OFFSET, 0];
+				return [SlideIn.OFFSET, 0];
 			default:
 			case "bottom":
-				return [0, this.OFFSET];
+				return [0, SlideIn.OFFSET];
 		}
 	}
 
 	render() {
 		let offsets = this.getOffsets(this.props.from);
+
 		const transitionStyles: {[key: string]: any} = {
 			entering: {
 				opacity: 0,
@@ -44,24 +49,29 @@ export default class SlideIn extends React.Component<SlideInProps> {
 		const defaultStyles = {
 			position: "relative",
 			// TODO make dependant on theme
-			transition: "opacity, ease-in 200ms, top ease-in 200ms, left ease-in 200ms"
+				transition: `opacity ease-in ${SlideIn.DURATION}ms, top ease-in ${SlideIn.DURATION}ms, left ease-in ${SlideIn.DURATION}ms`
 		}
+
+		let ownTimeout = this.props.timeout || 100;
+		let totalTimeout = ownTimeout + this.context;
 		return (
-			<Transition 
-				in={true} 
-				timeout={this.props.timeout || 0}
-				appear={true}
-				mountOnEnter
-			>
-				{state => (
-					React.createElement(this.props.component || "div", {
-						style: {
-							...defaultStyles,
-							...transitionStyles[state as string]
-						}
-					}, this.props.children)
-				)}
-			</Transition>
+			<DurationContext.Provider value={this.context + ownTimeout + SlideIn.DURATION}>
+				<Transition 
+					in={true} 
+					timeout={totalTimeout}
+					appear={true}
+					mountOnEnter
+				>
+					{state => (
+						React.createElement(this.props.component || "div", {
+							style: {
+								...defaultStyles,
+								...transitionStyles[state as string]
+							}
+						}, this.props.children)
+					)}
+				</Transition>
+			</DurationContext.Provider>
 		);
 	}
 }
