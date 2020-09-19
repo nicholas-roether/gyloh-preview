@@ -21,7 +21,7 @@ export default class DefaultButton extends React.Component<DefaultButtonProps> {
 			>
 				{
 					this.props.to ? 
-					<Link to={this.props.to}>
+					<Link to={this.props.to} style={{textDecoration: "none"}}>
 						<Button variant="contained" color="secondary">
 							{this.props.children}
 						</Button>
