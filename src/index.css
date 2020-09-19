@@ -1,14 +1,5 @@
-:root {
-	height: 100%;
-	--color-bg: #fff;
-	--color-theme-dark: #002860;
-	--color-theme-light: #6184D8; 
-	--color-shadow: #00000064;
-}
-
 body {
 	height: 100%;
-	background-color: var(--color-bg);
 	margin: 0;
 	padding: 0;
 	font-family: "Roboto", sans-serif;
@@ -17,6 +8,3 @@ body {
 #root {
 	height: 100%;
 }
-
-/* TODO Media Queries */
-/* TODO Is this even still required with the theme? */
