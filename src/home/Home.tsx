@@ -40,7 +40,7 @@ export default class HomePage extends React.Component {
 								fontStyle: "italic",
 								fontWeight: "lighter"
 							}}>"Mit dem Wir zum Ich - fördere dein Wissen und erweitere deinen Horizont!"</Typography>
-							<SlideIn>
+							<SlideIn from="right">
 								<Box mt={3} whiteSpace="nowrap">
 									<DefaultButton to="/about">Über Uns</DefaultButton>
 									<DefaultButton>Vertretungsplan</DefaultButton>
@@ -73,6 +73,7 @@ export default class HomePage extends React.Component {
 				</Section>
 				<Section number={3}>
 					<Box textAlign="center">
+						{/* Put an image here */}
 						<Typography variant="h4">Bleiben Sie auf dem neuesten Stand.</Typography>
 						<DefaultButton to="/newsletter">Newsletter beitreten</DefaultButton>
 					</Box>
