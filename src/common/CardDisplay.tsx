@@ -1,7 +1,13 @@
+import { createStyles, withStyles, WithStyles } from "@material-ui/core";
 import React from "react";
-import styled from "styled-components";
 
-export interface CardDisplayProps {
+const styles = createStyles({
+    cardWrapper: {
+        display: "flex"
+    }
+});
+
+export interface CardDisplayProps  {
     maxPerPage: number
 }
 
@@ -9,16 +15,16 @@ interface CardDisplayState {
 
 }
 
-export default class CardDisplay extends React.Component<CardDisplayProps> {
+class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof styles>> {
     render() {
-        const CardWrapper = styled.div`
-            display: flex;
-        `;
+        const { classes } = this.props;
 
         return (
-            <CardWrapper>
+            <div className={classes.cardWrapper}>
                 {this.props.children}
-            </CardWrapper>
+            </div>
         );
     }
 }
+
+export default withStyles(styles)(CardDisplay);

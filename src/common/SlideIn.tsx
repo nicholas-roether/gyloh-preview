@@ -49,7 +49,7 @@ export default class SlideIn extends React.Component<SlideInProps> {
 		const defaultStyles = {
 			position: "relative",
 			// TODO make dependant on theme
-				transition: `opacity ease-in ${SlideIn.DURATION}ms, top ease-in ${SlideIn.DURATION}ms, left ease-in ${SlideIn.DURATION}ms`
+			transition: `opacity ease-in ${SlideIn.DURATION}ms, top ease-in ${SlideIn.DURATION}ms, left ease-in ${SlideIn.DURATION}ms`
 		}
 
 		let ownTimeout = this.props.timeout || 100;

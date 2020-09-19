@@ -1,9 +1,8 @@
-import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, createStyles, IconButton, Toolbar, Typography, withStyles, WithStyles } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import CalendarIcon from "@material-ui/icons/CalendarToday"
 import React from "react";
 import theme from "../theme";
-import styled from "styled-components";
 import Search from "../common/Search";
 
 export interface PageBarProps {
@@ -11,57 +10,61 @@ export interface PageBarProps {
 	className: string;
 }
 
-export default class PageBar extends React.Component<PageBarProps> {
+const styles = createStyles({
+	heading: {
+		margin: theme.spacing(0, 2)
+	},
+	titleLong: {
+		display: "none",
+		[theme.breakpoints.up("md")]: {
+			display: "inline"
+		}
+	},
+	titleShort: {
+		display: "none",
+		[theme.breakpoints.up("sm")]: {
+			display: "inline"
+		},
+		[theme.breakpoints.up("md")]: {
+			display: "none"
+		}
+	},
+	icons: {
+		display: "inline-flex",
+		flexGrow: 1,
+		justifyContent: "flex-end",
+		[theme.breakpoints.up("sm")]: {
+			flexGrow: 0,
+			position: "relative",
+			float: "right"
+		}
+	},
+	grow: {
+		flexGrow: 1
+	}
+});
+
+class PageBar extends React.Component<PageBarProps & WithStyles<typeof styles>> {
 	render() {
-		const Heading = styled.span`
-			margin: ${theme.spacing(0, 2)};
-		`;
-
-		const TitleLong = styled(Typography)`
-			display: none;
-			${theme.breakpoints.up("md")} {
-				display: inline;
-			}
-		`;
-
-		const TitleShort = styled(Typography)`
-			display: none;
-			${theme.breakpoints.up("sm")} {
-				display: inline;
-			}
-			${theme.breakpoints.up("md")} {
-				display: none;
-			}
-		`;
-
-		const Icons = styled.span`
-			display: inline-flex;
-			flex-grow: 1;
-			justify-content: flex-end;
-			${theme.breakpoints.up("sm")} {
-				flex-grow: 0;
-				position: relative;
-				float: right;
-			}
-		`;
-
-		const Grow = styled.span`flex-grow: 1;`;
+		const { classes } = this.props;
 
 		return (
 			<AppBar position="sticky" className={this.props.className}>
 				<Toolbar>
 					<IconButton color="inherit" onClick={this.props.onOpenMenu}><MenuIcon /></IconButton>
-					<Heading>
-						<TitleLong variant="h5">Gymnasium Lohbrügge</TitleLong>
-						<TitleShort variant="h5">Gyloh</TitleShort>
-					</Heading>
-					<Grow />
-					<Icons>
+					<span className={classes.heading}>
+						<Typography className={classes.titleLong} variant="h5">Gymnasium Lohbrügge</Typography>
+						<Typography className={classes.titleShort} variant="h5">Gyloh</Typography>
+					</span>
+					<span className={classes.grow} />
+					<span className={classes.icons}>
 						<Search />
 						<IconButton color="inherit" aria-label="Kalender ansehen"><CalendarIcon /></IconButton>
-					</Icons>
+					</span>
 				</Toolbar>
 			</AppBar>
 		);
 	}
 }
+
+export default withStyles(styles)(PageBar);

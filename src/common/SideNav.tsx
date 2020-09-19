@@ -1,10 +1,28 @@
-import {  createStyles, Drawer, IconButton, List, SwipeableDrawer, WithStyles, withStyles } from "@material-ui/core";
+import {  createStyles, Drawer, IconButton, SwipeableDrawer, WithStyles, withStyles } from "@material-ui/core";
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from "@material-ui/icons";
 import React from "react";
-import styled from "styled-components";
 import theme from "../theme";
 
+
 export const DRAWER_WIDTH = 240;
+
+const styles = createStyles({
+	drawerPaper: {
+		maxWidth: DRAWER_WIDTH,
+		width: "100vw",
+	},
+	drawerNav: {
+		position: "sticky",
+		top: 0,
+		zIndex: 1,
+		borderBottom: `1px ${theme.palette.divider} solid`,
+		background: theme.palette.background.paper,
+		display: "flex",
+		alignItems: "center",
+		justifyContent: theme.direction === "ltr" ? "flex-end" : "flex-start",
+		...theme.mixins.toolbar
+	}
+});
 
 export interface SideNavProps {
 	open: boolean,
@@ -40,23 +58,12 @@ class SideNav extends React.Component<SideNavPropsWithStyles, SideNavState> {
 	}
 
 	render() {
-		const DrawerNav = styled.div`
-			position: sticky;
-			top: 0;
-			z-index: 1;
-			border-bottom: 1px ${theme.palette.divider} solid;
-			background: ${theme.palette.background.paper};
-			display: flex;
-			align-items: center;
-			justify-content: ${theme.direction === "ltr" ? "flex-end" : "flex-start"};
-		`;
-
 		let nav = (
-			<DrawerNav className={this.props.classes.toolbarMixin}>
+			<div className={this.props.classes.drawerNav}>
 				<IconButton onClick={this.props.onClose}>
 					{theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 				</IconButton>
-			</DrawerNav>
+			</div>
 		)
 
 		if(this.state.swipeable) {
@@ -89,25 +96,5 @@ class SideNav extends React.Component<SideNavPropsWithStyles, SideNavState> {
 		);
 	}
 }
-
-const styles = createStyles({
-	drawerPaper: {
-		maxWidth: DRAWER_WIDTH,
-		width: "100vw",
-	},
-	toolbarMixin: {
-		...theme.mixins.toolbar
-	}
-});
-
-export const SideNavHeader = styled.div`
-		display: flex;
-		margin: ${theme.spacing(4, 0, 2)};
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-`;
-
-export const SideNavList = List;
 
 export default withStyles(styles)(SideNav)

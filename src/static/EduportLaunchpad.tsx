@@ -1,4 +1,4 @@
-import { Box, Divider, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import { Box, createStyles, Divider, ListItem, ListItemIcon, ListItemText, withStyles, WithStyles } from "@material-ui/core";
 import React from "react";
 import { 
 	Home as HomeIcon, 
@@ -12,14 +12,17 @@ import {
 	MenuBook as HistoryBooxIcon
 } from "@material-ui/icons";
 import Dropdown from "../common/Dropdown";
-import styled from "styled-components";
 import theme from "../theme";
 
-export default class EduportLaunchpad extends React.Component {
+const styles = createStyles({
+	textSizedImage: {
+		height: theme.typography.h4.fontSize
+	}
+});
+
+class EduportLaunchpad extends React.Component<WithStyles<typeof styles>> {
 	render() {
-		const TextSizedImage = styled.img`
-			height: ${theme.typography.h4.fontSize};
-		`;
+		const { classes } = this.props;
 		return (
 			<Dropdown 
 				element={<img src="eduport.png" width="70%" alt="EduPort"/>}
@@ -65,10 +68,17 @@ export default class EduportLaunchpad extends React.Component {
 				<Divider />
 				<Box mt={1} mb={1}>
 					<ListItem button>
-							<TextSizedImage src="dll.png" alt="digital learing lab" height={theme.typography.h3.fontSize}/>
+							<img 
+								className={classes.textSizedImage} 
+								src="dll.png" 
+								alt="digital learing lab" 
+								height={theme.typography.h3.fontSize}
+							/>
 					</ListItem>
 				</Box>
 			</Dropdown>
 		);
 	}
 }
+
+export default withStyles(styles)(EduportLaunchpad);

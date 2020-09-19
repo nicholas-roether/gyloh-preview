@@ -1,16 +1,28 @@
-import { Box, Divider, ListItemIcon, ListItemText, Button } from "@material-ui/core";
+import { Box, Divider, ListItemIcon, ListItemText, Button, createStyles, WithStyles, withStyles } from "@material-ui/core";
 import * as icons from "@material-ui/icons";
 import React from "react";
 import EduportLaunchpad from "./EduportLaunchpad";
 import CollapseNavOption from "../common/CollapseNavOption";
 import LinkNavOption from "../common/LinkNavOption";
-import SideNav, { SideNavHeader, SideNavList } from "../common/SideNav";
+import SideNav from "../common/SideNav";
 import CollapseItem from "../common/CollapseItem";
 import { nav as navStructure } from "../structure/navigation.json";
 import { mapFrom } from "../util";
 import ExternalNavOption from "../common/ExternalNavOption";
+import theme from "../theme";
+
+const styles = createStyles({
+	navHeader: {
+	display: "flex",
+	margin: theme.spacing(4, 0, 2),
+	flexDirection: "column",
+	alignItems: "center",
+	justifyContent: "center"
+	}
+});
 
 
+// TODO export json logic
 export interface PageNavProps {
 	open: boolean;
 	onOpen: React.MouseEventHandler;
@@ -64,7 +76,7 @@ function isExternalOption(object: any): object is ExternalOption {
 
 type NavItem = LinkOption | CollapseOption | ExternalOption;
 
-export default class PageNav extends React.Component<PageNavProps> {
+class PageNav extends React.Component<PageNavProps & WithStyles<typeof styles>> {
 	private createIcon(name: string): React.ReactElement | null {
 		let iconMap = mapFrom(icons);
 		return React.createElement(iconMap.get(name), {key: `Icon-${name}`});
@@ -125,20 +137,21 @@ export default class PageNav extends React.Component<PageNavProps> {
 	}
 
 	render() {
+		const { classes } = this.props;
 		return (
 			<SideNav
 				open={this.props.open}
 				onOpen={this.props.onOpen}
 				onClose={this.props.onClose}
 			>
-				<SideNavHeader>
+				<div className={classes.navHeader}>
 					<Button>
 						<img src="logo.png" width="70%" alt="Gyloh" />
 					</Button>
-				</SideNavHeader>
-				<SideNavList>
+				</div>
+				<List>
 					{this.renderStructure(navStructure)}
-				</SideNavList>
+				</List>
 				<Box mb={3} />
 				<Divider />
 				<Box pt={3} pb={3}>
@@ -148,3 +161,5 @@ export default class PageNav extends React.Component<PageNavProps> {
 		);
 	}
 }
+
+export default withStyles(styles)(PageNav)

@@ -1,6 +1,5 @@
 import { Box, Button, Card, CardActions, CardContent, createStyles, Typography, WithStyles, withStyles } from "@material-ui/core";
 import React from "react";
-import styled from "styled-components";
 import theme from "../theme";
 
 const styles = createStyles({
@@ -12,6 +11,10 @@ const styles = createStyles({
 	},
 	cardContent: {
 		flexGrow: 1
+	},
+	news: {
+		marginRight: theme.spacing(2),
+		width: "100%"
 	}
 });
 
@@ -22,12 +25,9 @@ export interface NewsCardProps extends WithStyles<typeof styles> {
 
 class NewsCard extends React.Component<NewsCardProps> {
 	render() {
-		const News = styled(Card)`
-			margin-right: ${theme.spacing(2)}px;
-			width: 100%;
-		`;
+		const { classes } = this.props;
 		return (
-			<News classes={{root: this.props.classes.cardRoot}}>
+			<Card className={classes.news} classes={{root: classes.cardRoot}}>
 				<CardContent className={this.props.classes.cardContent}>
 					<Box mb={3}>
 						<Typography variant="h5">{this.props.heading}</Typography>
@@ -40,7 +40,7 @@ class NewsCard extends React.Component<NewsCardProps> {
 						<Button color="secondary" style={{margin: "auto"}}>Mehr lesen</Button>
 					</CardActions>
 				}
-			</News>
+			</Card>
 		);
 	}
 }

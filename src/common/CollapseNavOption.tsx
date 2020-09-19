@@ -37,7 +37,6 @@ class CollapseNavOption extends React.Component<CollapseNavOptionProps & WithSty
 				</ListItem>
 				<Collapse in={this.state.open}>
 					<List disablePadding>
-						{/* TODO fix padding */}
 						{this.props.children}
 					</List>
 				</Collapse>
