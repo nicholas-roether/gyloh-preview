@@ -64,6 +64,7 @@ class Star extends React.Component<WithStyles<typeof styles>, StarState> {
 	render() {
 		const { classes } = this.props;
 
+		// TODO make dependant on theme
 		const defaultStyles = {
 			transition: `opacity ease-out ${this.SLIDE_DURATION}ms`,
 			height: "100%"
