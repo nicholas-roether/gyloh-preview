@@ -1,5 +1,5 @@
 import React from "react";
-import { Transition } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 
 type SlideInDirection = "top" | "bottom" | "left" | "right";
 
@@ -56,11 +56,10 @@ export default class SlideIn extends React.Component<SlideInProps> {
 		let totalTimeout = ownTimeout + this.context;
 		return (
 			<DurationContext.Provider value={this.context + ownTimeout + SlideIn.DURATION}>
-				<Transition 
+				<CSSTransition 
 					in={true} 
 					timeout={totalTimeout}
 					appear={true}
-					mountOnEnter
 				>
 					{state => (
 						React.createElement(this.props.component || "div", {
@@ -70,7 +69,7 @@ export default class SlideIn extends React.Component<SlideInProps> {
 							}
 						}, this.props.children)
 					)}
-				</Transition>
+				</CSSTransition>
 			</DurationContext.Provider>
 		);
 	}
