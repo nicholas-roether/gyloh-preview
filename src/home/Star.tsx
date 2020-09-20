@@ -9,6 +9,7 @@ const SLIDE_DURATION = 300;
 const styles = createStyles({
 	starWrapper: {
 		position: "relative",
+		overflow: "hidden",
 		backgroundColor: theme.palette.secondary.main,
 		top: 0,
 		left: 0,
