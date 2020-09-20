@@ -15,9 +15,9 @@ const styles = createStyles({
 		left: 0,
 		width: "400px",
 		height: "400px",
-		maxWidth: "80vh",
-		maxHeight: "80vh",
-		margin: theme.spacing(2, 2, 2, 0),
+		maxWidth: "80vw",
+		maxHeight: "80vw",
+		margin: "auto",
 		clipPath: `polygon(
 			30.5699% 3.9297%, 
 			57.952% 15.9153%, 
@@ -32,6 +32,7 @@ const styles = createStyles({
 		)`,
 		[theme.breakpoints.up("md")]: {
 			flex: "0 0 400px",
+			margin: theme.spacing(2, 2, 2, 0),
 		}
 	},
 	imageWrapper: {
