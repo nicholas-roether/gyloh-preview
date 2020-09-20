@@ -1,8 +1,10 @@
 import React from "react";
-import { Transition } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 import theme from "../theme";
 import { images } from "../structure/star_images.json";
 import { createStyles, withStyles, WithStyles } from "@material-ui/core";
+
+const SLIDE_DURATION = 300;
 
 const styles = createStyles({
 	starWrapper: {
@@ -37,6 +39,19 @@ const styles = createStyles({
 		justifyContent: "center",
 		width: "100%",
 		height: "100%"
+	},
+	image: {
+		height: "100%",
+		// TODO make dependant on theme
+		transition: `opacity ease-out ${SLIDE_DURATION}ms`
+	},
+	"@keyframes fadeIn": {
+		from: { opacity: 0 },
+		to: { opacity: 1}
+	},
+	animation: {
+		opacity: 0,
+		animation:  `$fadeIn ${SLIDE_DURATION}ms`,
 	}
 });
 
@@ -45,8 +60,7 @@ interface StarState {
 }
 
 class Star extends React.Component<WithStyles<typeof styles>, StarState> {
-	private readonly SLIDE_INTERVAL = 5000;
-	private readonly SLIDE_DURATION = 300;
+	private static readonly SLIDE_INTERVAL = 5000;
 	state = {image: 0, initial: true}
 
 	componentDidUpdate() {
@@ -58,17 +72,11 @@ class Star extends React.Component<WithStyles<typeof styles>, StarState> {
 	}
 
 	private stageRefresh() {
-		setTimeout(() => this.setState(prev => ({image: (prev.image + 1) % images.length, initial: false})), this.SLIDE_INTERVAL);
+		setTimeout(() => this.setState(prev => ({image: (prev.image + 1) % images.length, initial: false})), Star.SLIDE_INTERVAL);
 	}
 
 	render() {
 		const { classes } = this.props;
-
-		// TODO make dependant on theme
-		const defaultStyles = {
-			transition: `opacity ease-out ${this.SLIDE_DURATION}ms`,
-			height: "100%"
-		}
 
 		const transitionStyles: {[key: string]: any} = {
 			entering:	{ opacity: 0 },
@@ -82,24 +90,17 @@ class Star extends React.Component<WithStyles<typeof styles>, StarState> {
 		return (
 			<div className={classes.starWrapper}>
 				<span className={classes.imageWrapper}>
-					<Transition in={!this.state.initial} timeout={0}>
-						{state => (
-							<img src={images[prevImage]} alt="Star Slide" style={{
-								...defaultStyles,
-								...transitionStyles[state]
-							}} />
-						)}
-					</Transition>
+					<img className={classes.image} src={images[prevImage]} alt="Star Slide" />
 				</span>
 				<span className={classes.imageWrapper}>
-					<Transition in={true} timeout={100} appear={!this.state.initial}>
-						{state => (
-							<img src={images[this.state.image]} alt="Star Slide" style={{
-								...defaultStyles,
-								...transitionStyles[state]
-							}} />
-						)}
-					</Transition>
+				<CSSTransition key={this.state.image} in={true} timeout={0} appear={!this.state.initial}>
+					{state => <img
+						className={classes.image}
+						style={transitionStyles[state]} 
+						src={images[this.state.image]} 
+						alt="Star Slide" 
+					/>}
+				</CSSTransition>
 				</span>
 			</div>
 		);
