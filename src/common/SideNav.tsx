@@ -1,4 +1,4 @@
-import {  createStyles, Drawer, IconButton, SwipeableDrawer, WithStyles, withStyles } from "@material-ui/core";
+import {  createStyles, Drawer, IconButton, SwipeableDrawer, WithStyles, withStyles, withWidth, WithWidth } from "@material-ui/core";
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from "@material-ui/icons";
 import React from "react";
 import theme from "../theme";
@@ -30,33 +30,7 @@ export interface SideNavProps {
 	onClose: React.MouseEventHandler,
 }
 
-type SideNavPropsWithStyles = SideNavProps & WithStyles<typeof styles>;
-
-interface SideNavState {
-	swipeable: boolean
-}
-
-class SideNav extends React.Component<SideNavPropsWithStyles, SideNavState> {
-	state = {swipeable: true}
-	private refreshListener: () => void;
-
-	constructor(props: SideNavPropsWithStyles) {
-		super(props);
-		this.refreshListener = () => this.refreshState();
-		window.addEventListener("load", this.refreshListener);
-		window.addEventListener("resize", this.refreshListener);
-	}
-
-	componentWillUnmount() {
-		window.removeEventListener("load", this.refreshListener);
-		window.removeEventListener("resize", this.refreshListener);
-	}
-
-	private refreshState() {
-		if((window.innerWidth > theme.breakpoints.values.md) === this.state.swipeable)
-			this.setState(lastState => ({swipeable: !lastState.swipeable}));
-	}
-
+class SideNav extends React.Component<SideNavProps & WithStyles<typeof styles> & WithWidth> {
 	render() {
 		let nav = (
 			<div className={this.props.classes.drawerNav}>
@@ -66,7 +40,7 @@ class SideNav extends React.Component<SideNavPropsWithStyles, SideNavState> {
 			</div>
 		)
 
-		if(this.state.swipeable) {
+		if(["sm", "xs"].includes(this.props.width)) {
 			return (
 				<SwipeableDrawer
 					anchor="left"
@@ -97,4 +71,4 @@ class SideNav extends React.Component<SideNavPropsWithStyles, SideNavState> {
 	}
 }
 
-export default withStyles(styles)(SideNav)
+export default withStyles(styles)(withWidth()(SideNav));
