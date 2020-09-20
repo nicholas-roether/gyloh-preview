@@ -82,38 +82,39 @@ class PageNav extends React.Component<PageNavProps & WithStyles<typeof styles>> 
 		return React.createElement(iconMap.get(name), {key: `Icon-${name}`});
 	}
 
-	private createListItemLink(data: LinkOption): React.ReactElement {
+	private createListItemLink(data: LinkOption, key: string): React.ReactElement {
 		return (
-			<LinkNavOption to={data.to} key={data.text}>
+			<LinkNavOption to={data.to} key={key}>
 				{data.icon && <ListItemIcon>{this.createIcon(data.icon)}</ListItemIcon>}
 				<ListItemText primary={data.text} />
 			</LinkNavOption>
 		);
 	}
 	
-	private createCollapseItem(data: CollapseItemOption): React.ReactElement {
+	private createCollapseItem(data: CollapseItemOption, key: string): React.ReactElement {
 		return (
-			<CollapseItem to={data.to} key={data.text}>
+			<CollapseItem to={data.to} key={key}>
 				<ListItemText primary={data.text} />
 			</CollapseItem>
 		);
 	}
 
-	private createListItemCollapse(data: CollapseOption): React.ReactElement {
+	private createListItemCollapse(data: CollapseOption, key: string): React.ReactElement {
 		return (
 			<CollapseNavOption 
 				to={data.to} 
 				text={<ListItemText>{data.text}</ListItemText>}
 				icon={data.icon ? <ListItemIcon>{this.createIcon(data.icon)}</ListItemIcon> : null}
+				key={key}
 			>
-				{data.collapse.map(e => this.createCollapseItem(e))}
+				{data.collapse.map((e, i) => this.createCollapseItem(e, i.toString()))}
 			</CollapseNavOption>
 		);
 	}
 
-	private createListItemExternal(data: ExternalOption): React.ReactElement {
+	private createListItemExternal(data: ExternalOption, key: string): React.ReactElement {
 		return (
-			<ExternalNavOption to={data.external}>
+			<ExternalNavOption to={data.external} key={key}>
 				{data.icon && <ListItemIcon>{this.createIcon(data.icon)}</ListItemIcon>}
 				<ListItemText>{data.text}</ListItemText>
 			</ExternalNavOption>
@@ -122,17 +123,17 @@ class PageNav extends React.Component<PageNavProps & WithStyles<typeof styles>> 
 
 	private renderStructure(data: NavItem[]): React.ReactElement[] {
 		let elements: React.ReactElement[] = [];
-		for(let navItem of data) {
+		data.forEach((navItem, i) => {
 			if(isCollapseOption(navItem)) {
-				elements.push(this.createListItemCollapse(navItem));
+				elements.push(this.createListItemCollapse(navItem, i.toString()));
 			}
 			else if(isExternalOption(navItem)) {
-				elements.push(this.createListItemExternal(navItem));
+				elements.push(this.createListItemExternal(navItem, i.toString()));
 			}
 			else if(isLinkOption(navItem)) {
-				elements.push(this.createListItemLink(navItem));
+				elements.push(this.createListItemLink(navItem, i.toString()));
 			}
-		}
+		});
 		return elements;
 	}
 
