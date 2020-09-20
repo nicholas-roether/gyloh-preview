@@ -1,11 +1,11 @@
 import { Box, createStyles, Typography, withStyles, WithStyles } from "@material-ui/core";
 import React from "react";
-import CardDisplay from "../common/CardDisplay";
 import DefaultButton from "../common/DefaultButton";
 import Section from "../common/Section";
 import SlideIn from "../common/SlideIn";
 import theme from "../theme";
 import NewsCard from "./NewsCard";
+import NewsDisplay from "./NewsDisplay";
 import Star from "./Star";
 
 const styles = createStyles({
@@ -55,7 +55,7 @@ class HomePage extends React.Component<WithStyles<typeof styles>> {
 				<Section number={2}>
                 	<Typography variant="h4" gutterBottom={true}>News</Typography>
 					<SlideIn from="left">
-						<CardDisplay maxPerPage={3}>
+						<NewsDisplay>
 							<NewsCard heading="Schülerin verreckt elendig in Minecraft" more="#">
 								Eine Schülerin der Klasse 7e wurde gestern gegen 20:21 Uhr absolut krank von einem weiteren Schüler in Minecraft Skywars weggerekt.
 							</NewsCard>
@@ -70,7 +70,7 @@ class HomePage extends React.Component<WithStyles<typeof styles>> {
 							<NewsCard heading="pingeon exxist t ??/?" more="#">
 								Wap wap wappu wap
 							</NewsCard>
-						</CardDisplay>
+						</NewsDisplay>
 					</SlideIn>
 				</Section>
 				<Section number={3}>
