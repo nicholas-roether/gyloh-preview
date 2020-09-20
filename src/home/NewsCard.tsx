@@ -10,11 +10,13 @@ const styles = createStyles({
 		flexDirection: "column"
 	},
 	cardContent: {
-		flexGrow: 1
+		flexGrow: 1,
+		margin: theme.spacing(0, 2)
 	},
 	news: {
-		marginRight: theme.spacing(2),
-		width: "100%"
+		margin: theme.spacing(0, 2),
+		width: "100%",
+		maxWidth: "320px"
 	}
 });
 
