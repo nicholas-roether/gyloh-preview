@@ -14,7 +14,7 @@ const styles = createStyles({
 		maxWidth: "920px",
 		justifyContent: "space-between",
 		alignItems: "flex-end",
-		margin: "0 auto 8em",
+		margin: "0 auto",
 		[theme.breakpoints.down("sm")]: {
 			flexDirection: "column-reverse",
 			alignItems: "center",
