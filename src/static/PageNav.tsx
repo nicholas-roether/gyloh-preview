@@ -1,4 +1,4 @@
-import { Box, Divider, ListItemIcon, ListItemText, Button, createStyles, WithStyles, withStyles, List } from "@material-ui/core";
+import { Box, Divider, ListItemIcon, ListItemText, createStyles, WithStyles, withStyles, List } from "@material-ui/core";
 import * as icons from "@material-ui/icons";
 import React from "react";
 import EduportLaunchpad from "./EduportLaunchpad";
@@ -10,10 +10,14 @@ import { nav as navStructure } from "../structure/navigation.json";
 import { mapFrom } from "../util";
 import ExternalNavOption from "../common/ExternalNavOption";
 import theme from "../theme";
+import { Link } from "react-router-dom";
 
 const styles = createStyles({
 	navHeader: {
-		margin: theme.spacing(4, "auto", 2),
+		margin: theme.spacing(4, 0, 2),
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center"
 	}
 });
 
@@ -141,11 +145,9 @@ class PageNav extends React.Component<PageNavProps & WithStyles<typeof styles>> 
 				onOpen={this.props.onOpen}
 				onClose={this.props.onClose}
 			>
-				<div className={classes.navHeader}>
-					<Button>
-						<img src="logo.png" width="70%" alt="Gyloh" />
-					</Button>
-				</div>
+				<Link to="/" className={classes.navHeader}>
+					<img src="logo.png" width="70%" alt="Gyloh" />
+				</Link>
 				<List>
 					{this.renderStructure(navStructure)}
 				</List>
