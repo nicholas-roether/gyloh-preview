@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.9c04608f.chunk.css",
-    "main.js": "/static/js/main.39857e95.chunk.js",
-    "main.js.map": "/static/js/main.39857e95.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.f462e7e1.js",
-    "runtime-main.js.map": "/static/js/runtime-main.f462e7e1.js.map",
-    "static/js/2.7286376f.chunk.js": "/static/js/2.7286376f.chunk.js",
-    "static/js/2.7286376f.chunk.js.map": "/static/js/2.7286376f.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.0677cbfe8df8637729e28134dd42cf7d.js": "/precache-manifest.0677cbfe8df8637729e28134dd42cf7d.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.9c04608f.chunk.css.map": "/static/css/main.9c04608f.chunk.css.map",
-    "static/js/2.7286376f.chunk.js.LICENSE.txt": "/static/js/2.7286376f.chunk.js.LICENSE.txt"
+    "main.css": "/nicholas-roether.github.io/gyloh-preview/static/css/main.9c04608f.chunk.css",
+    "main.js": "/nicholas-roether.github.io/gyloh-preview/static/js/main.39857e95.chunk.js",
+    "main.js.map": "/nicholas-roether.github.io/gyloh-preview/static/js/main.39857e95.chunk.js.map",
+    "runtime-main.js": "/nicholas-roether.github.io/gyloh-preview/static/js/runtime-main.14780d22.js",
+    "runtime-main.js.map": "/nicholas-roether.github.io/gyloh-preview/static/js/runtime-main.14780d22.js.map",
+    "static/js/2.7286376f.chunk.js": "/nicholas-roether.github.io/gyloh-preview/static/js/2.7286376f.chunk.js",
+    "static/js/2.7286376f.chunk.js.map": "/nicholas-roether.github.io/gyloh-preview/static/js/2.7286376f.chunk.js.map",
+    "index.html": "/nicholas-roether.github.io/gyloh-preview/index.html",
+    "precache-manifest.2311fedb4af2d7b4efe8f5933d060704.js": "/nicholas-roether.github.io/gyloh-preview/precache-manifest.2311fedb4af2d7b4efe8f5933d060704.js",
+    "service-worker.js": "/nicholas-roether.github.io/gyloh-preview/service-worker.js",
+    "static/css/main.9c04608f.chunk.css.map": "/nicholas-roether.github.io/gyloh-preview/static/css/main.9c04608f.chunk.css.map",
+    "static/js/2.7286376f.chunk.js.LICENSE.txt": "/nicholas-roether.github.io/gyloh-preview/static/js/2.7286376f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.f462e7e1.js",
+    "static/js/runtime-main.14780d22.js",
     "static/js/2.7286376f.chunk.js",
     "static/css/main.9c04608f.chunk.css",
     "static/js/main.39857e95.chunk.js"
