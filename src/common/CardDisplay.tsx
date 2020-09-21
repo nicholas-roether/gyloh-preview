@@ -1,6 +1,7 @@
 import { createStyles, Fab, withStyles, WithStyles, withWidth, WithWidth } from "@material-ui/core";
 import { ChevronLeft as LeftIcon, ChevronRight as RightIcon } from "@material-ui/icons";
 import React from "react";
+import { CSSTransition } from "react-transition-group";
 import theme from "../theme";
 
 const styles = createStyles({
@@ -16,6 +17,7 @@ const styles = createStyles({
         display: "flex",
         margin: theme.spacing(0, -5),
         height: "100%",
+        overflow: "hidden",
         flexGrow: 1
     },
     cardWrapper: {
@@ -29,21 +31,17 @@ const styles = createStyles({
     pageWrapper: {
         display: "flex",
         position: "absolute",
-        justifyContent: "space-between",
+        justifyContent: "center",
         height: "100%",
-        width: "100%"
+        width: "100%",
+        transition: "margin ease-out 400ms",
+        [theme.breakpoints.up("sm")]: {
+            justifyContent: "space-between"
+        }
     },
     button: {
         zIndex: 100
     }
-    // buttonWrapper: {
-    //     position: "absolute",
-    //     display: "flex",
-    //     justifyContent: "space-between",
-    //     alignItems: "center",
-    //     height: "100%",
-    //     width: "100%"
-    // },
 });
 
 export interface CardDisplayProps  {
@@ -58,65 +56,96 @@ export interface CardDisplayProps  {
 }
 
 interface CardDisplayState {
-    page: number,
-    prevPage: number
+    index: number,
+    prevIndex: number
 }
 
 class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof styles> & WithWidth, CardDisplayState> {
-    state = {page: 0, prevPage: 0}
+    state = {index: 0, prevIndex: -1}
 
-    get numPages() {
-        return Math.ceil(React.Children.count(this.props.children) / this.props.numCards[this.props.width]);
+    get numCards() {
+        return React.Children.count(this.props.children);
     }
 
-    private prevPage() {
+    get numPages() {
+        return Math.ceil(this.numCards / this.props.numCards[this.props.width]);
+    }
+
+    private prevPage(pageSize: number) {
         this.setState(prev => {
-            if(prev.page > 0) return {page: prev.page - 1, prevPage: prev.page};
+            if(prev.index > 0) return {index: prev.index - pageSize, prevIndex: prev.index};
         })
     }
 
-    private nextPage() {
+    private nextPage(pageSize: number) {
         this.setState(prev => {
-            if(prev.page < this.numPages - 1) return {page: prev.page + 1, prevPage: prev.page}
+            if(prev.index < this.numCards - 1) return {index: prev.index + pageSize, prevIndex: prev.index}
         });
+    }
+
+    private adjustIndex(index: number): number {
+        return index - index % this.props.numCards[this.props.width];
+    }
+
+    componentDidUpdate() {
+        const newIndex = this.adjustIndex(this.state.index)
+        const newPrevIndex = this.adjustIndex(this.state.prevIndex)
+        if(newIndex !== this.state.index || newPrevIndex !== this.state.prevIndex)
+            this.setState({index: newIndex, prevIndex: newPrevIndex}); 
     }
 
     render() {
         const { classes, width } = this.props;
-        let numCards = this.props.numCards[width];
-        let offset = this.state.page * numCards;
-        let prevOffset = this.state.prevPage * numCards;
+        const numCards = this.props.numCards[width];
+
+        const widthNum = theme.breakpoints.values[width] * 1.5;
 
         // TODO sliding animations
-        const leftToRight = {
-            entering: {marginLeft: -theme.breakpoints.values[width]},
-            entered: {marginLeft: 0},
-            exiting: {marginRight: 0},
-            exited: {marginRight: -theme.breakpoints.values[width]}
+        const leftToRight: {[key: string]: any} = {
+            entering: { marginLeft: -widthNum},
+            entered: { marginLeft: 0 },
+            exiting: { marginLeft: 0 },
+            exited: { marginLeft: widthNum }
         }
-        const rightToLeft = {
-            entering: {marginRight: -theme.breakpoints.values[width]},
-            entered: {marginRight: 0},
-            exiting: {marginLeft: 0},
-            exited: {marginLeft: -theme.breakpoints.values[width]}
+
+        const rightToLeft: {[key: string]: any} = {
+            entering: { marginLeft: widthNum},
+            entered: { marginLeft: 0 },
+            exiting: { marginLeft: 0 },
+            exited: { marginLeft: -widthNum }
         }
 
         return (
             <div className={classes.displayWrapper} style={{height: this.props.height || 400}}>
-                <Fab className={classes.button} color="secondary" disabled={this.state.page <= 0} onClick={() => this.prevPage()}>
+                <Fab className={classes.button} color="secondary" disabled={this.state.index <= 0} onClick={() => this.prevPage(numCards)}>
                     <LeftIcon />
                 </Fab>
                 <div className={classes.contentWrapper}>
                     <div className={classes.cardWrapper}>
-                        <div className={classes.pageWrapper}>
-                           {React.Children.toArray(this.props.children).slice(prevOffset, prevOffset + numCards)}
-                        </div>
-                        <div className={classes.pageWrapper}>
-                            {React.Children.toArray(this.props.children).slice(offset, offset + numCards)}
-                        </div>
+                            {
+                                this.state.prevIndex !== this.state.index && width !== "xs" &&
+                                <CSSTransition in={false} timeout={0} appear={true} key={"page-" + this.state.prevIndex.toString()}>
+                                    {state => (
+                                        <div className={classes.pageWrapper} style={
+                                            (this.state.index < this.state.prevIndex ? leftToRight : rightToLeft)[state]
+                                        }>
+                                            {React.Children.toArray(this.props.children).slice(this.state.prevIndex, this.state.prevIndex + numCards)}
+                                        </div>
+                                    )}
+                                </CSSTransition>
+                            }
+                            <CSSTransition in={true} timeout={0} appear={true} key={"page-" + this.state.index.toString()}>
+                                {state => (
+                                    <div className={classes.pageWrapper} style={
+                                        (this.state.index < this.state.prevIndex ? leftToRight : rightToLeft)[state]
+                                    }>
+                                        {React.Children.toArray(this.props.children).slice(this.state.index, this.state.index + numCards)}
+                                    </div>
+                                )}
+                            </CSSTransition>
                     </div>
                 </div>
-                <Fab className={classes.button} color="secondary" disabled={this.state.page >= this.numPages - 1} onClick={() => this.nextPage()}>
+                <Fab className={classes.button} color="secondary" disabled={this.state.index + this.numCards > this.numCards} onClick={() => this.nextPage(numCards)}>
                     <RightIcon />
                 </Fab>
             </div>
