@@ -44,6 +44,4 @@ const theme = createMuiTheme({
 	},
 });
 
-theme.spacing(2);
-
 export default theme;
