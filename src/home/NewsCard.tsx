@@ -16,9 +16,12 @@ const styles = createStyles({
 		overflow: "hidden"
 	},
 	news: {
-		margin: theme.spacing(0, 2),
+		margin: theme.spacing(0, 1.5),
 		width: "100%",
-		maxWidth: "320px"
+		maxWidth: "320px",
+		[theme.breakpoints.up("sm")]: {
+			margin: theme.spacing(0, 2),
+		}
 	},
 });
 
