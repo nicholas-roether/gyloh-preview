@@ -13,11 +13,7 @@ import theme from "../theme";
 
 const styles = createStyles({
 	navHeader: {
-	display: "flex",
-	margin: theme.spacing(4, 0, 2),
-	flexDirection: "column",
-	alignItems: "center",
-	justifyContent: "center"
+		margin: theme.spacing(4, "auto", 2),
 	}
 });
 
