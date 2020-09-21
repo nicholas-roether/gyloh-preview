@@ -97,8 +97,12 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
     render() {
         const { classes, width } = this.props;
         const numCards = this.props.numCards[width];
-
-        const widthNum = theme.breakpoints.values[width] * 1.5;
+        const breakpoints = theme.breakpoints.values as {[key: string]: number};
+        const breakpointNames = Object.keys(breakpoints);
+        const topBreakpoint = breakpointNames.find((v, i) => v === "lg" || breakpointNames[i - 1] === width);
+        console.log(topBreakpoint);
+        if(!topBreakpoint) return;
+        const widthNum = breakpoints[topBreakpoint];
 
         // TODO sliding animations
         const leftToRight: {[key: string]: any} = {
@@ -123,7 +127,7 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
                 <div className={classes.contentWrapper}>
                     <div className={classes.cardWrapper}>
                             {
-                                this.state.prevIndex !== this.state.index && width !== "xs" &&
+                                this.state.prevIndex !== this.state.index &&
                                 <CSSTransition in={false} timeout={0} appear={true} key={"page-" + this.state.prevIndex.toString()}>
                                     {state => (
                                         <div className={classes.pageWrapper} style={
@@ -145,7 +149,7 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
                             </CSSTransition>
                     </div>
                 </div>
-                <Fab className={classes.button} color="secondary" disabled={this.state.index + this.numCards > this.numCards} onClick={() => this.nextPage(numCards)}>
+                <Fab className={classes.button} color="secondary" disabled={this.state.index + numCards > this.numCards - 1} onClick={() => this.nextPage(numCards)}>
                     <RightIcon />
                 </Fab>
             </div>
