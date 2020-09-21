@@ -8,20 +8,23 @@ const styles = createStyles({
         margin: theme.spacing(4, 0),
         position: "relative",
         top: 0,
-        left: 0
+        left: 0,
+        display: "flex",
+        alignItems: "center"
     },
     contentWrapper: {
-        position: "absolute",
-        boxSizing: "border-box",
-        padding: theme.spacing(0, 2),
+        display: "flex",
+        margin: theme.spacing(0, -5),
         height: "100%",
-        width: "100%"
+        flexGrow: 1
     },
     cardWrapper: {
         position: "relative",
         top: 0,
         left: 0,
         height: "100%",
+        display: "flex",
+        flexGrow: 1
     },
     pageWrapper: {
         display: "flex",
@@ -30,14 +33,17 @@ const styles = createStyles({
         height: "100%",
         width: "100%"
     },
-    buttonWrapper: {
-        position: "absolute",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        height: "100%",
-        width: "100%"
-    },
+    button: {
+        zIndex: 100
+    }
+    // buttonWrapper: {
+    //     position: "absolute",
+    //     display: "flex",
+    //     justifyContent: "space-between",
+    //     alignItems: "center",
+    //     height: "100%",
+    //     width: "100%"
+    // },
 });
 
 export interface CardDisplayProps  {
@@ -82,13 +88,24 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
         let prevOffset = this.state.prevPage * numCards;
 
         // TODO sliding animations
-        const slideInLeft = {
+        const leftToRight = {
             entering: {marginLeft: -theme.breakpoints.values[width]},
-            entered: {marginRight: 0}
+            entered: {marginLeft: 0},
+            exiting: {marginRight: 0},
+            exited: {marginRight: -theme.breakpoints.values[width]}
+        }
+        const rightToLeft = {
+            entering: {marginRight: -theme.breakpoints.values[width]},
+            entered: {marginRight: 0},
+            exiting: {marginLeft: 0},
+            exited: {marginLeft: -theme.breakpoints.values[width]}
         }
 
         return (
             <div className={classes.displayWrapper} style={{height: this.props.height || 400}}>
+                <Fab className={classes.button} color="secondary" disabled={this.state.page <= 0} onClick={() => this.prevPage()}>
+                    <LeftIcon />
+                </Fab>
                 <div className={classes.contentWrapper}>
                     <div className={classes.cardWrapper}>
                         <div className={classes.pageWrapper}>
@@ -99,14 +116,9 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
                         </div>
                     </div>
                 </div>
-                <div className={classes.buttonWrapper}>
-                    <Fab color="secondary" disabled={this.state.page <= 0} onClick={() => this.prevPage()}>
-                        <LeftIcon />
-                    </Fab>
-                    <Fab color="secondary" disabled={this.state.page >= this.numPages - 1} onClick={() => this.nextPage()}>
-                        <RightIcon />
-                    </Fab>
-                </div>
+                <Fab className={classes.button} color="secondary" disabled={this.state.page >= this.numPages - 1} onClick={() => this.nextPage()}>
+                    <RightIcon />
+                </Fab>
             </div>
         );
     }
