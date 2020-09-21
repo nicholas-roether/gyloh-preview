@@ -7,17 +7,19 @@ const styles = createStyles({
 		background: theme.palette.primary.main,
 		color: theme.palette.primary.contrastText,
 		display: "flex",
-		flexDirection: "column"
+		flexDirection: "column",
+		justifyContent: "space-between"
 	},
 	cardContent: {
-		flexGrow: 1,
-		margin: theme.spacing(0, 2)
+		margin: theme.spacing(0, 2),
+		flexShrink: 1,
+		overflow: "hidden"
 	},
 	news: {
 		margin: theme.spacing(0, 2),
 		width: "100%",
 		maxWidth: "320px"
-	}
+	},
 });
 
 export interface NewsCardProps extends WithStyles<typeof styles> {
