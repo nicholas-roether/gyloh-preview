@@ -1,12 +1,11 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
-import theme from "../theme";
 import { images } from "../structure/star_images.json";
-import { createStyles, withStyles, WithStyles } from "@material-ui/core";
+import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core";
 
 const SLIDE_DURATION = 300;
 
-const styles = createStyles({
+const styles = (theme: Theme) => createStyles({
 	starWrapper: {
 		position: "relative",
 		overflow: "hidden",

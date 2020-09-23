@@ -1,11 +1,10 @@
-import { createStyles, IconButton, InputBase, withStyles } from "@material-ui/core";
+import { createStyles, IconButton, InputBase, Theme, withStyles } from "@material-ui/core";
 import { WithStyles } from "@material-ui/core/styles/withStyles";
 import SearchIcon from "@material-ui/icons/Search";
 import React from "react";
-import theme from "../theme";
 import { classesIf } from "../util";
 
-const styles = createStyles({
+const styles = (theme: Theme) => createStyles({
 	searchBg: {
 		display: "inline-flex",
 		justifyContent: "flex-end",

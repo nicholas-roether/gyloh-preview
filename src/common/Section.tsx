@@ -1,9 +1,8 @@
-import { createStyles, Divider, withStyles, WithStyles } from "@material-ui/core";
+import { createStyles, Divider, Theme, withStyles, WithStyles } from "@material-ui/core";
 import React from "react";
-import theme from "../theme";
 import SlideIn from "./SlideIn";
 
-const styles = createStyles({
+const styles = (theme: Theme) => createStyles({
 	wrapper: {
 		marginBottom: theme.spacing(6),
 		[theme.breakpoints.up("sm")]: {

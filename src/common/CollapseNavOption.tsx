@@ -1,10 +1,9 @@
 import React from "react";
-import { Collapse, createStyles, List, ListItem, withStyles, WithStyles } from "@material-ui/core";
-import theme from "../theme";
+import { Collapse, createStyles, List, ListItem, Theme, withStyles, WithStyles } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
-const styles = createStyles({
+const styles = (theme: Theme) => createStyles({
 	nested: {
 		paddingLeft: theme.spacing(8)
 	}

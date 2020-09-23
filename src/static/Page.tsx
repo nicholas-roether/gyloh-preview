@@ -1,12 +1,11 @@
-import { Box, createStyles, Divider, WithStyles, withStyles } from "@material-ui/core";
+import { Box, createStyles, Divider, Theme, WithStyles, withStyles } from "@material-ui/core";
 import React from "react";
-import theme from "../theme";
 import { classesIf } from "../util";
 import PageBar from "../static/PageBar";
 import { DRAWER_WIDTH } from "../common/SideNav";
 import PageNav from "./PageNav";
 
-const styles = createStyles({
+const styles = (theme: Theme) => createStyles({
 	bar: {
 		transition: theme.transitions.create(['margin', 'width'], {
 			easing: theme.transitions.easing.easeIn,

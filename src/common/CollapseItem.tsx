@@ -1,9 +1,8 @@
-import { createStyles, withStyles, WithStyles } from "@material-ui/core";
+import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core";
 import React from "react";
-import theme from "../theme";
 import LinkNavOption, { LinkNavOptionProps } from "./LinkNavOption";
 
-const styles = createStyles({
+const styles = (theme: Theme) => createStyles({
 	nested: {
 		paddingLeft: theme.spacing(10)
 	}

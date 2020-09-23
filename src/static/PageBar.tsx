@@ -1,16 +1,11 @@
-import { AppBar, createStyles, IconButton, Toolbar, Typography, withStyles, WithStyles } from "@material-ui/core";
+import { AppBar, createStyles, IconButton, Theme, Toolbar, Typography, withStyles, WithStyles } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import CalendarIcon from "@material-ui/icons/CalendarToday"
 import React from "react";
-import theme from "../theme";
 import Search from "../common/Search";
 
-export interface PageBarProps {
-	onOpenMenu?: React.MouseEventHandler;
-	className: string;
-}
 
-const styles = createStyles({
+const styles = (theme: Theme) => createStyles({
 	heading: {
 		margin: theme.spacing(0, 2)
 	},
@@ -43,6 +38,11 @@ const styles = createStyles({
 		flexGrow: 1
 	}
 });
+
+export interface PageBarProps {
+	onOpenMenu?: React.MouseEventHandler;
+	className: string;
+}
 
 class PageBar extends React.Component<PageBarProps & WithStyles<typeof styles>> {
 	render() {

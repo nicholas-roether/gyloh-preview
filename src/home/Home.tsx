@@ -1,14 +1,13 @@
-import { Box, createStyles, Typography, withStyles, WithStyles } from "@material-ui/core";
+import { Box, createStyles, Theme, Typography, withStyles, WithStyles } from "@material-ui/core";
 import React from "react";
 import DefaultButton from "../common/DefaultButton";
 import Section from "../common/Section";
 import SlideIn from "../common/SlideIn";
-import theme from "../theme";
 import NewsCard from "./NewsCard";
 import NewsDisplay from "./NewsDisplay";
 import Star from "./Star";
 
-const styles = createStyles({
+const styles = (theme: Theme) => createStyles({
 	openingWrapper: {
 		display: "flex",
 		maxWidth: "920px",

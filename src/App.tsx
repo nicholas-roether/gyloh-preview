@@ -1,10 +1,11 @@
+import { WithTheme, withTheme } from "@material-ui/core";
 import React from "react";
 import Page from "./static/Page";
 import PageRouter from "./static/Router";
-import theme from "./theme";
 
-export default class App extends React.Component {
+class App extends React.Component<WithTheme> {
 	render() {
+		const { theme } = this.props;
 		return (
 			<div id="app" style={{
 				background: theme.palette.background.default
@@ -14,3 +15,5 @@ export default class App extends React.Component {
 		);
 	}
 }
+
+export default withTheme(App);

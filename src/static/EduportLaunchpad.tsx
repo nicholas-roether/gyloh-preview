@@ -1,4 +1,4 @@
-import { Box, createStyles, Divider, ListItem, ListItemIcon, ListItemText, withStyles, WithStyles } from "@material-ui/core";
+import { Box, createStyles, Divider, ListItem, ListItemIcon, ListItemText, Theme, withStyles, WithStyles } from "@material-ui/core";
 import React from "react";
 import { 
 	Home as HomeIcon, 
@@ -12,9 +12,8 @@ import {
 	MenuBook as HistoryBooxIcon
 } from "@material-ui/icons";
 import Dropdown from "../common/Dropdown";
-import theme from "../theme";
 
-const styles = createStyles({
+const styles = (theme: Theme) => createStyles({
 	textSizedImage: {
 		height: theme.typography.h4.fontSize
 	}
@@ -71,8 +70,7 @@ class EduportLaunchpad extends React.Component<WithStyles<typeof styles>> {
 							<img 
 								className={classes.textSizedImage} 
 								src="dll.png" 
-								alt="digital learing lab" 
-								height={theme.typography.h3.fontSize}
+								alt="digital learing lab"
 							/>
 					</ListItem>
 				</Box>

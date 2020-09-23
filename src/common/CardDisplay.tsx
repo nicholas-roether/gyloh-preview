@@ -1,10 +1,9 @@
-import { createStyles, Fab, withStyles, WithStyles, withWidth, WithWidth } from "@material-ui/core";
+import { createStyles, Fab, Theme, withStyles, WithStyles, withTheme, WithTheme, withWidth, WithWidth } from "@material-ui/core";
 import { ChevronLeft as LeftIcon, ChevronRight as RightIcon } from "@material-ui/icons";
 import React from "react";
 import { CSSTransition } from "react-transition-group";
-import theme from "../theme";
 
-const styles = createStyles({
+const styles = (theme: Theme) => createStyles({
     displayWrapper: {
         margin: theme.spacing(4, 0),
         position: "relative",
@@ -60,7 +59,7 @@ interface CardDisplayState {
     prevIndex: number
 }
 
-class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof styles> & WithWidth, CardDisplayState> {
+class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof styles> & WithWidth & WithTheme, CardDisplayState> {
     state = {index: 0, prevIndex: -1}
 
     get numCards() {
@@ -95,7 +94,7 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
     }
 
     render() {
-        const { classes, width } = this.props;
+        const { classes, width, theme } = this.props;
         const numCards = this.props.numCards[width];
         const breakpoints = theme.breakpoints.values as {[key: string]: number};
         const breakpointNames = Object.keys(breakpoints);
@@ -156,4 +155,4 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
     }
 }
 
-export default withStyles(styles)(withWidth()(CardDisplay));
+export default withStyles(styles)(withTheme(withWidth()(CardDisplay)));

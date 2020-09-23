@@ -1,12 +1,10 @@
-import {  createStyles, Drawer, IconButton, SwipeableDrawer, WithStyles, withStyles, withWidth, WithWidth } from "@material-ui/core";
+import {  createStyles, Drawer, IconButton, SwipeableDrawer, Theme, WithStyles, withStyles, withTheme, WithTheme, withWidth, WithWidth } from "@material-ui/core";
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from "@material-ui/icons";
 import React from "react";
-import theme from "../theme";
-
 
 export const DRAWER_WIDTH = 240;
 
-const styles = createStyles({
+const styles = (theme: Theme) => createStyles({
 	drawerPaper: {
 		maxWidth: DRAWER_WIDTH,
 		width: "100vw",
@@ -30,22 +28,24 @@ export interface SideNavProps {
 	onClose: React.MouseEventHandler,
 }
 
-class SideNav extends React.Component<SideNavProps & WithStyles<typeof styles> & WithWidth> {
+class SideNav extends React.Component<SideNavProps & WithStyles<typeof styles> & WithWidth & WithTheme> {
 	render() {
+		const { classes, width, theme } = this.props;
+
 		let nav = (
-			<div className={this.props.classes.drawerNav}>
+			<div className={classes.drawerNav}>
 				<IconButton onClick={this.props.onClose}>
 					{theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 				</IconButton>
 			</div>
 		)
 
-		if(["sm", "xs"].includes(this.props.width)) {
+		if(["sm", "xs"].includes(width)) {
 			return (
 				<SwipeableDrawer
 					anchor="left"
 					open={this.props.open}
-					classes={{paper: this.props.classes.drawerPaper}}
+					classes={{paper: classes.drawerPaper}}
 					onOpen={this.props.onOpen}
 					onClose={this.props.onClose}
 					keepMounted={true}
@@ -61,7 +61,7 @@ class SideNav extends React.Component<SideNavProps & WithStyles<typeof styles> &
 				variant="persistent"
 				anchor="left"
 				open={this.props.open}
-				classes={{paper: this.props.classes.drawerPaper}}
+				classes={{paper: classes.drawerPaper}}
 				onClose={this.props.onClose}
 			>
 				{nav}
@@ -71,4 +71,4 @@ class SideNav extends React.Component<SideNavProps & WithStyles<typeof styles> &
 	}
 }
 
-export default withStyles(styles)(withWidth()(SideNav));
+export default withStyles(styles)(withTheme(withWidth()(SideNav)));

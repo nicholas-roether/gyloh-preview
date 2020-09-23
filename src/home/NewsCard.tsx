@@ -1,8 +1,7 @@
-import { Box, Button, Card, CardActions, CardContent, createStyles, Typography, WithStyles, withStyles } from "@material-ui/core";
+import { Box, Button, Card, CardActions, CardContent, createStyles, Theme, Typography, WithStyles, withStyles } from "@material-ui/core";
 import React from "react";
-import theme from "../theme";
 
-const styles = createStyles({
+const styles = (theme: Theme) => createStyles({
 	cardRoot: {
 		background: theme.palette.primary.main,
 		color: theme.palette.primary.contrastText,

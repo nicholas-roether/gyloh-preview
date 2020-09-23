@@ -1,4 +1,4 @@
-import { Box, Divider, ListItemIcon, ListItemText, createStyles, WithStyles, withStyles, List } from "@material-ui/core";
+import { Box, Divider, ListItemIcon, ListItemText, createStyles, WithStyles, withStyles, List, Theme } from "@material-ui/core";
 import * as icons from "@material-ui/icons";
 import React from "react";
 import EduportLaunchpad from "./EduportLaunchpad";
@@ -9,10 +9,9 @@ import CollapseItem from "../common/CollapseItem";
 import { nav as navStructure } from "../structure/navigation.json";
 import { mapFrom } from "../util";
 import ExternalNavOption from "../common/ExternalNavOption";
-import theme from "../theme";
 import { Link } from "react-router-dom";
 
-const styles = createStyles({
+const styles = (theme: Theme) => createStyles({
 	navHeader: {
 		margin: theme.spacing(4, 0, 2),
 		display: "flex",
