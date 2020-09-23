@@ -3,8 +3,6 @@ import { CSSTransition } from "react-transition-group";
 import { images } from "../structure/star_images.json";
 import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core";
 
-const SLIDE_DURATION = 300;
-
 const styles = (theme: Theme) => createStyles({
 	starWrapper: {
 		position: "relative",
@@ -43,16 +41,10 @@ const styles = (theme: Theme) => createStyles({
 	},
 	image: {
 		height: "100%",
-		// TODO make dependant on theme
-		transition: `opacity ease-out ${SLIDE_DURATION}ms`
-	},
-	"@keyframes fadeIn": {
-		from: { opacity: 0 },
-		to: { opacity: 1}
-	},
-	animation: {
-		opacity: 0,
-		animation:  `$fadeIn ${SLIDE_DURATION}ms`,
+		transition: theme.transitions.create("opacity", {
+			easing: theme.transitions.easing.easeOut,
+			duration: theme.transitions.duration.enteringScreen
+		})
 	}
 });
 

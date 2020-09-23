@@ -33,7 +33,10 @@ const styles = (theme: Theme) => createStyles({
         justifyContent: "center",
         height: "100%",
         width: "100%",
-        transition: "margin ease-out 400ms",
+        transition: theme.transitions.create("margin", {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.standard
+        }),
         [theme.breakpoints.up("sm")]: {
             justifyContent: "space-between"
         }

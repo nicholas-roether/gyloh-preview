@@ -1,3 +1,4 @@
+import { withTheme, WithTheme } from "@material-ui/core";
 import React from "react";
 import { CSSTransition } from "react-transition-group";
 
@@ -12,9 +13,9 @@ export interface SlideInProps {
 	component?: React.ElementType;
 }
 
-export default class SlideIn extends React.Component<SlideInProps> {
+class SlideIn extends React.Component<SlideInProps & WithTheme> {
 	private static readonly OFFSET = 20;
-	private static readonly DURATION = 200;
+	private readonly DURATION = this.props.theme.transitions.duration.enteringScreen;
 	static contextType = DurationContext;
 
 	private getOffsets(from?: SlideInDirection): [number, number] {
@@ -32,6 +33,7 @@ export default class SlideIn extends React.Component<SlideInProps> {
 	}
 
 	render() {
+		const { theme } = this.props;
 		let offsets = this.getOffsets(this.props.from);
 
 		const transitionStyles: {[key: string]: any} = {
@@ -48,14 +50,16 @@ export default class SlideIn extends React.Component<SlideInProps> {
 		}
 		const defaultStyles = {
 			position: "relative",
-			// TODO make dependant on theme
-			transition: `opacity ease-in ${SlideIn.DURATION}ms, top ease-in ${SlideIn.DURATION}ms, left ease-in ${SlideIn.DURATION}ms`
+			transition: theme.transitions.create(["opacity", "top", "left"], {
+				easing: theme.transitions.easing.easeIn,
+				duration: this.DURATION
+			})
 		}
 
-		let ownTimeout = this.props.timeout || 100;
+		let ownTimeout = this.props.timeout || 0;
 		let totalTimeout = ownTimeout + this.context;
 		return (
-			<DurationContext.Provider value={this.context + ownTimeout + SlideIn.DURATION}>
+			<DurationContext.Provider value={this.context + ownTimeout + this.DURATION}>
 				<CSSTransition 
 					in={true} 
 					timeout={totalTimeout}
@@ -74,3 +78,5 @@ export default class SlideIn extends React.Component<SlideInProps> {
 		);
 	}
 }
+
+export default withTheme(SlideIn);
