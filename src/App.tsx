@@ -4,7 +4,6 @@ import PageRouter from "./static/Router";
 import theme from "./theme";
 
 export default class App extends React.Component {
-
 	render() {
 		return (
 			<div id="app" style={{
