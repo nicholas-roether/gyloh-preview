@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/gyloh-preview/static/css/main.9c04608f.chunk.css",
-    "main.js": "/gyloh-preview/static/js/main.2668c76c.chunk.js",
-    "main.js.map": "/gyloh-preview/static/js/main.2668c76c.chunk.js.map",
+    "main.js": "/gyloh-preview/static/js/main.a9c160b4.chunk.js",
+    "main.js.map": "/gyloh-preview/static/js/main.a9c160b4.chunk.js.map",
     "runtime-main.js": "/gyloh-preview/static/js/runtime-main.8bb6a2f9.js",
     "runtime-main.js.map": "/gyloh-preview/static/js/runtime-main.8bb6a2f9.js.map",
-    "static/js/2.f8d0951c.chunk.js": "/gyloh-preview/static/js/2.f8d0951c.chunk.js",
-    "static/js/2.f8d0951c.chunk.js.map": "/gyloh-preview/static/js/2.f8d0951c.chunk.js.map",
+    "static/js/2.077b6b89.chunk.js": "/gyloh-preview/static/js/2.077b6b89.chunk.js",
+    "static/js/2.077b6b89.chunk.js.map": "/gyloh-preview/static/js/2.077b6b89.chunk.js.map",
     "index.html": "/gyloh-preview/index.html",
-    "precache-manifest.7b9040bf2a021f469283218ec24985b7.js": "/gyloh-preview/precache-manifest.7b9040bf2a021f469283218ec24985b7.js",
+    "precache-manifest.87636f0d3c5c1c07d73f92fffed0c142.js": "/gyloh-preview/precache-manifest.87636f0d3c5c1c07d73f92fffed0c142.js",
     "service-worker.js": "/gyloh-preview/service-worker.js",
     "static/css/main.9c04608f.chunk.css.map": "/gyloh-preview/static/css/main.9c04608f.chunk.css.map",
-    "static/js/2.f8d0951c.chunk.js.LICENSE.txt": "/gyloh-preview/static/js/2.f8d0951c.chunk.js.LICENSE.txt"
+    "static/js/2.077b6b89.chunk.js.LICENSE.txt": "/gyloh-preview/static/js/2.077b6b89.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8bb6a2f9.js",
-    "static/js/2.f8d0951c.chunk.js",
+    "static/js/2.077b6b89.chunk.js",
     "static/css/main.9c04608f.chunk.css",
-    "static/js/main.2668c76c.chunk.js"
+    "static/js/main.a9c160b4.chunk.js"
   ]
 }
