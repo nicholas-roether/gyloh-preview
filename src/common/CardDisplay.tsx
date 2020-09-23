@@ -100,7 +100,6 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
         const breakpoints = theme.breakpoints.values as {[key: string]: number};
         const breakpointNames = Object.keys(breakpoints);
         const topBreakpoint = breakpointNames.find((v, i) => v === "lg" || breakpointNames[i - 1] === width);
-        console.log(topBreakpoint);
         if(!topBreakpoint) return;
         const widthNum = breakpoints[topBreakpoint];
 
