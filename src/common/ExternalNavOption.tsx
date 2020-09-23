@@ -13,9 +13,11 @@ export default class ExternalNavOption extends React.Component<ExternalNavOption
 	render() {
 		const { to, ...other } = this.props;
 		return (
-			<ListItem button component="li" onClick={() => this.redirect()} {...other}>
-				{this.props.children}
-			</ListItem>
+			<li>
+				<ListItem button onClick={() => this.redirect()} {...other}>
+					{this.props.children}
+				</ListItem>
+			</li>
 		);
 	}
 }
