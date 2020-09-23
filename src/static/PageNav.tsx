@@ -6,8 +6,6 @@ import CollapseNavOption from "../common/CollapseNavOption";
 import LinkNavOption from "../common/LinkNavOption";
 import SideNav from "../common/SideNav";
 import CollapseItem from "../common/CollapseItem";
-import { nav as navStructure } from "../structure/navigation.json";
-import { mapFrom } from "../util";
 import ExternalNavOption from "../common/ExternalNavOption";
 import { Link } from "react-router-dom";
 
@@ -26,121 +24,13 @@ const styles = (theme: Theme) => createStyles({
 });
 
 
-// TODO export json logic
 export interface PageNavProps {
 	open: boolean;
 	onOpen: React.MouseEventHandler;
 	onClose: React.MouseEventHandler
 }
 
-interface CollapseItemOption {
-	to: string,
-	text: string,
-}
-function isCollapseItemOption(object: any): object is CollapseItemOption {
-	return (
-		"to" in object &&
-		"text" in object
-	);
-}
-
-interface LinkOption {
-	to: string,
-	text: string,
-	icon?: string
-}
-function isLinkOption(object: any): object is LinkOption {
-	return isCollapseItemOption(object);
-}
-
-interface CollapseOption {
-	to?: string,
-	text: string,
-	icon?: string,
-	collapse: CollapseItemOption[]
-}
-function isCollapseOption(object: any): object is CollapseOption {
-	return (
-		"text" in object &&
-		"collapse" in object
-	)
-}
-
-interface ExternalOption {
-	text: string,
-	icon?: string,
-	external: string
-}
-function isExternalOption(object: any): object is ExternalOption {
-	return (
-		"text" in object &&
-		"external" in object
-	)
-}
-
-type NavItem = LinkOption | CollapseOption | ExternalOption;
-
 class PageNav extends React.Component<PageNavProps & WithStyles<typeof styles>> {
-	private createIcon(name: string): React.ReactElement | null {
-		let iconMap = mapFrom(icons);
-		return React.createElement(iconMap.get(name), {key: `Icon-${name}`});
-	}
-
-	private createListItemLink(data: LinkOption, key: string): React.ReactElement {
-		return (
-			<LinkNavOption to={data.to} key={key}>
-				{data.icon && <ListItemIcon>{this.createIcon(data.icon)}</ListItemIcon>}
-				<ListItemText primary={data.text} />
-			</LinkNavOption>
-		);
-	}
-	
-	private createCollapseItem(data: CollapseItemOption, key: string): React.ReactElement {
-		return (
-			<CollapseItem to={data.to} key={key}>
-				<ListItemText primary={data.text} />
-			</CollapseItem>
-		);
-	}
-
-	private createListItemCollapse(data: CollapseOption, key: string): React.ReactElement {
-		return (
-			<CollapseNavOption 
-				to={data.to} 
-				text={<ListItemText>{data.text}</ListItemText>}
-				icon={data.icon ? <ListItemIcon>{this.createIcon(data.icon)}</ListItemIcon> : null}
-				key={key}
-			>
-				{data.collapse.map((e, i) => this.createCollapseItem(e, i.toString()))}
-			</CollapseNavOption>
-		);
-	}
-
-	private createListItemExternal(data: ExternalOption, key: string): React.ReactElement {
-		return (
-			<ExternalNavOption to={data.external} key={key}>
-				{data.icon && <ListItemIcon>{this.createIcon(data.icon)}</ListItemIcon>}
-				<ListItemText>{data.text}</ListItemText>
-			</ExternalNavOption>
-		);
-	}
-
-	private renderStructure(data: NavItem[]): React.ReactElement[] {
-		let elements: React.ReactElement[] = [];
-		data.forEach((navItem, i) => {
-			if(isCollapseOption(navItem)) {
-				elements.push(this.createListItemCollapse(navItem, i.toString()));
-			}
-			else if(isExternalOption(navItem)) {
-				elements.push(this.createListItemExternal(navItem, i.toString()));
-			}
-			else if(isLinkOption(navItem)) {
-				elements.push(this.createListItemLink(navItem, i.toString()));
-			}
-		});
-		return elements;
-	}
-
 	render() {
 		const { classes } = this.props;
 		return (
@@ -155,7 +45,56 @@ class PageNav extends React.Component<PageNavProps & WithStyles<typeof styles>> 
 					</span>
 				</Link>
 				<List>
-					{this.renderStructure(navStructure)}
+					<LinkNavOption to="/">
+						<ListItemIcon><icons.Home /></ListItemIcon>
+						<ListItemText primary="Home" />
+					</LinkNavOption>
+					<CollapseNavOption to="/about" text="Über Uns" icon={<icons.People />}>
+						<CollapseItem to="/about/menschen">Menschen</CollapseItem>
+						<CollapseItem to="/about/fördern">Fördern &amp; Fordern</CollapseItem>
+						<CollapseItem to="/about/beratung">Beratung</CollapseItem>
+						<CollapseItem to="/about/ausland">Ausland</CollapseItem>
+						<CollapseItem to="/about/projekte">Projekte &amp; Events</CollapseItem>
+						<CollapseItem to="/about/partner">Partner</CollapseItem>
+					</CollapseNavOption>
+					<LinkNavOption to="/klassenstufen">
+						<ListItemIcon><icons.School /></ListItemIcon>
+						<ListItemText primary="Klassenstufen" />
+					</LinkNavOption>
+					<LinkNavOption to="/news">
+						<ListItemIcon><icons.Announcement /></ListItemIcon>
+						<ListItemText primary="News" />
+					</LinkNavOption>
+					<CollapseNavOption to="/info" text="Info" icon={<icons.Info />}>
+						<CollapseItem to="/info/downloads">Downloads</CollapseItem>
+						<CollapseItem to="/info/ganztag">Ganztag</CollapseItem>
+						<CollapseItem to="/info/berufsorientierung">Berufsorientierung</CollapseItem>
+						<CollapseItem to="/info/schulverien">Schulverein</CollapseItem>
+					</CollapseNavOption>
+					<LinkNavOption to="/kontakt">
+						<ListItemIcon><icons.ContactSupport /></ListItemIcon>
+						<ListItemText primary="Kontakt" />
+					</LinkNavOption>
+					<LinkNavOption to="/mensa">
+						<ListItemIcon><icons.Fastfood /></ListItemIcon>
+						<ListItemText primary="Mensa" />
+					</LinkNavOption>
+					<ExternalNavOption to="https://alumni.gyloh.de">
+						<ListItemIcon><icons.Forum /></ListItemIcon>
+						<ListItemText primary="Alumni" />
+					</ExternalNavOption>
+					<LinkNavOption to="/bewerber">
+						<ListItemIcon><icons.PersonAdd /></ListItemIcon>
+						<ListItemText primary="Bewerber" />
+					</LinkNavOption>
+					<LinkNavOption to="/vertretungsplan">
+						<ListItemIcon><icons.Today /></ListItemIcon>
+						<ListItemText primary="Vertretungsplan" />
+					</LinkNavOption>
+					<LinkNavOption to="/newsletter">
+						<ListItemIcon><icons.Today /></ListItemIcon>
+						<ListItemText primary="Newsletter" />
+					</LinkNavOption>
 				</List>
 				<Box mb={3} />
 				<Divider />

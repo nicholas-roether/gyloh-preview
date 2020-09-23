@@ -1,7 +1,12 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
-import { images } from "../structure/star_images.json";
 import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core";
+
+const images = [
+	"galleries/star/0.jpg",
+	"galleries/star/1.jpg",
+	"galleries/star/2.jpg"
+]
 
 const styles = (theme: Theme) => createStyles({
 	starWrapper: {

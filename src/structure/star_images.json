@@ -1,8 +1,0 @@
-{
-	"$schema": "../schema/star_images.json",
-	"images": [
-		"galleries/star/0.jpg",
-		"galleries/star/1.jpg",
-		"galleries/star/2.jpg"
-	]
-}

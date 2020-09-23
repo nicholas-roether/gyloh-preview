@@ -19,12 +19,8 @@ export default class Error404 extends React.Component<Error404Props> {
 					Wenn sie glauben, dass es sich hierbei um einen Fehler handelt, kontaktieren sie unseren Support.
 				</Typography>
 				<Box mt={2}>
-					<DefaultButton to="/">
-						Zurück zur Homepage
-					</DefaultButton>
-					<DefaultButton to="/support">
-						Support kontaktieren
-					</DefaultButton>
+					<DefaultButton to="/">Zur Homepage</DefaultButton>
+					<DefaultButton to="/support">Support</DefaultButton>
 				</Box>
 			</Error>
 		)

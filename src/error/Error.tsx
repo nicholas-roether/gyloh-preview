@@ -13,7 +13,7 @@ export default class Error extends React.Component<ErrorProps> {
 				<Typography variant="h2" gutterBottom={true}>Error {this.props.code}</Typography>
 				<Typography variant="h4">{this.props.description}</Typography>
 				<Box pb={6} />
-				<Box maxWidth="60%">
+				<Box maxWidth="500px">
 					{this.props.children}
 				</Box>
 			</Box>

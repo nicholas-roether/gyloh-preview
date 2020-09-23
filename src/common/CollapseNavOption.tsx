@@ -1,5 +1,5 @@
 import React from "react";
-import { Collapse, createStyles, List, ListItem, Theme, withStyles, WithStyles } from "@material-ui/core";
+import { Collapse, createStyles, List, ListItem, ListItemIcon, ListItemText, Theme, withStyles, WithStyles } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
@@ -11,8 +11,8 @@ const styles = (theme: Theme) => createStyles({
 
 export interface CollapseNavOptionProps {
 	to?: string;
-	text: React.ReactElement;
-	icon?: React.ReactElement | null;
+	text: React.ReactElement | string;
+	icon?: React.ReactElement | string | null;
 }
 
 interface ListItemCollapseState {
@@ -30,8 +30,8 @@ class CollapseNavOption extends React.Component<CollapseNavOptionProps & WithSty
 		return (
 			<span>
 				<ListItem button component={this.props.to ? RouterLink : "span"} to={this.props.to} onClick={() => this.onClick()}>
-					{this.props.icon}
-					{this.props.text}
+					<ListItemIcon>{this.props.icon}</ListItemIcon>
+					<ListItemText>{this.props.text}</ListItemText>
 					{this.state.open ? <ExpandLess /> : <ExpandMore />}
 				</ListItem>
 				<Collapse in={this.state.open}>
