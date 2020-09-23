@@ -28,7 +28,7 @@ const styles = createStyles({
 	}
 });
 
-class HomePage extends React.Component<WithStyles<typeof styles>> {
+class Home extends React.Component<WithStyles<typeof styles>> {
     render() {
 		const { classes } = this.props;
 
@@ -85,4 +85,4 @@ class HomePage extends React.Component<WithStyles<typeof styles>> {
     }
 }
 
-export default withStyles(styles)(HomePage);
+export default withStyles(styles)(Home);
