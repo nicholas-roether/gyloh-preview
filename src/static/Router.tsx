@@ -9,7 +9,7 @@ export interface RouterProps {
 export default class PageRouter extends React.Component<RouterProps> {
 	render() {
 		return (
-			<Router>
+			<Router basename={process.env.PUBLIC_URL}>
 				{React.createElement(this.props.wrapper, {}, 
 					<Switch>
 						<Route path="/">
