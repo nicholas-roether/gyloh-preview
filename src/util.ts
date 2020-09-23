@@ -14,3 +14,11 @@ export function classesIf(...classes: ([string, boolean] | string)[]): string {
 export function mapFrom(object: any): Map<string, any> {
 	return new Map(Object.keys(object).map(k => [k, object[k]]));
 }
+
+export function adjustHref() {
+	let adjusted = window.location.pathname;
+	if(!adjusted.startsWith(process.env.PUBLIC_URL)) adjusted = process.env.PUBLIC_URL + adjusted;
+	if(adjusted === process.env.PUBLIC_URL) adjusted += "/";
+	if(adjusted !== window.location.pathname)
+		window.location.pathname = adjusted;
+}
