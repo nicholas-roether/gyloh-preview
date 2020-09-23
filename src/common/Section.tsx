@@ -4,15 +4,15 @@ import SlideIn from "./SlideIn";
 
 const styles = (theme: Theme) => createStyles({
 	wrapper: {
-		marginBottom: theme.spacing(6),
+		paddingBottom: theme.spacing(6),
 		[theme.breakpoints.up("sm")]: {
-			marginBottom: theme.spacing(10)
+			paddingBottom: theme.spacing(10)
 		}
 	},
 	contentWrapper: {
-		marginBottom: theme.spacing(4),
+		paddingBottom: theme.spacing(4),
 		[theme.breakpoints.up("sm")]: {
-			marginBottom: theme.spacing(8)
+			paddingBottom: theme.spacing(8)
 		}
 	}
 })
