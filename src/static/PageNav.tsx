@@ -40,9 +40,9 @@ class PageNav extends React.Component<PageNavProps & WithStyles<typeof styles>> 
 				onClose={this.props.onClose}
 			>
 				<Link to="/" className={classes.navHeader}>
-					<span className={classes.logoWrapper}>
+					<div className={classes.logoWrapper}>
 						<img src="logo.png" width="70%" alt="Gyloh" />
-					</span>
+					</div>
 				</Link>
 				<List>
 					<LinkNavOption to="/">
