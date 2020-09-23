@@ -49,9 +49,11 @@ const styles = (theme: Theme) => createStyles({
 	}
 });
 
-type PageProps = WithStyles<typeof styles>;
+export interface PageProps {
+	onThemeChange?: () => void
+}
 
-class Page extends React.Component<PageProps> {
+class Page extends React.Component<PageProps & WithStyles<typeof styles>> {
 	state = {navOpen: false};
 
 	private openNav() {
@@ -70,7 +72,7 @@ class Page extends React.Component<PageProps> {
 				<PageBar onOpenMenu={() => this.openNav()} className={classesIf(
 					classes.bar,
 					[classes.barOpen, this.state.navOpen]
-				)} />
+				)} onThemeChange={this.props.onThemeChange} />
 				<PageNav open={this.state.navOpen} onOpen={() => this.openNav()} onClose={() => this.closeNav()} />
 				<Divider />
 				<div className={classesIf(

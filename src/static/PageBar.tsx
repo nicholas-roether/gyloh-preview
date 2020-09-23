@@ -1,6 +1,5 @@
-import { AppBar, createStyles, IconButton, Theme, Toolbar, Typography, withStyles, WithStyles } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-import CalendarIcon from "@material-ui/icons/CalendarToday"
+import { AppBar, createStyles, IconButton, Theme, Toolbar, Typography, withStyles, WithStyles, withTheme, WithTheme } from "@material-ui/core";
+import { Menu as MenuIcon, Brightness2 as DarkThemeIcon, Brightness7 as LightThemeIcon, CalendarViewDay as CalendarIcon } from "@material-ui/icons/";
 import React from "react";
 import Search from "../common/Search";
 
@@ -41,12 +40,13 @@ const styles = (theme: Theme) => createStyles({
 
 export interface PageBarProps {
 	onOpenMenu?: React.MouseEventHandler;
+	onThemeChange?: () => void;
 	className: string;
 }
 
-class PageBar extends React.Component<PageBarProps & WithStyles<typeof styles>> {
+class PageBar extends React.Component<PageBarProps & WithStyles<typeof styles> & WithTheme> {
 	render() {
-		const { classes } = this.props;
+		const { classes, theme } = this.props;
 
 		return (
 			<AppBar position="sticky" className={this.props.className}>
@@ -59,6 +59,14 @@ class PageBar extends React.Component<PageBarProps & WithStyles<typeof styles>> 
 					<span className={classes.grow} />
 					<span className={classes.icons}>
 						<Search />
+						<IconButton color="inherit" aria-label="Theme ändern" onClick={this.props.onThemeChange}>
+							{
+								theme.palette.type === "light" ?
+								<LightThemeIcon />
+								:
+								<DarkThemeIcon />
+							}
+						</IconButton>
 						<IconButton color="inherit" aria-label="Kalender ansehen"><CalendarIcon /></IconButton>
 					</span>
 				</Toolbar>
@@ -67,4 +75,4 @@ class PageBar extends React.Component<PageBarProps & WithStyles<typeof styles>> 
 	}
 }
 
-export default withStyles(styles)(PageBar);
+export default withStyles(styles)(withTheme(PageBar));
