@@ -1,0 +1,32 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "src/schema/news.json",
+	"description": "The news articles displayed on the website",
+	"definitions": {
+		"article": {
+			"description": "A news article",
+			"type": "object",
+			"properties": {
+				"heading": {
+					"type": "string",
+					"description": "The news article's heading"
+				},
+				"content": {
+					"type": "string",
+					"description": "The news article's content"
+				}
+			},
+			"required": ["heading", "content"],
+			"additionalProperties": false
+		}
+	},
+	"properties": {
+		"news": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/article"
+			}
+		}
+	},
+	"type": "object"
+}

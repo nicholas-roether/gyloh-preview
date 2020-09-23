@@ -1,0 +1,9 @@
+{
+	"$schema": "../schema/news.json",
+	"news": [
+		{
+			"heading": "",
+			"content": ""
+		}
+	]
+}
