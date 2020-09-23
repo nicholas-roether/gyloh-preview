@@ -28,7 +28,7 @@ class CollapseNavOption extends React.Component<CollapseNavOptionProps & WithSty
 
 	render() {
 		return (
-			<span>
+			<li>
 				<ListItem button component={this.props.to ? RouterLink : "span"} to={this.props.to} onClick={() => this.onClick()}>
 					<ListItemIcon>{this.props.icon}</ListItemIcon>
 					<ListItemText>{this.props.text}</ListItemText>
@@ -39,7 +39,7 @@ class CollapseNavOption extends React.Component<CollapseNavOptionProps & WithSty
 						{this.props.children}
 					</List>
 				</Collapse>
-			</span>
+			</li>
 		);
 	}
 }
