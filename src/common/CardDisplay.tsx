@@ -59,11 +59,12 @@ export interface CardDisplayProps  {
 
 interface CardDisplayState {
     index: number,
-    prevIndex: number
+    prevIndex: number,
+    initial: boolean
 }
 
 class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof styles> & WithWidth & WithTheme, CardDisplayState> {
-    state = {index: 0, prevIndex: -1}
+    state = {index: 0, prevIndex: -1, initial: true}
 
     get numCards() {
         return React.Children.count(this.props.children);
@@ -75,13 +76,15 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
 
     private prevPage(pageSize: number) {
         this.setState(prev => {
-            if(prev.index > 0) return {index: prev.index - pageSize, prevIndex: prev.index};
+            if(prev.index > 0) return {index: prev.index - pageSize, prevIndex: prev.index, initial: false};
+            return null;
         })
     }
 
     private nextPage(pageSize: number) {
         this.setState(prev => {
-            if(prev.index < this.numCards - 1) return {index: prev.index + pageSize, prevIndex: prev.index}
+            if(prev.index < this.numCards - 1) return {index: prev.index + pageSize, prevIndex: prev.index, initial: false}
+            return null;
         });
     }
 
@@ -139,7 +142,7 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
                                     )}
                                 </CSSTransition>
                             }
-                            <CSSTransition in={true} timeout={0} appear={true} key={"page-" + this.state.index.toString()}>
+                            <CSSTransition in={true} timeout={0} appear={!this.state.initial} key={"page-" + this.state.index.toString()}>
                                 {state => (
                                     <div className={classes.pageWrapper} style={
                                         (this.state.index < this.state.prevIndex ? leftToRight : rightToLeft)[state]
