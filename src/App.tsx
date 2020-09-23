@@ -1,28 +1,27 @@
 import { Box, Theme, ThemeProvider } from "@material-ui/core";
 import React from "react";
-import Page from "./static/Page";
 import PageRouter from "./static/Router";
 
-interface AppState<N> {
-	theme: N
+interface AppState {
+	theme: string
 }
 
-export type ThemeMap<N extends string> = Record<N, Theme>;
+export type ThemeMap = Record<string, Theme>;
 
-export interface AppProps<T extends ThemeMap<N>, N extends string> {
-	initialTheme: N,
-	themes: T
+export interface AppProps {
+	initialTheme: string,
+	themes: ThemeMap
 }
 
-export default class App<T extends ThemeMap<N>, N extends string> extends React.Component<AppProps<T, N>, AppState<N>> {
+export default class App extends React.Component<AppProps, AppState> {
 	state = {theme: this.props.initialTheme}
 
 	render() {
-		const theme = this.props.themes[this.state.theme] as Theme;
+		const theme = this.props.themes[this.state.theme];
 		return (
 			<ThemeProvider theme={theme}>
 				<Box id="app" bgcolor={theme.palette.background.default} height="100%" color={theme.palette.type === "light" ? "#000" : "#fff"}>
-					<PageRouter wrapper={Page} />
+					<PageRouter onThemeChage={() => this.setState(prev => ({theme: prev.theme === "light" ? "dark" : "light"}))} />
 				</Box>
 			</ThemeProvider>
 		);
