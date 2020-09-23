@@ -17,6 +17,11 @@ const styles = (theme: Theme) => createStyles({
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center"
+	},
+	logoWrapper: {
+		background: "#fff",
+		textAlign: "center",
+		padding: theme.spacing(2, 0)
 	}
 });
 
@@ -145,7 +150,9 @@ class PageNav extends React.Component<PageNavProps & WithStyles<typeof styles>> 
 				onClose={this.props.onClose}
 			>
 				<Link to="/" className={classes.navHeader}>
-					<img src="logo.png" width="70%" alt="Gyloh" />
+					<span className={classes.logoWrapper}>
+						<img src="logo.png" width="70%" alt="Gyloh" />
+					</span>
 				</Link>
 				<List>
 					{this.renderStructure(navStructure)}
@@ -160,4 +167,4 @@ class PageNav extends React.Component<PageNavProps & WithStyles<typeof styles>> 
 	}
 }
 
-export default withStyles(styles)(PageNav)
+export default withStyles(styles)(PageNav);
