@@ -10,9 +10,11 @@ export default class LinkNavOption extends React.Component<LinkNavOptionProps> {
 	render() {
 		const { to, ...other } = this.props;
 		return (
-			<ListItem button component={RouterLink} to={to} {...other}>
-				{this.props.children}
-			</ListItem>
+			<li>
+				<ListItem button component={RouterLink} to={to} {...other}>
+					{this.props.children}
+				</ListItem>
+			</li>
 		);
 	}
 }
