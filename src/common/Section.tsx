@@ -1,6 +1,5 @@
 import { createStyles, Divider, Theme, withStyles, WithStyles } from "@material-ui/core";
 import React from "react";
-import SlideIn from "./SlideIn";
 
 const styles = (theme: Theme) => createStyles({
 	wrapper: {
@@ -17,22 +16,13 @@ const styles = (theme: Theme) => createStyles({
 	}
 })
 
-export interface SectionProps {
-	number?: number
-}
-
-class Section extends React.Component<SectionProps & WithStyles<typeof styles>> {
-	private readonly timeoutFactor = 200;
-
+class Section extends React.Component<WithStyles<typeof styles>> {
 	render() {
-		const { number, classes } = this.props;
-		const timeout = number ? (number - 1) * this.timeoutFactor : 0;
+		const { classes } = this.props;
 		return (
 			<div className={classes.wrapper}>
-				<SlideIn timeout={timeout}>
-					<div  className={classes.contentWrapper}>{this.props.children}</div>
-					<Divider />
-				</SlideIn>
+				<div  className={classes.contentWrapper}>{this.props.children}</div>
+				<Divider />
 			</div>
 		);
 	}
