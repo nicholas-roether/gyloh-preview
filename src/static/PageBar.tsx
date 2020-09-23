@@ -1,4 +1,4 @@
-import { AppBar, createStyles, IconButton, Theme, Toolbar, Typography, withStyles, WithStyles, withTheme, WithTheme } from "@material-ui/core";
+import { AppBar, Box, createStyles, IconButton, Theme, Toolbar, Typography, withStyles, WithStyles, withTheme, WithTheme } from "@material-ui/core";
 import { Menu as MenuIcon, Brightness2 as DarkThemeIcon, Brightness7 as LightThemeIcon, CalendarViewDay as CalendarIcon } from "@material-ui/icons/";
 import React from "react";
 import Search from "../common/Search";
@@ -15,27 +15,22 @@ const styles = (theme: Theme) => createStyles({
 		}
 	},
 	titleShort: {
-		display: "none",
-		[theme.breakpoints.up("sm")]: {
-			display: "inline"
-		},
+		display: "inline",
 		[theme.breakpoints.up("md")]: {
 			display: "none"
 		}
 	},
 	icons: {
+		position: "absolute",
 		display: "inline-flex",
-		flexGrow: 1,
-		justifyContent: "flex-end",
+		right: theme.spacing(2),
 		[theme.breakpoints.up("sm")]: {
-			flexGrow: 0,
-			position: "relative",
-			float: "right"
+			right: theme.spacing(3)
 		}
 	},
 	grow: {
 		flexGrow: 1
-	}
+	},
 });
 
 export interface PageBarProps {
@@ -56,9 +51,11 @@ class PageBar extends React.Component<PageBarProps & WithStyles<typeof styles> &
 						<Typography className={classes.titleLong} variant="h5">Gymnasium Lohbrügge</Typography>
 						<Typography className={classes.titleShort} variant="h5">Gyloh</Typography>
 					</span>
-					<span className={classes.grow} />
+					{/* <span className={classes.grow} /> */}
 					<span className={classes.icons}>
-						<Search />
+						<Box component="span" ml={9}>
+							<Search />
+						</Box>
 						<IconButton color="inherit" aria-label="Theme ändern" onClick={this.props.onThemeChange}>
 							{
 								theme.palette.type === "light" ?
