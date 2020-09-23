@@ -61,4 +61,5 @@ export const darkTheme = createMuiTheme({
 			paper: "#373f43"
 		},
 	},
+	typography
 });
