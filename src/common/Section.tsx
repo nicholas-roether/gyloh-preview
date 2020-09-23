@@ -22,7 +22,7 @@ export interface SectionProps {
 }
 
 class Section extends React.Component<SectionProps & WithStyles<typeof styles>> {
-	private readonly timeoutFactor = 100;
+	private readonly timeoutFactor = 200;
 
 	render() {
 		const { number, classes } = this.props;
