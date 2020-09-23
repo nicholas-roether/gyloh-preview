@@ -63,6 +63,7 @@ interface StarState {
 
 class Star extends React.Component<WithStyles<typeof styles>, StarState> {
 	private static readonly SLIDE_INTERVAL = 5000;
+	private refreshTimeout: number | null = null;
 	state = {image: 0, initial: true}
 
 	componentDidUpdate() {
@@ -72,9 +73,14 @@ class Star extends React.Component<WithStyles<typeof styles>, StarState> {
 	componentDidMount() {
 		this.stageRefresh();
 	}
+	
+	componentWillUnmount() {
+		if(this.refreshTimeout)
+			clearTimeout(this.refreshTimeout);
+	}
 
 	private stageRefresh() {
-		setTimeout(() => this.setState(prev => ({image: (prev.image + 1) % images.length, initial: false})), Star.SLIDE_INTERVAL);
+		this.refreshTimeout = setTimeout(() => this.setState(prev => ({image: (prev.image + 1) % images.length, initial: false})), Star.SLIDE_INTERVAL);
 	}
 
 	render() {
