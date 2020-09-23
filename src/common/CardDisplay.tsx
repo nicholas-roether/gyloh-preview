@@ -131,7 +131,7 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
                                 this.state.prevIndex !== this.state.index &&
                                 <CSSTransition in={false} timeout={0} appear={true} key={"page-" + this.state.prevIndex.toString()}>
                                     {state => (
-                                        <div className={classes.pageWrapper} style={
+                                        <div className={classes.pageWrapper} aria-hidden="true" style={
                                             (this.state.index < this.state.prevIndex ? leftToRight : rightToLeft)[state]
                                         }>
                                             {React.Children.toArray(this.props.children).slice(this.state.prevIndex, this.state.prevIndex + numCards)}
