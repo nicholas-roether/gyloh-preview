@@ -3,7 +3,6 @@ import React from "react";
 import DefaultButton from "../common/DefaultButton";
 import Section from "../common/Section";
 import SlideIn from "../common/SlideIn";
-import NewsCard from "./NewsCard";
 import NewsDisplay from "./NewsDisplay";
 import Star from "./Star";
 
@@ -54,22 +53,7 @@ class Home extends React.Component<WithStyles<typeof styles>> {
 				<Section number={2}>
                 	<Typography variant="h4" gutterBottom={true}>News</Typography>
 					<SlideIn from="left">
-						<NewsDisplay>
-							<NewsCard heading="Schülerin verreckt elendig in Minecraft" more="#">
-								Eine Schülerin der Klasse 7e wurde gestern gegen 20:21 Uhr absolut krank von einem weiteren Schüler in Minecraft Skywars weggerekt.
-							</NewsCard>
-							<NewsCard heading="Aufnahmeritual der Fünftklässler" more="#">
-								Am 17.09 fand endlich die traditionelle Opfergabenzeremonie der neuen fünften Klassen statt. Die Kinder schlugen sich alle
-								ziemlich gut in dem zeremoniellen blutigen Todeskampf, Zehn wurden schwer verletzt und es gab sogar drei Tote! Schlussendlich
-								fand die Jungfrauopferung statt - Man konnte die Schreie von Lena aus der 5b viele Kilometer weit hören!
-							</NewsCard>
-							<NewsCard heading="日本語書ければどうなるの" more="#">
-								これはただのテストだ。このサイトで日本語はどう見えるのが知りたい。
-							</NewsCard>
-							<NewsCard heading="pingeon exxist t ??/?" more="#">
-								Wap wap wappu wap
-							</NewsCard>
-						</NewsDisplay>
+						<NewsDisplay />
 					</SlideIn>
 				</Section>
 				<Section number={3}>
