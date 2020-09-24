@@ -12,7 +12,6 @@ const styles = (theme: Theme) => createStyles({
 		verticalAlign: "baseline",
 		borderRadius: theme.shape.borderRadius,
 		flexGrow: 1,
-		maxWidth: "400px",
 		transition: theme.transitions.create(["background"], {
 			easing: theme.transitions.easing.easeIn,
 			duration: theme.transitions.duration.shortest

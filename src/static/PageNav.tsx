@@ -92,7 +92,7 @@ class PageNav extends React.Component<PageNavProps & WithStyles<typeof styles>> 
 						<ListItemText primary="Vertretungsplan" />
 					</LinkNavOption>
 					<LinkNavOption to="/newsletter">
-						<ListItemIcon><icons.Today /></ListItemIcon>
+						<ListItemIcon><icons.Email /></ListItemIcon>
 						<ListItemText primary="Newsletter" />
 					</LinkNavOption>
 				</List>

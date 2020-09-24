@@ -23,6 +23,7 @@ const styles = (theme: Theme) => createStyles({
 	icons: {
 		position: "absolute",
 		display: "inline-flex",
+		maxWidth: "400px",
 		right: theme.spacing(2),
 		[theme.breakpoints.up("sm")]: {
 			right: theme.spacing(3)
