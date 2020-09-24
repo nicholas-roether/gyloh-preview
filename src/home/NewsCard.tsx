@@ -1,5 +1,6 @@
 import { Box, Button, Card, CardActions, CardContent, createStyles, Theme, Typography, WithStyles, withStyles } from "@material-ui/core";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const styles = (theme: Theme) => createStyles({
 	cardRoot: {
@@ -25,8 +26,8 @@ const styles = (theme: Theme) => createStyles({
 });
 
 export interface NewsCardProps extends WithStyles<typeof styles> {
-	heading?: string,
-	more?: string
+	heading?: string | null,
+	more?: string | null
 }
 
 class NewsCard extends React.Component<NewsCardProps> {
@@ -43,7 +44,11 @@ class NewsCard extends React.Component<NewsCardProps> {
 				{
 					this.props.more &&
 					<CardActions>
-						<Button color="secondary" style={{margin: "auto"}}>Mehr lesen</Button>
+						<Box display="inline-block" marginX="auto">
+							<Link to={this.props.more}>
+								<Button color="secondary">Mehr lesen</Button>
+							</Link>
+						</Box>
 					</CardActions>
 				}
 			</Card>
