@@ -1,4 +1,4 @@
-import { createStyles, IconButton, InputBase, Theme, withStyles } from "@material-ui/core";
+import { Box, createStyles, IconButton, InputBase, Theme, withStyles } from "@material-ui/core";
 import { WithStyles } from "@material-ui/core/styles/withStyles";
 import SearchIcon from "@material-ui/icons/Search";
 import React from "react";
@@ -7,7 +7,12 @@ import { classesIf } from "../util";
 const styles = (theme: Theme) => createStyles({
 	searchBg: {
 		display: "inline-flex",
-		justifyContent: "flex-end",
+		position: "absolute",
+		right: 0,
+		width: `calc(100vw - ${theme.spacing(23)}px)`,
+		maxWidth: "300px",
+		padding: theme.spacing(1, 0),
+		justifyContent: "space-between",
 		background: "transparent",
 		verticalAlign: "baseline",
 		borderRadius: theme.shape.borderRadius,
@@ -23,6 +28,7 @@ const styles = (theme: Theme) => createStyles({
 	searchField: {
 		width: 0,
 		color: theme.palette.primary.contrastText,
+		overflow: "hidden",
 		textOverflow: "ellipsis",
 		transition: theme.transitions.create(["width", "padding"], {
 			easing: theme.transitions.easing.easeIn,
@@ -30,7 +36,9 @@ const styles = (theme: Theme) => createStyles({
 		})
 	},
 	searchFieldActive: {
-		width: "100%",
+		position: "relative",
+		left: 0,
+		width: `calc(100% - ${theme.spacing(7)}px)`,
 		paddingLeft: theme.spacing(2),
 	}
 });
@@ -39,11 +47,13 @@ interface SearchState {
 	open: boolean
 }
 
-class Search extends React.Component<WithStyles<typeof styles>, SearchState> {
+type SearchProps = WithStyles<typeof styles>;
+
+class Search extends React.Component<SearchProps, SearchState> {
 	ref: React.RefObject<HTMLElement>;
 	state = {open: false};
 
-	constructor(props: WithStyles<typeof styles>) {
+	constructor(props: SearchProps) {
 		super(props);
 		this.ref = React.createRef();
 	}
@@ -65,18 +75,20 @@ class Search extends React.Component<WithStyles<typeof styles>, SearchState> {
 	}
 
 	render() {
-		let { classes } = this.props;
+		const { classes } = this.props;
 		return (
-			<span className={classesIf(
-				classes.searchBg,
-				[classes.searchBgActive, this.state.open]
-			)} ref={this.ref} key="search">
-				<InputBase placeholder="Seite Durchsuchen..." className={classesIf(
-					classes.searchField,
-					[classes.searchFieldActive, this.state.open],
-				)} />
+			<Box position="relative">
+				<span className={classesIf(
+					classes.searchBg,
+					[classes.searchBgActive, this.state.open]
+				)} ref={this.ref} key="search">
+					<InputBase placeholder={"Suchen..."} className={classesIf(
+						classes.searchField,
+						[classes.searchFieldActive, this.state.open],
+					)} />
+				</span>
 				<IconButton color="inherit" onClick={(e) => this.toggle(e)}><SearchIcon /></IconButton>
-			</span>
+			</Box>
 		);
 	}
 }

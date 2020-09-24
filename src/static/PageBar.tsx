@@ -1,4 +1,4 @@
-import { AppBar, Box, createStyles, IconButton, Theme, Toolbar, Typography, withStyles, WithStyles, withTheme, WithTheme } from "@material-ui/core";
+import { AppBar, createStyles, IconButton, Theme, Toolbar, Typography, withStyles, WithStyles, withTheme, WithTheme } from "@material-ui/core";
 import { Menu as MenuIcon, Brightness2 as DarkThemeIcon, Brightness7 as LightThemeIcon, CalendarToday as CalendarIcon } from "@material-ui/icons/";
 import React from "react";
 import Search from "../common/Search";
@@ -21,13 +21,12 @@ const styles = (theme: Theme) => createStyles({
 		}
 	},
 	icons: {
-		position: "absolute",
+		position: "relative",
 		display: "inline-flex",
-		maxWidth: "400px",
-		right: theme.spacing(2),
-		[theme.breakpoints.up("sm")]: {
-			right: theme.spacing(3)
-		}
+		flexGrow: 1,
+		justifyContent: "flex-end",
+		right: 0,
+		top: 0
 	},
 	grow: {
 		flexGrow: 1
@@ -54,9 +53,9 @@ class PageBar extends React.Component<PageBarProps & WithStyles<typeof styles> &
 					</span>
 					{/* <span className={classes.grow} /> */}
 					<span className={classes.icons}>
-						<Box component="span" ml={9}>
+						<span>
 							<Search />
-						</Box>
+						</span>
 						<IconButton color="inherit" aria-label="Theme ändern" onClick={this.props.onThemeChange}>
 							{
 								theme.palette.type === "light" ?
