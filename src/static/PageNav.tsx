@@ -41,7 +41,7 @@ class PageNav extends React.Component<PageNavProps & WithStyles<typeof styles>> 
 			>
 				<Link to="/" className={classes.navHeader}>
 					<div className={classes.logoWrapper}>
-						<img src="logo.png" width="70%" alt="Gyloh" />
+						<img src="images/logo.png" width="70%" alt="Gyloh" />
 					</div>
 				</Link>
 				<List>

@@ -24,7 +24,7 @@ class EduportLaunchpad extends React.Component<WithStyles<typeof styles>> {
 		const { classes } = this.props;
 		return (
 			<Dropdown 
-				element={<img src="eduport.png" width="70%" alt="EduPort"/>}
+				element={<img src="images/eduport.png" width="70%" alt="EduPort"/>}
 				origin={{horizontal: "right", vertical: "top"}}
 			>
 				<ListItem button>
@@ -69,7 +69,7 @@ class EduportLaunchpad extends React.Component<WithStyles<typeof styles>> {
 					<ListItem button>
 							<img 
 								className={classes.textSizedImage} 
-								src="dll.png" 
+								src="images/dll.png" 
 								alt="digital learing lab"
 							/>
 					</ListItem>
