@@ -1,5 +1,5 @@
 import { AppBar, Box, createStyles, IconButton, Theme, Toolbar, Typography, withStyles, WithStyles, withTheme, WithTheme } from "@material-ui/core";
-import { Menu as MenuIcon, Brightness2 as DarkThemeIcon, Brightness7 as LightThemeIcon, CalendarViewDay as CalendarIcon } from "@material-ui/icons/";
+import { Menu as MenuIcon, Brightness2 as DarkThemeIcon, Brightness7 as LightThemeIcon, CalendarToday as CalendarIcon } from "@material-ui/icons/";
 import React from "react";
 import Search from "../common/Search";
 
