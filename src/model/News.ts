@@ -52,9 +52,6 @@ export default class News {
 		do preview += current + "\n\n";
 		while(preview.length < News.PREVIEW_LENGTH && (current = paragraphs.shift()));
 		preview = preview.trimEnd();
-
-		if(preview.endsWith(".")) preview = preview.substr(0, preview.length - 1);
-		preview += "...";
 		
 		return preview;
 	}
