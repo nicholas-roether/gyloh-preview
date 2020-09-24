@@ -1,6 +1,7 @@
+import { Link } from "@material-ui/core";
 import Markdown from "markdown-to-jsx";
 import React from "react";
-import NewsCard from "../home/NewsCard";
+import NewsCard from "./NewsCard";
 import News from "../model/News";
 
 export interface NewsPreviewProps {
@@ -27,7 +28,14 @@ export default class NewsPreview extends React.Component<NewsPreviewProps, NewsP
 		if(!news) return <NewsCard />;
 		return (
 			<NewsCard heading={news.getHeading()} more={NewsPreview.NEWS_URL + news.name}>
-				<Markdown>
+				<Markdown options={{
+					overrides: {
+						"a": {
+							component: Link,
+							props: {color: "secondary"}
+						}
+					}
+				}}>
 					{news.getContentPreview() || ""}
 				</Markdown>
 			</NewsCard>
