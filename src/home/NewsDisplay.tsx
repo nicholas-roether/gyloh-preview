@@ -1,7 +1,7 @@
 import React from "react";
 import CardDisplay from "../common/CardDisplay";
 import News from "../model/News";
-import NewsPreview from "../view/NewsPreview";
+import NewsPreview from "./NewsPreview";
 
 interface NewsDisplayState {
 	cards: React.ReactElement[];
