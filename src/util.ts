@@ -22,3 +22,9 @@ export function adjustHref() {
 	if(adjusted !== window.location.pathname)
 		window.location.pathname = adjusted;
 }
+
+export function removeHTML(str: string) {
+	const div = document.createElement("div");
+	div.innerHTML = str;
+	return div.textContent || div.innerText || "";
+}
