@@ -39,7 +39,7 @@ class NewsCard extends React.Component<NewsCardProps> {
 					<Box mb={3}>
 						<Typography variant="h5">{this.props.heading}</Typography>
 					</Box>
-					<Typography>{this.props.children}</Typography>
+					<Typography component="div">{this.props.children}</Typography>
 				</CardContent>
 				{
 					this.props.more &&
