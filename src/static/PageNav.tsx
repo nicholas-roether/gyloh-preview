@@ -8,6 +8,7 @@ import SideNav from "../common/SideNav";
 import CollapseItem from "../common/CollapseItem";
 import ExternalNavOption from "../common/ExternalNavOption";
 import { Link } from "react-router-dom";
+import logoImage from "../images/logo.png";
 
 const styles = (theme: Theme) => createStyles({
 	navHeader: {
@@ -41,7 +42,7 @@ class PageNav extends React.Component<PageNavProps & WithStyles<typeof styles>> 
 			>
 				<Link to="/" className={classes.navHeader}>
 					<div className={classes.logoWrapper}>
-						<img src="images/logo.png" width="70%" alt="Gyloh" />
+						<img src={logoImage} width="70%" alt="Gyloh" />
 					</div>
 				</Link>
 				<List>
