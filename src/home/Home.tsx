@@ -2,7 +2,6 @@ import { Box, createStyles, Theme, Typography, withStyles, WithStyles } from "@m
 import React from "react";
 import DefaultButton from "../common/DefaultButton";
 import Section from "../common/Section";
-import SlideIn from "../common/SlideIn";
 import NewsDisplay from "./NewsDisplay";
 import Star from "./Star";
 
@@ -32,7 +31,7 @@ class Home extends React.Component<WithStyles<typeof styles>> {
 
         return (
             <div>
-				<Section number={1}>
+				<Section>
 					<div className={classes.openingWrapper}>
 						<span className={classes.textWrapper}>
 							<Typography variant="h3" gutterBottom>Herzlich Willkommen</Typography>
@@ -40,23 +39,19 @@ class Home extends React.Component<WithStyles<typeof styles>> {
 								fontStyle: "italic",
 								fontWeight: "lighter"
 							}}>"Mit dem Wir zum Ich - fördere dein Wissen und erweitere deinen Horizont!"</Typography>
-							<SlideIn from="right">
-								<Box mt={3} whiteSpace="nowrap">
-									<DefaultButton to="/about">Über Uns</DefaultButton>
-									<DefaultButton>Vertretungsplan</DefaultButton>
-								</Box>
-							</SlideIn>
+							<Box mt={3} whiteSpace="nowrap">
+								<DefaultButton to="/about">Über Uns</DefaultButton>
+								<DefaultButton>Vertretungsplan</DefaultButton>
+							</Box>
 						</span>
 						<Star />
 					</div>
 				</Section>
-				<Section number={2}>
+				<Section>
                 	<Typography variant="h4" gutterBottom={true}>News</Typography>
-					<SlideIn from="left">
-						<NewsDisplay />
-					</SlideIn>
+					<NewsDisplay />
 				</Section>
-				<Section number={3}>
+				<Section>
 					<Box textAlign="center">
 						{/* Put an image here */}
 						<Typography variant="h4">Bleiben Sie auf dem neuesten Stand.</Typography>
