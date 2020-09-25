@@ -1,5 +1,3 @@
-// TODO error security
-
 import { removeHTML } from "../util";
 
 export class NewsFilesNotFoundError extends Error {

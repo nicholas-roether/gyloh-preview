@@ -108,7 +108,6 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
         if(!topBreakpoint) return;
         const widthNum = breakpoints[topBreakpoint];
 
-        // TODO sliding animations
         const leftToRight: {[key: string]: any} = {
             entering: { marginLeft: -widthNum},
             entered: { marginLeft: 0 },
