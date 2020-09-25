@@ -34,6 +34,6 @@ export default class NewsDisplay extends React.Component<{}, NewsDisplayState> {
 
 	private static async getCards(): Promise<React.ReactElement[]> {
 		const news = await News.get(NewsDisplay.NUM_ARTICLES);
-		return news.map(n => <NewsPreview news={n} />);
+		return news.map((n, i) => <NewsPreview news={n} key={i} />);
 	}
 }
