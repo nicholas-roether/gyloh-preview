@@ -1,11 +1,10 @@
-import { createStyles, ListItemIcon, ListItemText, Theme, withStyles, WithStyles, withTheme, WithTheme } from "@material-ui/core";
-import { SubdirectoryArrowLeft, SubdirectoryArrowRight } from "@material-ui/icons";
+import { createStyles, ListItemText, Theme, withStyles, WithStyles, withTheme, WithTheme } from "@material-ui/core";
 import React from "react";
 import LinkNavOption, { LinkNavOptionProps } from "./LinkNavOption";
 
 const styles = (theme: Theme) => createStyles({
 	nested: {
-		paddingLeft: theme.spacing(3)
+		paddingLeft: theme.spacing(9)
 	}
 });
 
@@ -16,7 +15,6 @@ class CollapseItem extends React.Component<CollapseItemProps & WithStyles<typeof
 		const { classes, children, theme, ...other } = this.props;
 		return (
 			<LinkNavOption classes={{button: classes.nested}} {...other}>
-				<ListItemIcon>{theme.direction === "ltr" ? <SubdirectoryArrowRight /> : <SubdirectoryArrowLeft />}</ListItemIcon>
 				<ListItemText primary={children}/>
 			</LinkNavOption>
 		);
