@@ -2,6 +2,7 @@ import React from "react";
 import { CSSTransition } from "react-transition-group";
 import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core";
 
+// TODO gallery model (sibling class of news model?)
 const images = [
 	"galleries/star/0.jpg",
 	"galleries/star/1.jpg",
