@@ -14,7 +14,7 @@ interface NewsPreviewState {
 }
 
 export default class NewsPreview extends React.Component<NewsPreviewProps, NewsPreviewState> {
-	private static readonly NEWS_URL = "/news/read?a="
+	private static readonly NEWS_URL = "/news/"
 	state = {news: this.props.news || null}
 
 	constructor(props: NewsPreviewProps) {
