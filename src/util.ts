@@ -1,3 +1,5 @@
+import { RouteComponentProps } from "react-router-dom";
+
 export function getHTMLElems(elems: HTMLCollection) {
 	let children = new Array<HTMLElement>();
 	Array.from(elems).forEach(e => e instanceof HTMLElement && children.push(e));
@@ -28,3 +30,5 @@ export function removeHTML(str: string) {
 	div.innerHTML = str;
 	return div.textContent || div.innerText || "";
 }
+
+export type WithRouter = RouteComponentProps<any>;
