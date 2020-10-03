@@ -12,6 +12,8 @@ import {
 	MenuBook as HistoryBooxIcon
 } from "@material-ui/icons";
 import Dropdown from "../common/Dropdown";
+import EduportImg from "../images/eduport.png";
+import DLLImage from "../images/dll.png";
 
 const styles = (theme: Theme) => createStyles({
 	textSizedImage: {
@@ -24,7 +26,7 @@ class EduportLaunchpad extends React.Component<WithStyles<typeof styles>> {
 		const { classes } = this.props;
 		return (
 			<Dropdown 
-				element={<img src="images/eduport.png" width="70%" alt="EduPort"/>}
+				element={<img src={EduportImg} width="70%" alt="EduPort"/>}
 				origin={{horizontal: "right", vertical: "top"}}
 			>
 				<ListItem button>
@@ -69,7 +71,7 @@ class EduportLaunchpad extends React.Component<WithStyles<typeof styles>> {
 					<ListItem button>
 							<img 
 								className={classes.textSizedImage} 
-								src="images/dll.png" 
+								src={DLLImage}
 								alt="digital learing lab"
 							/>
 					</ListItem>
