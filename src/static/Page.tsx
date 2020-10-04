@@ -1,4 +1,4 @@
-import { Box, createStyles, Divider, makeStyles, Theme } from "@material-ui/core";
+import { Box, Container, createStyles, Divider, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
 import { classesIf } from "../util";
 import PageBar from "../static/PageBar";
@@ -6,6 +6,12 @@ import { DRAWER_WIDTH } from "../common/SideNav";
 import PageNav from "./PageNav";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
+	page: {
+		height: "100%",
+		overflow: "hidden",
+		display: "flex",
+		flexDirection: "column"
+	},
 	bar: {
 		transition: theme.transitions.create(['margin', 'width'], {
 			easing: theme.transitions.easing.easeIn,
@@ -24,14 +30,16 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 		}
 	},
 	contentWrapper: {
+		flexGrow: 1,
+		overflow: "auto",
 		transition: theme.transitions.create(['margin'], {
 			easing: theme.transitions.easing.easeIn,
 			duration: theme.transitions.duration.leavingScreen,
 		})
 	},
 	content: {
-		maxWidth: "1200px",
 		margin: "0 auto",
+		overflow: "auto",
 		padding: theme.spacing(0, 1),
 		[theme.breakpoints.up("sm")]: {
 			padding: theme.spacing(0, 3)
@@ -58,7 +66,7 @@ const Page: React.FC<PageProps> = props => {
 	const classes = useStyles();
 	const { onThemeChange, ...other } = props;
 	return (
-		<div {...other}>
+		<div {...other} className={classes.page}>
 			<PageBar onOpenMenu={() => setNavOpen(true)} className={classesIf(
 				classes.bar,
 				[classes.barOpen, navOpen]
@@ -75,9 +83,11 @@ const Page: React.FC<PageProps> = props => {
 						<Typography color="textPrimary">Home</Typography>
 					</Breadcrumbs> */}
 				</Box>
-				<Box className={classes.content}>
-					{props.children}
-				</Box>			
+				<Container className={classes.content}>
+					<React.Fragment>
+						{props.children}
+					</React.Fragment>
+				</Container>
 			</div>
 		</div>
 	);
