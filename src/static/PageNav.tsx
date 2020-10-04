@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 	}
 }));
 
-
 interface PageNavProps {
 	open: boolean;
 	onOpen: React.MouseEventHandler;

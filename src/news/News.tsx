@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import MuiMD from "../common/MuiMD";
 import Error404 from "../error/Error404";
 import NewsModel from "../model/NewsModel";
 
 function News(): React.ReactElement {
-	const [content, setContent] = useState<string | null>(null);
+	const [content, setContent] = React.useState<string | null>(null);
 	const { name } = useParams<{name: string}>();
 	if(!name) return <Error404 location={window.location} />;
 	if(!content) {

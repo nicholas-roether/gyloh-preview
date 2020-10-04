@@ -3,7 +3,6 @@ import { Collapse, List, ListItem, ListItemIcon, ListItemText } from "@material-
 import { Link as RouterLink } from "react-router-dom";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
-
 interface CollapseNavOptionProps {
 	to?: string;
 	text: React.ReactElement | string;

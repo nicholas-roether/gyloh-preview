@@ -10,7 +10,5 @@ Informationen der Behörde zum Umgang mit COVID-19 Symptomen finden Sie hier: [I
 
 Unser Hygienekonzept können Sie hier einsehen: [Hygieneplan Gyloh](https://www.gymnasium-lohbruegge.de/info-service/dokumente/send/29-verschiedenes/203-hygieneplan-gyloh)
 
-
 Herzliche Grüße;
-
 Heiko Reich, Schulleiter

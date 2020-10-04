@@ -7,7 +7,7 @@ interface NewsDisplayState {
 	cards: React.ReactElement[];
 }
 
-export default class NewsDisplay extends React.Component<{}, NewsDisplayState> {
+class NewsDisplay extends React.Component<{}, NewsDisplayState> {
     private static readonly NUM_CARDS = {
 		xs: 1,
 		sm: 2,
@@ -37,3 +37,5 @@ export default class NewsDisplay extends React.Component<{}, NewsDisplayState> {
 		return news.map((n, i) => <NewsPreview news={n} key={i} />);
 	}
 }
+
+export default NewsDisplay;
