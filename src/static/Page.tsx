@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 	}
 }));
 
-interface PageProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface PageProps extends React.HTMLAttributes<HTMLDivElement> {
 	onThemeChange?: () => void,
 }
 
@@ -81,10 +81,6 @@ const Page: React.FC<PageProps> = props => {
 			</div>
 		</div>
 	);
-}
-
-export type {
-	PageProps
 }
 
 export default Page;

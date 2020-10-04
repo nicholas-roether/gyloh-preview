@@ -1,7 +1,7 @@
 import {Button, Menu, PopoverOrigin } from "@material-ui/core";
 import React from "react";
 
-interface DropdownProps {
+export interface DropdownProps {
 	open?: boolean,
 	element: React.ReactElement,
 	id?: string,
@@ -38,10 +38,6 @@ const Dropdown: React.FC<DropdownProps> = props => {
 			</Menu>
 		</span>
 	)
-}
-
-export type {
-	DropdownProps
 }
 
 export default Dropdown;

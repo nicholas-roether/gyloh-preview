@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 	}
 }));
 
-interface PageRouterProps {
+export interface PageRouterProps {
 	onThemeChage?: () => void;
 }
 
@@ -36,10 +36,6 @@ const PageRouter: React.FC<PageRouterProps> = props => {
 			</Page>
 		</Router>
 	);
-}
-
-export type {
-	PageRouterProps
 }
 
 export default PageRouter;

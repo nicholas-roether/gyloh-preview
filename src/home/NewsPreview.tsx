@@ -4,7 +4,7 @@ import NewsCard from "./NewsCard";
 import NewsModel from "../model/NewsModel";
 import MuiMD from "../common/MuiMD";
 
-interface NewsPreviewProps {
+export interface NewsPreviewProps {
 	news?: NewsModel;
 	load?: Promise<NewsModel>;
 }
@@ -39,10 +39,6 @@ class NewsPreview extends React.Component<NewsPreviewProps, NewsPreviewState> {
 			</NewsCard>
 		);
 	}
-}
-
-export type {
-	NewsPreviewProps
 }
 
 export default NewsPreview;

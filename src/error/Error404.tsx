@@ -3,7 +3,7 @@ import React from "react";
 import DefaultButton from "../common/DefaultButton";
 import Error from "./Error";
 
-interface Error404Props {
+export interface Error404Props {
 	location: Location
 }
 
@@ -22,9 +22,5 @@ const Error404: React.FC<Error404Props> = props => (
 		</Box>
 	</Error>
 );
-
-export type {
-	Error404Props
-}
 
 export default Error404;

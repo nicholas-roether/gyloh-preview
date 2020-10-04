@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 	}
 }));
 
-interface PageNavProps {
+export interface PageNavProps {
 	open: boolean;
 	onOpen: React.MouseEventHandler;
 	onClose: React.MouseEventHandler
@@ -102,10 +102,6 @@ const PageNav: React.FC<PageNavProps> = props => {
 			 </Box>
 		</SideNav>
 	);
-}
-
-export type {
-	PageNavProps
 }
 
 export default PageNav;

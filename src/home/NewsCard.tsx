@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 	},
 }));
 
-interface NewsCardProps {
+export interface NewsCardProps {
 	heading?: string | null,
 	more?: string | null
 }
@@ -52,10 +52,6 @@ const NewsCard: React.FC<NewsCardProps> = props => {
 			}
 		</Card>
 	);
-}
-
-export type {
-	NewsCardProps
 }
 
 export default NewsCard;

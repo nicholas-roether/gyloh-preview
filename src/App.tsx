@@ -4,7 +4,7 @@ import PageRouter from "./static/Router";
 
 type ThemeMap = Record<string, Theme>;
 
-interface AppProps {
+export interface AppProps {
 	initialTheme: string,
 	themes: ThemeMap
 }
@@ -19,11 +19,6 @@ const App: React.FC<AppProps> = props => {
 			</Box>
 		</ThemeProvider>
 	)
-}
-
-export type {
-	AppProps,
-	ThemeMap
-}
+};
 
 export default App;

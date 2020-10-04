@@ -2,7 +2,7 @@ import { Box, Button } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 
-interface DefaultButtonProps {
+export interface DefaultButtonProps {
 	onClick?: React.MouseEventHandler,
 	href?: string,
 	margin?: "right" | "left" | "both" | "none" | null,
@@ -30,9 +30,5 @@ const DefaultButton: React.FC<DefaultButtonProps> = props => (
 		}
 	</Box>
 );
-
-export type {
-	DefaultButtonProps
-}
 
 export default DefaultButton;

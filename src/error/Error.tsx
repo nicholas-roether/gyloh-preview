@@ -1,7 +1,7 @@
 import { Box, Typography } from "@material-ui/core";
 import React from "react";
 
-interface ErrorProps {
+export interface ErrorProps {
 	code: number,
 	description?: string
 }
@@ -16,9 +16,5 @@ const Error: React.FC<ErrorProps> = props => (
 		</Box>
 	</Box>
 );
-
-export type {
-	ErrorProps
-}
 
 export default Error

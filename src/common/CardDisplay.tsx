@@ -46,7 +46,7 @@ const styles = (theme: Theme) => createStyles({
     }
 });
 
-interface CardDisplayProps  {
+export interface CardDisplayProps  {
     numCards: {
         xs: number,
         sm: number,
@@ -159,7 +159,5 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
         );
     }
 }
-
-export type { CardDisplayProps };
 
 export default withStyles(styles)(withTheme(withWidth()(CardDisplay)));
