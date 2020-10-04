@@ -12,24 +12,17 @@ const useStyles = makeStyles(theme => createStyles({
 function MuiMD(props: {children: string, overrides?: any}) {
 	const classes = useStyles();
 	return (
-		<Markdown options={{createElement: (Tag, props, ...children) => {
-			switch(Tag) {
-				case "h1":
-					return <h1 className={classes.heading}>{children}</h1>;
-				case "h2":
-					return <h2 className={classes.heading}>{children}</h2>;
-				case "h3":
-					return <h3 className={classes.heading}>{children}</h3>;
-				case "h4":
-					return <h4 className={classes.heading}>{children}</h4>;
-				case "h5":
-					return <h5 className={classes.heading}>{children}</h5>;
-				case "h6":
-					return <h6 className={classes.heading}>{children}</h6>;
-				default:
-					return <Tag {...props}>{children}</Tag>
+		<Markdown options={{
+			overrides: {
+				h1: ({children}) => <h1 className={classes.heading}>{children}</h1>,
+				h2: ({children}) => <h2 className={classes.heading}>{children}</h2>,
+				h3: ({children}) => <h3 className={classes.heading}>{children}</h3>,
+				h4: ({children}) => <h4 className={classes.heading}>{children}</h4>,
+				h5: ({children}) => <h5 className={classes.heading}>{children}</h5>,
+				h6: ({children}) => <h6 className={classes.heading}>{children}</h6>,
+				...props.overrides
 			}
-		}, overrides: props.overrides}} {...props}>
+		}} {...props}>
 			{props.children}
 		</Markdown>
 	);
