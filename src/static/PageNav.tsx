@@ -48,7 +48,8 @@ const PageNav: React.FC<PageNavProps> = props => {
 					<ListItemIcon><icons.Home /></ListItemIcon>
 					<ListItemText primary="Home" />
 				</LinkNavOption>
-				<CollapseNavOption to="/about" text="Über Uns" icon={<icons.People />}>
+				<CollapseNavOption text="Über Uns" icon={<icons.People />}>
+					<CollapseItem to="/about">Allgemein</CollapseItem>
 					<CollapseItem to="/about/menschen">Menschen</CollapseItem>
 					<CollapseItem to="/about/fördern">Fördern &amp; Fordern</CollapseItem>
 					<CollapseItem to="/about/beratung">Beratung</CollapseItem>
@@ -64,7 +65,8 @@ const PageNav: React.FC<PageNavProps> = props => {
 					<ListItemIcon><icons.Announcement /></ListItemIcon>
 					<ListItemText primary="News" />
 				</LinkNavOption>
-				<CollapseNavOption to="/info" text="Info" icon={<icons.Info />}>
+				<CollapseNavOption text="Info" icon={<icons.Info />}>
+					<CollapseItem to="/info">Allgemein</CollapseItem>
 					<CollapseItem to="/info/downloads">Downloads</CollapseItem>
 					<CollapseItem to="/info/ganztag">Ganztag</CollapseItem>
 					<CollapseItem to="/info/berufsorientierung">Berufsorientierung</CollapseItem>
