@@ -64,13 +64,15 @@ const SideNav: React.FC<SideNavProps> = props => {
 	const theme = useTheme();
 	const swipeable = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
 	const NavDrawer = swipeable ? SwipeableNav : StaticNav;
+	const { children, ...drawerProps } = props;
 	return (
-		<NavDrawer {...props}>
+		<NavDrawer {...drawerProps}>
 			<div className={classes.drawerNav}>
 				<IconButton onClick={props.onClose}>
 					{theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 				</IconButton>
 			</div>
+			{children}
 		</NavDrawer>
 	);
 }
