@@ -12,4 +12,4 @@ Viele Grüße!
 
 Die Gymnasium Lohbrügge For Future AG
 
-<iframe style="width: 100%; height: 100%;" src="https://www.stadtradeln.de/fileadmin/radelkalender/embed/radelmeter-team.php?sr_team_id=424538" scrolling="no" width="300" height="150" frameborder="0"></iframe>
+<iframe style="width: 100%; margin: 0 20px; min-width: 320px; max-width: 415px; height: 415px;" src="https://www.stadtradeln.de/fileadmin/radelkalender/embed/radelmeter-team.php?sr_team_id=424538" scrolling="no" width="300" height="150" frameborder="0"></iframe>

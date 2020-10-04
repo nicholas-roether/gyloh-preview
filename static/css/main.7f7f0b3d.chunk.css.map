@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,KACC,WAAY,CACZ,QAAS,CACT,SAAU,CACV,+BACD,CAEA,MACC,YACD","file":"main.7f7f0b3d.chunk.css","sourcesContent":["body {\r\n\theight: 100%;\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\tfont-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n#root {\r\n\theight: 100vh;\r\n}"]}
