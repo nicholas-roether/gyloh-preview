@@ -15,9 +15,9 @@ export class NewsNotFoundError extends Error {
 	}
 }
 
-export default class News {
-	private static readonly NEWS_LOCATION = "news/"
-	private static readonly JSON_LOCATION = News.NEWS_LOCATION + "news.json";
+export default class NewsModel {
+	private static readonly NEWS_LOCATION = process.env.PUBLIC_URL + "/news/"
+	private static readonly JSON_LOCATION = NewsModel.NEWS_LOCATION + "news.json";
 	private static readonly PREVIEW_LENGTH = 150;
 	private static _filenames: string[] | null;
 
@@ -48,16 +48,16 @@ export default class News {
 		let preview = "";
 
 		do preview += current + "\n\n";
-		while(preview.length < News.PREVIEW_LENGTH && (current = paragraphs.shift()));
+		while(preview.length < NewsModel.PREVIEW_LENGTH && (current = paragraphs.shift()));
 		preview = preview.trimEnd();
 		
 		return preview;
 	}
 
 	private static async fetchFilenames(): Promise<string[]> {
-		const data = await fetch(News.JSON_LOCATION);
+		const data = await fetch(NewsModel.JSON_LOCATION);
 		if(!data.ok)
-			throw new NewsFilesNotFoundError(News.JSON_LOCATION)
+			throw new NewsFilesNotFoundError(NewsModel.JSON_LOCATION)
 		const names = await data.json() as string[];
 		return names;
 	}
@@ -67,15 +67,16 @@ export default class News {
 		return (this._filenames = await this.fetchFilenames());
 	}
 
-	public static async getNews(filename: string): Promise<News> {
-		const data = await fetch(News.NEWS_LOCATION + filename);
+	public static async getNews(filename: string): Promise<NewsModel> {
+		if(!filename.includes(".")) filename += ".md";
+		const data = await fetch(NewsModel.NEWS_LOCATION + filename);
 		if(!data.ok)
 			throw new NewsNotFoundError(filename);
 		const text = await data.text();
-		return new News(text, filename.split("/").pop()?.replace(/\.md$/, "") || "");
+		return new NewsModel(text, filename.split("/").pop()?.replace(/\.md$/, "") || "");
 	}
 
-	public static async get(num?: number): Promise<News[]> {
+	public static async get(num?: number): Promise<NewsModel[]> {
 		return Promise.all(
 			(await this.getFilenames())
 			.slice(0, num)
@@ -83,7 +84,7 @@ export default class News {
 		);
 	}
 
-	public static async getLatest(): Promise<News> {
+	public static async getLatest(): Promise<NewsModel> {
 		return (await this.get(1))[0];
 	}
 }

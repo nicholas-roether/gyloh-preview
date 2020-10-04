@@ -31,7 +31,7 @@ class PageRouter extends React.Component<RouterProps & WithStyles<typeof styles>
 						<Route path="/" exact>
 							<Home />
 						</Route>
-						<Route path="/news/:article">
+						<Route path="/news/:name">
 							<News />
 						</Route>
 						<Route path="*" component={Error404} />

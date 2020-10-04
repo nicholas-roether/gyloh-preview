@@ -1,6 +1,6 @@
 import React from "react";
 import CardDisplay from "../common/CardDisplay";
-import News from "../model/News";
+import NewsModel from "../model/NewsModel";
 import NewsPreview from "./NewsPreview";
 
 interface NewsDisplayState {
@@ -33,7 +33,7 @@ export default class NewsDisplay extends React.Component<{}, NewsDisplayState> {
 	}
 
 	private static async getCards(): Promise<React.ReactElement[]> {
-		const news = await News.get(NewsDisplay.NUM_ARTICLES);
+		const news = await NewsModel.get(NewsDisplay.NUM_ARTICLES);
 		return news.map((n, i) => <NewsPreview news={n} key={i} />);
 	}
 }

@@ -69,11 +69,11 @@ class EduportLaunchpad extends React.Component<WithStyles<typeof styles>> {
 				<Divider />
 				<Box mt={1} mb={1}>
 					<ListItem button>
-							<img 
-								className={classes.textSizedImage} 
-								src={dllImage}
-								alt="digital learing lab"
-							/>
+						<img 
+							className={classes.textSizedImage} 
+							src={dllImage}
+							alt="digital learing lab"
+						/>
 					</ListItem>
 				</Box>
 			</Dropdown>
