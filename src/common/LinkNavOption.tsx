@@ -2,7 +2,7 @@ import { Link as RouterLink } from "react-router-dom";
 import React from "react";
 import { LinkProps, ListItem, } from "@material-ui/core";
 
-export interface LinkNavOptionProps extends Omit<LinkProps, "ref"> {
+interface LinkNavOptionProps extends Omit<LinkProps, "ref"> {
 	to: string,
 }
 
@@ -15,6 +15,10 @@ const LinkNavOption: React.FC<LinkNavOptionProps> = props => {
 			</ListItem>
 		</li>
 	);
+}
+
+export type {
+	LinkNavOptionProps
 }
 
 export default LinkNavOption;

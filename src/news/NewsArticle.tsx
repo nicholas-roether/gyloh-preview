@@ -4,7 +4,7 @@ import NewsModel from "../model/NewsModel";
 
 // TODO PromiseLoader util component?
 
-export interface NewsArticleProps {
+interface NewsArticleProps {
 	news?: NewsModel;
 	load?: Promise<NewsModel>;
 }
@@ -13,7 +13,7 @@ interface NewsArticleState {
 	news: NewsModel | null;
 }
 
-export default class NewsArticle extends React.Component<NewsArticleProps, NewsArticleState> {
+class NewsArticle extends React.Component<NewsArticleProps, NewsArticleState> {
 	state = {news: this.props.news || null}
 
 	constructor(props: NewsArticleProps) {
@@ -30,3 +30,9 @@ export default class NewsArticle extends React.Component<NewsArticleProps, NewsA
 		);
 	}
 }
+
+export type {
+	NewsArticleProps
+}
+
+export default NewsArticle;

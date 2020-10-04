@@ -6,7 +6,7 @@ type SlideInDirection = "top" | "bottom" | "left" | "right";
 
 const DurationContext = React.createContext(0);
 
-export interface SlideInProps {
+interface SlideInProps {
 	from?: SlideInDirection;
 	in?: boolean | null;
 	timeout?: number;
@@ -77,6 +77,10 @@ class SlideIn extends React.Component<SlideInProps & WithTheme> {
 			</DurationContext.Provider>
 		);
 	}
+}
+
+export type {
+	SlideInProps
 }
 
 export default withTheme(SlideIn);

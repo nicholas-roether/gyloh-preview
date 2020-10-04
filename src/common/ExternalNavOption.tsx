@@ -1,7 +1,7 @@
 import { LinkProps, ListItem,} from "@material-ui/core";
 import React from "react";
 
-export interface ExternalNavOptionProps extends Omit<LinkProps, "ref"> {
+interface ExternalNavOptionProps extends Omit<LinkProps, "ref"> {
 	to: string;
 }
 
@@ -16,5 +16,9 @@ const ExternalNavOption: React.FC<ExternalNavOptionProps> = props => {
 		</li>
 	); 
 };
+
+export type {
+	ExternalNavOptionProps
+}
 
 export default ExternalNavOption;

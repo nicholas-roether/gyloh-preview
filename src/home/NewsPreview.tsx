@@ -4,7 +4,7 @@ import NewsCard from "./NewsCard";
 import NewsModel from "../model/NewsModel";
 import MuiMD from "../common/MuiMD";
 
-export interface NewsPreviewProps {
+interface NewsPreviewProps {
 	news?: NewsModel;
 	load?: Promise<NewsModel>;
 }
@@ -13,7 +13,7 @@ interface NewsPreviewState {
 	news: NewsModel | null;
 }
 
-export default class NewsPreview extends React.Component<NewsPreviewProps, NewsPreviewState> {
+class NewsPreview extends React.Component<NewsPreviewProps, NewsPreviewState> {
 	private static readonly NEWS_URL = "news/"
 	state = {news: this.props.news || null}
 
@@ -40,3 +40,9 @@ export default class NewsPreview extends React.Component<NewsPreviewProps, NewsP
 		);
 	}
 }
+
+export type {
+	NewsPreviewProps
+}
+
+export default NewsPreview;

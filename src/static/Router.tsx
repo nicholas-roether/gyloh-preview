@@ -15,11 +15,11 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 	}
 }));
 
-export interface RouterProps {
+interface PageRouterProps {
 	onThemeChage?: () => void;
 }
 
-const PageRouter: React.FC<RouterProps> = props => {
+const PageRouter: React.FC<PageRouterProps> = props => {
 	const classes = useStyles();
 	return (
 		<Router basename={process.env.PUBLIC_URL}>
@@ -36,6 +36,10 @@ const PageRouter: React.FC<RouterProps> = props => {
 			</Page>
 		</Router>
 	);
+}
+
+export type {
+	PageRouterProps
 }
 
 export default PageRouter;

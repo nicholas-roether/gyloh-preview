@@ -1,12 +1,12 @@
 import { removeHTML } from "../util";
 
-export class NewsFilesNotFoundError extends Error {
+class NewsFilesNotFoundError extends Error {
 	constructor(expectedURL: string) {
 		super(`The json file containing recent news could not be found. It should be located at ${expectedURL}`)
 	}
 }
 
-export class NewsNotFoundError extends Error {
+class NewsNotFoundError extends Error {
 	public readonly filename: string;
 
 	constructor(filename: string) {
@@ -15,7 +15,7 @@ export class NewsNotFoundError extends Error {
 	}
 }
 
-export default class NewsModel {
+class NewsModel {
 	private static readonly NEWS_LOCATION = process.env.PUBLIC_URL + "/news/"
 	private static readonly JSON_LOCATION = NewsModel.NEWS_LOCATION + "news.json";
 	private static readonly PREVIEW_LENGTH = 150;
@@ -88,3 +88,10 @@ export default class NewsModel {
 		return (await this.get(1))[0];
 	}
 }
+
+export {
+	NewsNotFoundError,
+	NewsFilesNotFoundError
+}
+
+export default NewsModel;

@@ -2,9 +2,9 @@ import { Box, Theme, ThemeProvider } from "@material-ui/core";
 import React from "react";
 import PageRouter from "./static/Router";
 
-export type ThemeMap = Record<string, Theme>;
+type ThemeMap = Record<string, Theme>;
 
-export interface AppProps {
+interface AppProps {
 	initialTheme: string,
 	themes: ThemeMap
 }
@@ -19,6 +19,11 @@ const App: React.FC<AppProps> = props => {
 			</Box>
 		</ThemeProvider>
 	)
+}
+
+export type {
+	AppProps,
+	ThemeMap
 }
 
 export default App;

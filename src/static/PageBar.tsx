@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 	},
 }));
 
-export interface PageBarProps {
+interface PageBarProps {
 	onOpenMenu?: React.MouseEventHandler;
 	onThemeChange?: () => void;
 	className: string;
@@ -67,6 +67,10 @@ const PageBar: React.FC<PageBarProps> = props => {
 			</Toolbar>
 		</AppBar>
 	);
+}
+
+export type {
+	PageBarProps
 }
 
 export default PageBar;

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 	}
 }));
 
-export interface SideNavProps {
+interface SideNavProps {
 	open: boolean,
 	onOpen: React.MouseEventHandler,
 	onClose: React.MouseEventHandler,
@@ -73,6 +73,10 @@ const SideNav: React.FC<SideNavProps> = props => {
 			</div>
 		</NavDrawer>
 	);
+}
+
+export type {
+	SideNavProps
 }
 
 export default SideNav;
