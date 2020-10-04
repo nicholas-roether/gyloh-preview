@@ -10,31 +10,23 @@ export interface CollapseNavOptionProps {
 	icon?: React.ReactElement | string | null;
 }
 
-interface ListItemCollapseState {
-	open: boolean;
+const CollapseNavOption: React.FC<CollapseNavOptionProps> = props => {
+	const [open, setOpen] = React.useState<boolean>(false);
+	const onClick = () => setOpen(prev => !prev);
+	return (
+		<li>
+			<ListItem button component={props.to ? RouterLink : "span"} to={props.to} onClick={() => onClick()}>
+				<ListItemIcon>{props.icon}</ListItemIcon>
+				<ListItemText>{props.text}</ListItemText>
+				{open ? <ExpandLess /> : <ExpandMore />}
+			</ListItem>
+			<Collapse in={open}>
+				<List disablePadding>
+					{props.children}
+				</List>
+			</Collapse>
+		</li>
+	);
 }
 
-export default class CollapseNavOption extends React.Component<CollapseNavOptionProps, ListItemCollapseState> {
-	state = {open: false};
-
-	private onClick() {
-		this.setState(prev => ({open: !prev.open}))
-	}
-
-	render() {
-		return (
-			<li>
-				<ListItem button component={this.props.to ? RouterLink : "span"} to={this.props.to} onClick={() => this.onClick()}>
-					<ListItemIcon>{this.props.icon}</ListItemIcon>
-					<ListItemText>{this.props.text}</ListItemText>
-					{this.state.open ? <ExpandLess /> : <ExpandMore />}
-				</ListItem>
-				<Collapse in={this.state.open}>
-					<List disablePadding>
-						{this.props.children}
-					</List>
-				</Collapse>
-			</li>
-		);
-	}
-}
+export default CollapseNavOption;

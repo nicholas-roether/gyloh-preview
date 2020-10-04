@@ -1,11 +1,11 @@
-import { Box, createStyles, Divider, Theme, WithStyles, withStyles } from "@material-ui/core";
+import { Box, createStyles, Divider, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
 import { classesIf } from "../util";
 import PageBar from "../static/PageBar";
 import { DRAWER_WIDTH } from "../common/SideNav";
 import PageNav from "./PageNav";
 
-const styles = (theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) => createStyles({
 	bar: {
 		transition: theme.transitions.create(['margin', 'width'], {
 			easing: theme.transitions.easing.easeIn,
@@ -47,52 +47,40 @@ const styles = (theme: Theme) => createStyles({
 			marginRight: theme.direction === "ltr" ? 0 : DRAWER_WIDTH,
 		}
 	}
-});
+}));
 
 export interface PageProps extends React.HTMLAttributes<HTMLDivElement> {
 	onThemeChange?: () => void,
 }
 
-class Page extends React.Component<PageProps & WithStyles<typeof styles>> {
-	state = {navOpen: false};
-
-	private openNav() {
-		this.setState({navOpen: true});
-	}
-
-	private closeNav() {
-		this.setState({navOpen: false});
-	}
-
-	render() {
-		let { classes, onThemeChange, ...other } = this.props; 
-
-		return (
-			<div {...other}>
-				<PageBar onOpenMenu={() => this.openNav()} className={classesIf(
-					classes.bar,
-					[classes.barOpen, this.state.navOpen]
-				)} onThemeChange={onThemeChange} />
-				<PageNav open={this.state.navOpen} onOpen={() => this.openNav()} onClose={() => this.closeNav()} />
-				<Divider />
-				<div className={classesIf(
-						classes.contentWrapper,
-						[classes.contentWrapperOpen, this.state.navOpen]
-				)}>
-					<Box marginX={4} marginY={1}>
-
-						{/* TODO implement Breadcrumbs
-						<Breadcrumbs aria-label="breadcrumbs">
-							<Typography color="textPrimary">Home</Typography>
-						</Breadcrumbs> */}
-					</Box>
-					<Box className={classes.content}>
-						{this.props.children}
-					</Box>			
-				</div>
+const Page: React.FC<PageProps> = props => {
+	const [navOpen, setNavOpen] = React.useState<boolean>(false);
+	const classes = useStyles();
+	const { onThemeChange, ...other } = props;
+	return (
+		<div {...other}>
+			<PageBar onOpenMenu={() => setNavOpen(true)} className={classesIf(
+				classes.bar,
+				[classes.barOpen, navOpen]
+			)} onThemeChange={onThemeChange} />
+			<PageNav open={navOpen} onOpen={() => setNavOpen(true)} onClose={() => setNavOpen(false)} />
+			<Divider />
+			<div className={classesIf(
+					classes.contentWrapper,
+					[classes.contentWrapperOpen, navOpen]
+			)}>
+				<Box marginX={4} marginY={1}>
+					{/* TODO implement Breadcrumbs
+					<Breadcrumbs aria-label="breadcrumbs">
+						<Typography color="textPrimary">Home</Typography>
+					</Breadcrumbs> */}
+				</Box>
+				<Box className={classes.content}>
+					{props.children}
+				</Box>			
 			</div>
-		);
-	}
+		</div>
+	);
 }
 
-export default withStyles(styles)(Page);
+export default Page;

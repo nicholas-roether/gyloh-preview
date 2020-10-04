@@ -1,7 +1,7 @@
-import { createStyles, Divider, Theme, withStyles, WithStyles } from "@material-ui/core";
+import { createStyles, Divider, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
 
-const styles = (theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) => createStyles({
 	wrapper: {
 		paddingBottom: theme.spacing(6),
 		[theme.breakpoints.up("sm")]: {
@@ -14,18 +14,16 @@ const styles = (theme: Theme) => createStyles({
 			paddingBottom: theme.spacing(8)
 		}
 	}
-})
+}));
 
-class Section extends React.Component<WithStyles<typeof styles>> {
-	render() {
-		const { classes } = this.props;
-		return (
-			<div className={classes.wrapper}>
-				<div  className={classes.contentWrapper}>{this.props.children}</div>
-				<Divider />
-			</div>
-		);
-	}
+const Section: React.FC = props => {
+	const classes = useStyles();
+	return (
+		<div className={classes.wrapper}>
+			<div  className={classes.contentWrapper}>{props.children}</div>
+			<Divider />
+		</div>
+	);
 }
 
-export default withStyles(styles)(Section);
+export default Section;

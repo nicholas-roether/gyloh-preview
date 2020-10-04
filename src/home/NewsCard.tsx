@@ -1,8 +1,8 @@
-import { Box, Button, Card, CardActions, CardContent, createStyles, Theme, Typography, WithStyles, withStyles } from "@material-ui/core";
+import { Box, Button, Card, CardActions, CardContent, createStyles, makeStyles, Theme, Typography } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const styles = (theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) => createStyles({
 	cardRoot: {
 		background: theme.palette.primary.main,
 		color: theme.palette.primary.contrastText,
@@ -23,37 +23,35 @@ const styles = (theme: Theme) => createStyles({
 			margin: theme.spacing(0, 2),
 		}
 	},
-});
+}));
 
-export interface NewsCardProps extends WithStyles<typeof styles> {
+export interface NewsCardProps {
 	heading?: string | null,
 	more?: string | null
 }
 
-class NewsCard extends React.Component<NewsCardProps> {
-	render() {
-		const { classes } = this.props;
-		return (
-			<Card className={classes.news} classes={{root: classes.cardRoot}}>
-				<CardContent className={this.props.classes.cardContent}>
-					<Box mb={3}>
-						<Typography variant="h5">{this.props.heading}</Typography>
+const NewsCard: React.FC<NewsCardProps> = props => {
+	const classes = useStyles();
+	return (
+		<Card className={classes.news} classes={{root: classes.cardRoot}}>
+			<CardContent className={classes.cardContent}>
+				<Box mb={3}>
+					<Typography variant="h5">{props.heading}</Typography>
+				</Box>
+				<Typography component="div">{props.children}</Typography>
+			</CardContent>
+			{
+				props.more &&
+				<CardActions>
+					<Box display="inline-block" marginX="auto">
+						<Link to={props.more}>
+							<Button color="secondary">Mehr lesen</Button>
+						</Link>
 					</Box>
-					<Typography component="div">{this.props.children}</Typography>
-				</CardContent>
-				{
-					this.props.more &&
-					<CardActions>
-						<Box display="inline-block" marginX="auto">
-							<Link to={this.props.more}>
-								<Button color="secondary">Mehr lesen</Button>
-							</Link>
-						</Box>
-					</CardActions>
-				}
-			</Card>
-		);
-	}
+				</CardActions>
+			}
+		</Card>
+	);
 }
 
-export default withStyles(styles)(NewsCard);
+export default NewsCard;

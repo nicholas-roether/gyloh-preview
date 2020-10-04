@@ -9,45 +9,35 @@ export interface DropdownProps {
 	origin?: PopoverOrigin
 }
 
-interface DropdownState { anchorEl: (EventTarget & Element) | null }
-
-export default class Dropdown extends React.Component<DropdownProps, DropdownState> {
-	state = {anchorEl: null}
-
-	private open(e: React.MouseEvent) {
-		this.setState({anchorEl: e.currentTarget});
-	}
-
-	private close() {
-		this.setState({anchorEl: null});
-	}
-
-	render() {
-		return (
-			<span id={this.props.id}>
-				<Button 
-					className="dropdown-button"
-					color="inherit" 
-					aria-controls="simple-menu" 
-					aria-haspopup="true"
-					onClick={(e) => this.open(e)}
-				>
-					{this.props.element}
-				</Button>
-				<Menu 
-					open={Boolean(this.state.anchorEl)} 
-					id={this.props.menuId} 
-					anchorEl={this.state.anchorEl}
-					anchorOrigin={this.props.origin}
-					onClick={(e) => {
-						if(e.target instanceof HTMLElement && e.target.parentNode === e.currentTarget)
-							this.close();
-					}}
-					keepMounted={true}
-				>
-					{this.props.children}
-				</Menu>
-			</span>
-		);
-	}
+const Dropdown: React.FC<DropdownProps> = props => {
+	const [anchorEl, setAnchorEl] = React.useState<(EventTarget & Element) | null>(null);
+	const open: React.MouseEventHandler = e => setAnchorEl(e.currentTarget);
+	const close: React.MouseEventHandler = e => setAnchorEl(null);
+	return (
+		<span id={props.id}>
+			<Button 
+				className="dropdown-button"
+				color="inherit" 
+				aria-controls="simple-menu" 
+				aria-haspopup="true"
+				onClick={(e) => open(e)}
+			>
+				{props.element}
+			</Button>
+			<Menu 
+				open={Boolean(anchorEl)} 
+				id={props.menuId} 
+				anchorEl={anchorEl}
+				anchorOrigin={props.origin}
+				onClick={(e) => {
+					if(e.target instanceof HTMLElement && e.target.parentNode === e.currentTarget) close(e);
+				}}
+				keepMounted={true}
+			>
+				{props.children}
+			</Menu>
+		</span>
+	)
 }
+
+export default Dropdown;

@@ -6,15 +6,15 @@ export interface LinkNavOptionProps extends Omit<LinkProps, "ref"> {
 	to: string,
 }
 
-export default class LinkNavOption extends React.Component<LinkNavOptionProps> {
-	render() {
-		const { to, ...other } = this.props;
-		return (
-			<li>
-				<ListItem button component={RouterLink} to={to} {...other}>
-					{this.props.children}
-				</ListItem>
-			</li>
-		);
-	}
+const LinkNavOption: React.FC<LinkNavOptionProps> = props => {
+	const { to, ...other } = props;
+	return (
+		<li>
+			<ListItem button component={RouterLink} to={to} {...other}>
+				{props.children}
+			</ListItem>
+		</li>
+	);
 }
+
+export default LinkNavOption;

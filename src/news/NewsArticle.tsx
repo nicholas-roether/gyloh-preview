@@ -1,16 +1,16 @@
 import Markdown from "markdown-to-jsx";
 import React from "react";
-import News from "../model/News";
+import NewsModel from "../model/NewsModel";
 
 // TODO PromiseLoader util component?
 
 export interface NewsArticleProps {
-	news?: News;
-	load?: Promise<News>;
+	news?: NewsModel;
+	load?: Promise<NewsModel>;
 }
 
 interface NewsArticleState {
-	news: News | null;
+	news: NewsModel | null;
 }
 
 export default class NewsArticle extends React.Component<NewsArticleProps, NewsArticleState> {
