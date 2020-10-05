@@ -1,17 +1,15 @@
-import { Box, createStyles, makeStyles, Theme, ThemeProvider } from "@material-ui/core";
+import { Box, makeStyles, Theme, ThemeProvider } from "@material-ui/core";
 import React from "react";
 import PageRouter from "./static/Router";
 
 type ThemeMap = Record<string, Theme>;
 
-const useStyles = makeStyles(theme => createStyles({
+const useStyles = makeStyles({
 	app: {
 		overflow: "hidden",
-		background: theme.palette.background.default,
 		height: "100%",
-		color: theme.palette.text.primary
 	}
-}));
+});
 
 export interface AppProps {
 	initialTheme: string,
@@ -24,7 +22,12 @@ const App: React.FC<AppProps> = props => {
 	const theme = props.themes[themeName];
 	return (
 		<ThemeProvider theme={theme}>
-			<Box id="app" className={classes.app}>
+			<Box 
+				id="app" 
+				className={classes.app}
+				bgcolor={theme.palette.background.default}
+				color={theme.palette.text.primary}
+			>
 				<PageRouter onThemeChage={() => setThemeName(prev => prev === "light" ? "dark" : "light")} />
 			</Box>
 		</ThemeProvider>
