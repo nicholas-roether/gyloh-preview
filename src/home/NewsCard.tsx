@@ -1,8 +1,8 @@
-import { Box, Button, Card, CardActions, CardContent, createStyles, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Box, Button, Card, CardActions, CardContent, makeStyles, Theme, Typography } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) => ({
 	cardRoot: {
 		background: theme.palette.primary.main,
 		color: theme.palette.primary.contrastText,
@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 			margin: theme.spacing(0, 2),
 		}
 	},
+	link: {
+		textDecoration: "none"
+	}
 }));
 
 export interface NewsCardProps {
@@ -44,7 +47,7 @@ const NewsCard: React.FC<NewsCardProps> = props => {
 				props.more &&
 				<CardActions>
 					<Box display="inline-block" marginX="auto">
-						<Link to={props.more}>
+						<Link to={props.more} className={classes.link}>
 							<Button color="secondary">Mehr lesen</Button>
 						</Link>
 					</Box>
