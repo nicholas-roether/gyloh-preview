@@ -1,9 +1,9 @@
-import { createStyles, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import Markdown from "markdown-to-jsx";
 import React from "react";
 import DefaultButton from "./DefaultButton";
 
-const useStyles = makeStyles(theme => createStyles({
+const useStyles = makeStyles(theme => ({
 	heading: {
 		fontFamily: theme.typography.h1.fontFamily,
 		fontWeight: "normal"

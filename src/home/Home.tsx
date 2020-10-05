@@ -1,11 +1,11 @@
-import { Box, createStyles, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Box, makeStyles, Theme, Typography } from "@material-ui/core";
 import React from "react";
 import DefaultButton from "../common/DefaultButton";
 import Section from "../common/Section";
 import NewsDisplay from "./NewsDisplay";
 import Star from "./Star";
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) => ({
 	openingWrapper: {
 		display: "flex",
 		maxWidth: "920px",

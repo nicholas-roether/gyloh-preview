@@ -1,4 +1,4 @@
-import { createStyles, makeStyles, Theme } from "@material-ui/core";
+import { makeStyles, Theme } from "@material-ui/core";
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Error404 from "../error/Error404";
@@ -6,7 +6,7 @@ import Home from "../home/Home";
 import News from "../news/News";
 import Page from "./Page";
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) => ({
 	page: {
 		transition: theme.transitions.create(["transform, opacity"], {
 			easing: theme.transitions.easing.easeIn,

@@ -1,4 +1,4 @@
-import { Box, createStyles, Divider, ListItem, ListItemIcon, ListItemText, makeStyles, Theme } from "@material-ui/core";
+import { Box, Divider, ListItem, ListItemIcon, ListItemText, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
 import { 
 	Home as HomeIcon, 
@@ -15,7 +15,7 @@ import Dropdown from "../common/Dropdown";
 import eduportImage from "../images/eduport.png";
 import dllImage from "../images/dll.png";
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) => ({
 	textSizedImage: {
 		height: theme.typography.h4.fontSize
 	}

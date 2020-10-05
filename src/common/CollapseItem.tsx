@@ -1,8 +1,8 @@
-import { createStyles, ListItemText, makeStyles, Theme } from "@material-ui/core";
+import { ListItemText, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
 import LinkNavOption, { LinkNavOptionProps } from "./LinkNavOption";
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) => ({
 	nested: {
 		paddingLeft: theme.spacing(9)
 	}

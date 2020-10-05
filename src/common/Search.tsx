@@ -1,9 +1,9 @@
-import { Box, createStyles, IconButton, InputBase, makeStyles, Theme } from "@material-ui/core";
+import { Box, IconButton, InputBase, makeStyles, Theme } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import React from "react";
 import { classesIf } from "../util";
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) => ({
 	searchBg: {
 		display: "inline-flex",
 		position: "absolute",

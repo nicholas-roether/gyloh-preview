@@ -1,7 +1,7 @@
-import { createStyles, Divider, makeStyles, Theme } from "@material-ui/core";
+import { Divider, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) => ({
 	wrapper: {
 		paddingBottom: theme.spacing(6),
 		[theme.breakpoints.up("sm")]: {

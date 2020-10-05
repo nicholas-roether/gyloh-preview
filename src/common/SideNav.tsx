@@ -1,10 +1,10 @@
-import { createStyles, Drawer, IconButton, makeStyles, SwipeableDrawer, Theme, useMediaQuery, useTheme } from "@material-ui/core";
+import { Drawer, IconButton, makeStyles, SwipeableDrawer, Theme, useMediaQuery, useTheme } from "@material-ui/core";
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from "@material-ui/icons";
 import React from "react";
 
 export const DRAWER_WIDTH = 240;
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) => ({
 	drawerPaper: {
 		maxWidth: DRAWER_WIDTH,
 		width: "100vw",

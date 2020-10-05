@@ -1,11 +1,11 @@
-import { Box, Container, createStyles, Divider, makeStyles, Theme } from "@material-ui/core";
+import { Box, Container, Divider, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
 import { classesIf } from "../util";
 import PageBar from "../static/PageBar";
 import { DRAWER_WIDTH } from "../common/SideNav";
 import PageNav from "./PageNav";
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) => ({
 	page: {
 		height: "100%",
 		overflow: "hidden",
