@@ -1,6 +1,6 @@
 import { Box, makeStyles, Theme, ThemeProvider } from "@material-ui/core";
 import React from "react";
-import PageRouter from "./static/Router";
+import PageRouter from "./static/PageRouter";
 
 type ThemeMap = Record<string, Theme>;
 
