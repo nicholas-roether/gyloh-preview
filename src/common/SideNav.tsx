@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		...theme.mixins.toolbar
 	},
 	drawerContent: {
-		overflowY: "hidden",
+		overflow: "hidden",
 		paddingRight: "17px",
 		height: "100%",
 		"&:hover": {
