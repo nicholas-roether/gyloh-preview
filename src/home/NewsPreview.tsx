@@ -31,7 +31,10 @@ class NewsPreview extends React.Component<NewsPreviewProps, NewsPreviewState> {
 				<MuiMD overrides={{
 					"a": {
 						component: Link,
-						props: {color: "secondary"}
+						props: {
+							color: "secondary", 
+							style: {textDecoration: "underline"}
+						}
 					}
 				}}>
 					{news.getContentPreview() || ""}
