@@ -122,6 +122,8 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
             exited: { marginLeft: -widthNum }
         }
 
+        const animation = this.state.index < this.state.prevIndex ? leftToRight : rightToLeft;
+
         return (
             <div className={classes.displayWrapper} style={{height: this.props.height || 400}}>
                 <Fab className={classes.button} color="secondary" disabled={this.state.index <= 0} onClick={() => this.prevPage(numCards)}>
@@ -134,7 +136,7 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
                                 <CSSTransition in={false} timeout={0} appear={true} key={"page-" + this.state.prevIndex.toString()}>
                                     {state => (
                                         <div className={classes.pageWrapper} aria-hidden="true" style={
-                                            (this.state.index < this.state.prevIndex ? leftToRight : rightToLeft)[state]
+                                            animation[state]
                                         }>
                                             {React.Children.toArray(this.props.children).slice(this.state.prevIndex, this.state.prevIndex + numCards)}
                                         </div>
@@ -144,7 +146,7 @@ class CardDisplay extends React.Component<CardDisplayProps & WithStyles<typeof s
                             <CSSTransition in={true} timeout={0} appear={!this.state.initial} key={"page-" + this.state.index.toString()}>
                                 {state => (
                                     <div className={classes.pageWrapper} style={
-                                        (this.state.index < this.state.prevIndex ? leftToRight : rightToLeft)[state]
+                                        animation[["entering", "entered"].includes(state) ? state : "entering"] // fix that one bug (?) on chrome
                                     }>
                                         {React.Children.toArray(this.props.children).slice(this.state.index, this.state.index + numCards)}
                                     </div>
