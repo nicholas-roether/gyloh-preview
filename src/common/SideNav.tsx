@@ -19,6 +19,15 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 		alignItems: "center",
 		justifyContent: theme.direction === "ltr" ? "flex-end" : "flex-start",
 		...theme.mixins.toolbar
+	},
+	drawerContent: {
+		overflowY: "hidden",
+		paddingRight: "17px",
+		height: "100%",
+		"&:hover": {
+			paddingRight: 0,
+			overflowY: "scroll"
+		}
 	}
 }));
 
@@ -72,7 +81,9 @@ const SideNav: React.FC<SideNavProps> = props => {
 					{theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 				</IconButton>
 			</div>
-			{children}
+			<div className={classes.drawerContent}>
+				{children}
+			</div>
 		</NavDrawer>
 	);
 }
