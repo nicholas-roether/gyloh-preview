@@ -5,6 +5,8 @@ import "./index.css";
 import { lightTheme, darkTheme} from "./theme";
 import { adjustHref } from "./util";
 
+// TODO Codesplitting
+
 adjustHref();
 
 const themeMap = {
