@@ -1,4 +1,4 @@
-import { Box, Container, Divider, makeStyles, Theme } from "@material-ui/core";
+import { Box, Container, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
 import { classesIf } from "../util";
 import PageBar from "../static/PageBar";
@@ -72,7 +72,6 @@ const Page: React.FC<PageProps> = props => {
 				[classes.barOpen, navOpen]
 			)} onThemeChange={onThemeChange} />
 			<PageNav open={navOpen} onOpen={() => setNavOpen(true)} onClose={() => setNavOpen(false)} />
-			<Divider />
 			<div className={classesIf(
 					classes.contentWrapper,
 					[classes.contentWrapperOpen, navOpen]
