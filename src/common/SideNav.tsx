@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		justifyContent: theme.direction === "ltr" ? "flex-end" : "flex-start",
 		...theme.mixins.toolbar
 	},
-	drawerContent: {
+	staticDrawerContent: {
 		overflow: "hidden",
 		paddingRight: "17px",
 		height: "100%",
@@ -28,6 +28,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 			paddingRight: 0,
 			overflowY: "scroll"
 		}
+	},
+	swipeableDrawerContent: {
+		overflowX: "hidden",
+		overflowY: "scroll",
+		height: "100%",
+		scrollbarWidth: "thin"
 	}
 }));
 
@@ -81,7 +87,7 @@ const SideNav: React.FC<SideNavProps> = props => {
 					{theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 				</IconButton>
 			</div>
-			<div className={classes.drawerContent}>
+			<div className={swipeable ? classes.swipeableDrawerContent : classes.staticDrawerContent}>
 				{children}
 			</div>
 		</NavDrawer>
