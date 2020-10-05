@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/gyloh-preview/precache-manifest.5ed9fdc69fadc5d86f783ea429a283dd.js"
+  "/gyloh-preview/precache-manifest.fa70c328cf3e2543cc94a6bd10295e28.js"
 );
 
 self.addEventListener('message', (event) => {

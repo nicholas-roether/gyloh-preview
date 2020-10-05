@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "60b7469737e275f3bb1b89e0c2fd38f3",
+    "revision": "cf06e3b5bc9799ff4fa34599e8a77af1",
     "url": "/gyloh-preview/index.html"
   },
   {
-    "revision": "f792dfe5d56e1f6c8af2",
+    "revision": "53255d92faa8b156286e",
     "url": "/gyloh-preview/static/css/main.7f7f0b3d.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gyloh-preview/static/js/2.a16fa3e7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f792dfe5d56e1f6c8af2",
-    "url": "/gyloh-preview/static/js/main.22417c21.chunk.js"
+    "revision": "53255d92faa8b156286e",
+    "url": "/gyloh-preview/static/js/main.be85c8b8.chunk.js"
   },
   {
     "revision": "d01358cac6eb0bd0189c",
