@@ -1,6 +1,7 @@
 import { createStyles, makeStyles } from "@material-ui/core";
 import Markdown from "markdown-to-jsx";
 import React from "react";
+import DefaultButton from "./DefaultButton";
 
 const useStyles = makeStyles(theme => createStyles({
 	heading: {
@@ -20,6 +21,7 @@ function MuiMD(props: {children: string, overrides?: any}) {
 				h4: ({children}) => <h4 className={classes.heading}>{children}</h4>,
 				h5: ({children}) => <h5 className={classes.heading}>{children}</h5>,
 				h6: ({children}) => <h6 className={classes.heading}>{children}</h6>,
+				button: ({children}) => <DefaultButton>{children}</DefaultButton>,
 				...props.overrides
 			}
 		}} {...props}>
