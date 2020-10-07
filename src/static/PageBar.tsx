@@ -1,7 +1,7 @@
 import { AppBar, IconButton, makeStyles, Theme, Toolbar, Typography, useTheme } from "@material-ui/core";
 import { Menu as MenuIcon, Brightness2 as DarkThemeIcon, Brightness7 as LightThemeIcon, CalendarToday as CalendarIcon } from "@material-ui/icons/";
 import React from "react";
-import Search from "../common/Search";
+import Search from "./Search";
 
 const useStyles = makeStyles((theme: Theme) => ({
 	heading: {

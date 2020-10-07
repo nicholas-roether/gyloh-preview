@@ -2,7 +2,7 @@ import { Box, Container, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
 import { classesIf } from "../util";
 import PageBar from "../static/PageBar";
-import { DRAWER_WIDTH } from "../common/SideNav";
+import { DRAWER_WIDTH } from "./SideNav";
 import PageNav from "./PageNav";
 
 const useStyles = makeStyles((theme: Theme) => ({

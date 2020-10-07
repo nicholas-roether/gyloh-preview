@@ -2,11 +2,11 @@ import { Box, Divider, ListItemIcon, ListItemText, List, Theme, makeStyles } fro
 import * as icons from "@material-ui/icons";
 import React from "react";
 import EduportLaunchpad from "./EduportLaunchpad";
-import CollapseNavOption from "../common/CollapseNavOption";
-import LinkNavOption from "../common/LinkNavOption";
-import SideNav from "../common/SideNav";
-import CollapseItem from "../common/CollapseItem";
-import ExternalNavOption from "../common/ExternalNavOption";
+import CollapseNavOption from "./CollapseNavOption";
+import LinkNavOption from "./LinkNavOption";
+import SideNav from "./SideNav";
+import CollapseItem from "./CollapseItem";
+import ExternalNavOption from "./ExternalNavOption";
 import { Link } from "react-router-dom";
 import logoImage from "../images/logo.png";
 
