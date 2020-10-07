@@ -1,4 +1,4 @@
-import { Box, Divider, ListItem, ListItemIcon, ListItemText, makeStyles, Theme } from "@material-ui/core";
+import { Box, Divider, ListItemIcon, ListItemText, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
 import { 
 	Home as HomeIcon, 
@@ -14,6 +14,7 @@ import {
 import Dropdown from "../common/Dropdown";
 import eduportImage from "../images/eduport.png";
 import dllImage from "../images/dll.png";
+import ExternalNavOption from "./ExternalNavOption";
 
 const useStyles = makeStyles((theme: Theme) => ({
 	textSizedImage: {
@@ -28,52 +29,52 @@ const EduportLaunchpad: React.FC = props => {
 			element={<img src={eduportImage} width="70%" alt="EduPort"/>}
 			origin={{horizontal: "right", vertical: "top"}}
 		>
-			<ListItem button>
+			<ExternalNavOption to="https://gyloh.hamburg.de/">
 				<ListItemIcon><HomeIcon /></ListItemIcon>
 				<ListItemText primary="Startseite" />
-			</ListItem>
-			<ListItem button>
+			</ExternalNavOption>
+			<ExternalNavOption to="https://user.eduport.hamburg.de/konto">
 				<ListItemIcon><AccountIcon /></ListItemIcon>
 				<ListItemText primary="Account" />
-			</ListItem>
-			<ListItem button>
+			</ExternalNavOption>
+			<ExternalNavOption to="https://gyloh-news.eduport.hamburg.de/">
 				<ListItemIcon><NewsIcon /></ListItemIcon>
 				<ListItemText primary="Neuigkeiten" />
-			</ListItem>
-			<ListItem button>
+			</ExternalNavOption>
+			<ExternalNavOption to="https://news.eduport.hamburg.de/">
 				<ListItemIcon><PlannerIcon /></ListItemIcon>
 				<ListItemText primary="Termine" />
-			</ListItem>
-			<ListItem button>
+			</ExternalNavOption>
+			<ExternalNavOption to="https://groupware.eduport.hamburg.de/SOGo">
 				<ListItemIcon><EmailIcon /></ListItemIcon>
 				<ListItemText primary="E-Mail" />
-			</ListItem>
-			<ListItem button>
+			</ExternalNavOption>
+			<ExternalNavOption to="https://repo.eduport.hamburg.de/edu-sharing/shibboleth?mode=1&locale=de_DE">
 				<ListItemIcon><FilesIcon /></ListItemIcon>
 				<ListItemText primary="Dateien" />
-			</ListItem>
-			<ListItem button>
+			</ExternalNavOption>
+			<ExternalNavOption to="https://eduport.hamburg.de/">
 				<ListItemIcon><HelpIcon /></ListItemIcon>
 				<ListItemText primary="Hilfe" />
-			</ListItem>
+			</ExternalNavOption>
 			<Divider />
-			<ListItem button>
+			<ExternalNavOption to="https://hamburg.edupool.de/?eduid=HHeduport-720482">
 				<ListItemIcon><MediaLibIcon /></ListItemIcon>
 				<ListItemText primary="Schulmediathek" />
-			</ListItem>
-			<ListItem button>
+			</ExternalNavOption>
+			<ExternalNavOption to="https://geschichtsbuch.hamburg.de/">
 				<ListItemIcon><HistoryBooxIcon /></ListItemIcon>
 				<ListItemText primary="Geschichtsbuch" />
-			</ListItem>
+			</ExternalNavOption>
 			<Divider />
 			<Box mt={1} mb={1}>
-				<ListItem button>
+				<ExternalNavOption to="https://digitallearninglab.de/">
 					<img 
 						className={classes.textSizedImage} 
 						src={dllImage}
 						alt="digital learing lab"
 					/>
-				</ListItem>
+				</ExternalNavOption>
 			</Box>
 		</Dropdown>
 	);
