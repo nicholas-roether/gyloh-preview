@@ -4,6 +4,7 @@ import { classesIf } from "../util";
 import PageBar from "../static/PageBar";
 import { DRAWER_WIDTH } from "./SideNav";
 import PageNav from "./PageNav";
+import CookieConsent from "./CookieConsent";
 
 const useStyles = makeStyles((theme: Theme) => ({
 	page: {
@@ -85,6 +86,7 @@ const Page: React.FC<PageProps> = props => {
 				<Container className={classes.content}>
 					<React.Fragment>
 						{props.children}
+						<CookieConsent />
 					</React.Fragment>
 				</Container>
 			</div>
