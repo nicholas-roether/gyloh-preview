@@ -1,7 +1,7 @@
 import { Box, makeStyles, Theme, ThemeProvider } from "@material-ui/core";
 import React from "react";
 import Page from "./static/Page";
-import PageRouter from "./static/PageRouter";
+import Router from "./Router";
 
 type ThemeMap = Record<string, Theme>;
 
@@ -36,13 +36,13 @@ const App: React.FC<AppProps> = props => {
 				bgcolor={theme.palette.background.default}
 				color={theme.palette.text.primary}
 			>
-				<PageRouter>
+				<Router>
 					{content => (
 						<Page onThemeChange={onThemeChange}>
 							{content}
 						</Page>
 					)}
-				</PageRouter>
+				</Router>
 			</Box>
 		</ThemeProvider>
 	)

@@ -1,17 +1,18 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import ExternalRedirect from "../common/ExternalRedirect";
-import Error404 from "../error/Error404";
-import Home from "../home/Home";
-import News from "../news/News";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
+import ExternalRedirect from "./common/ExternalRedirect";
+import Datenschutz from "./datenschutz/Datenschutz";
+import Error404 from "./error/Error404";
+import Home from "./home/Home";
+import News from "./news/News";
 
 export type RouteHander = (content: React.ReactElement) => React.ReactElement;
 
-export interface PageRouterProps {
+export interface RouterProps {
 	children: RouteHander
 }
 
-const PageRouter: React.FC<PageRouterProps> = props => {
+const Router: React.FC<RouterProps> = props => {
 	const handler = props.children;
 	const switchElem = (
 		<Switch>
@@ -24,14 +25,17 @@ const PageRouter: React.FC<PageRouterProps> = props => {
 			<Route path="/newsletter">
 				<ExternalRedirect href="https://subscribe.newsletter2go.com/?n2g=wi5y2fvr-plkndw13-j07&_ga=2.85204825.1133588827.1587851132-316422097.1587286407" />
 			</Route>
+			<Route path="/datenschutz">
+				<Datenschutz />
+			</Route>
 			<Route path="*" component={Error404} />
 		</Switch>
 	)
 	return (
-		<Router basename={process.env.PUBLIC_URL}>
+		<BrowserRouter basename={process.env.PUBLIC_URL}>
 			{handler(switchElem)}
-		</Router>
+		</BrowserRouter>
 	);
 }
 
-export default PageRouter;
+export default Router;
