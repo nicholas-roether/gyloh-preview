@@ -58,21 +58,31 @@ const useStyles = makeStyles((theme: Theme) => ({
 	}
 }));
 
+const NAV_STATE_SESSION = "nav-state";
+
 export interface PageProps extends React.HTMLAttributes<HTMLDivElement> {
 	onThemeChange?: () => void,
 }
 
 const Page: React.FC<PageProps> = props => {
-	const [navOpen, setNavOpen] = React.useState<boolean>(false);
+	const [navOpen, setNavOpen] = React.useState<boolean>(sessionStorage.getItem(NAV_STATE_SESSION) === "open");
 	const classes = useStyles();
 	const { onThemeChange, ...other } = props;
+	const closeNav = () => {
+		setNavOpen(false);
+		sessionStorage.setItem(NAV_STATE_SESSION, "closed");
+	}
+	const openNav = () => {
+		setNavOpen(true);
+		sessionStorage.setItem(NAV_STATE_SESSION, "open");
+	}
 	return (
 		<div {...other} className={classes.page}>
-			<PageBar onOpenMenu={() => setNavOpen(true)} className={classesIf(
+			<PageBar onOpenMenu={openNav} className={classesIf(
 				classes.bar,
 				[classes.barOpen, navOpen]
 			)} onThemeChange={onThemeChange} />
-			<PageNav open={navOpen} onOpen={() => setNavOpen(true)} onClose={() => setNavOpen(false)} />
+			<PageNav open={navOpen} onOpen={openNav} onClose={closeNav} />
 			<div className={classesIf(
 					classes.contentWrapper,
 					[classes.contentWrapperOpen, navOpen]
