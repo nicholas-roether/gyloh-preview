@@ -32,6 +32,7 @@ function MuiMD(props: {children: string, overrides?: any}) {
 				h4: ({children}) => <Heading num={4}>{children}</Heading>,
 				h5: ({children}) => <Heading num={5}>{children}</Heading>,
 				h6: ({children}) => <Heading num={6}>{children}</Heading>,
+				// TODO tables
 				button: ({children}) => <DefaultButton>{children}</DefaultButton>,
 				...props.overrides
 			}
