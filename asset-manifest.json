@@ -1,24 +1,36 @@
 {
   "files": {
     "main.css": "/gyloh-preview/static/css/main.7f7f0b3d.chunk.css",
-    "main.js": "/gyloh-preview/static/js/main.4312583d.chunk.js",
-    "main.js.map": "/gyloh-preview/static/js/main.4312583d.chunk.js.map",
+    "main.js": "/gyloh-preview/static/js/main.14dc39e6.chunk.js",
+    "main.js.map": "/gyloh-preview/static/js/main.14dc39e6.chunk.js.map",
     "runtime-main.js": "/gyloh-preview/static/js/runtime-main.8bb6a2f9.js",
     "runtime-main.js.map": "/gyloh-preview/static/js/runtime-main.8bb6a2f9.js.map",
-    "static/js/2.d4371120.chunk.js": "/gyloh-preview/static/js/2.d4371120.chunk.js",
-    "static/js/2.d4371120.chunk.js.map": "/gyloh-preview/static/js/2.d4371120.chunk.js.map",
+    "static/js/2.b701d3b1.chunk.js": "/gyloh-preview/static/js/2.b701d3b1.chunk.js",
+    "static/js/2.b701d3b1.chunk.js.map": "/gyloh-preview/static/js/2.b701d3b1.chunk.js.map",
     "index.html": "/gyloh-preview/index.html",
-    "precache-manifest.0e1cce868ea74472357f8797b1d6ec5a.js": "/gyloh-preview/precache-manifest.0e1cce868ea74472357f8797b1d6ec5a.js",
+    "precache-manifest.18afa4ff0541c26d9f6849b37b52c3f5.js": "/gyloh-preview/precache-manifest.18afa4ff0541c26d9f6849b37b52c3f5.js",
     "service-worker.js": "/gyloh-preview/service-worker.js",
     "static/css/main.7f7f0b3d.chunk.css.map": "/gyloh-preview/static/css/main.7f7f0b3d.chunk.css.map",
-    "static/js/2.d4371120.chunk.js.LICENSE.txt": "/gyloh-preview/static/js/2.d4371120.chunk.js.LICENSE.txt",
+    "static/js/2.b701d3b1.chunk.js.LICENSE.txt": "/gyloh-preview/static/js/2.b701d3b1.chunk.js.LICENSE.txt",
+    "static/media/bilingual.jpg": "/gyloh-preview/static/media/bilingual.010d20ec.jpg",
+    "static/media/certilingua.png": "/gyloh-preview/static/media/certilingua.d2e826ec.png",
+    "static/media/delf-dalf.jpg": "/gyloh-preview/static/media/delf-dalf.3ab25b2d.jpg",
     "static/media/eduport.png": "/gyloh-preview/static/media/eduport.564f81c4.png",
-    "static/media/logo.png": "/gyloh-preview/static/media/logo.9937af52.png"
+    "static/media/etwinning.png": "/gyloh-preview/static/media/etwinning.19ddafae.png",
+    "static/media/gyloh.png": "/gyloh-preview/static/media/gyloh.9937af52.png",
+    "static/media/hcu.png": "/gyloh-preview/static/media/hcu.27818119.png",
+    "static/media/jugend-debattiert.jpg": "/gyloh-preview/static/media/jugend-debattiert.7d6e95b3.jpg",
+    "static/media/mint-pink.jpg": "/gyloh-preview/static/media/mint-pink.e00426fd.jpg",
+    "static/media/nat.jpg": "/gyloh-preview/static/media/nat.1ddd2d96.jpg",
+    "static/media/pfannenberg.jpg": "/gyloh-preview/static/media/pfannenberg.f037bb35.jpg",
+    "static/media/tsg.jpg": "/gyloh-preview/static/media/tsg.4f95e126.jpg",
+    "static/media/tuhh.jpg": "/gyloh-preview/static/media/tuhh.c1ddf8da.jpg",
+    "static/media/young-classx.jpg": "/gyloh-preview/static/media/young-classx.158846ca.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.8bb6a2f9.js",
-    "static/js/2.d4371120.chunk.js",
+    "static/js/2.b701d3b1.chunk.js",
     "static/css/main.7f7f0b3d.chunk.css",
-    "static/js/main.4312583d.chunk.js"
+    "static/js/main.14dc39e6.chunk.js"
   ]
 }
