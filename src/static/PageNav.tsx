@@ -8,7 +8,7 @@ import SideNav from "./SideNav";
 import CollapseItem from "./CollapseItem";
 import ExternalNavOption from "./ExternalNavOption";
 import { Link } from "react-router-dom";
-import logoImage from "../images/logo.png";
+import logoImage from "../images/gyloh.png";
 
 const useStyles = makeStyles((theme: Theme) => ({
 	navHeader: {
