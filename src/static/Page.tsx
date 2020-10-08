@@ -5,6 +5,7 @@ import PageBar from "../static/PageBar";
 import { DRAWER_WIDTH } from "./SideNav";
 import PageNav from "./PageNav";
 import CookieConsent from "./CookieConsent";
+import PageFooter from "./PageFooter";
 
 const useStyles = makeStyles((theme: Theme) => ({
 	page: {
@@ -93,12 +94,13 @@ const Page: React.FC<PageProps> = props => {
 						<Typography color="textPrimary">Home</Typography>
 					</Breadcrumbs> */}
 				</Box>
-				<Container className={classes.content}>
-					<React.Fragment>
+				<Container>
+					<main className={classes.content}>
 						{props.children}
 						<CookieConsent />
-					</React.Fragment>
+					</main>
 				</Container>
+				<PageFooter />
 			</div>
 		</div>
 	);
