@@ -49,7 +49,7 @@ class NewsModel {
 
 		do preview += current + "\n\n";
 		while(preview.length < NewsModel.PREVIEW_LENGTH && (current = paragraphs.shift()));
-		preview = preview.trimEnd();
+		preview = preview.trim();
 		
 		return preview;
 	}
